@@ -49,7 +49,7 @@
             // 
             btnClose.BackColor = Color.LightSeaGreen;
             btnClose.ForeColor = Color.White;
-            btnClose.Location = new Point(857, -2);
+            btnClose.Location = new Point(859, -10);
             btnClose.Name = "btnClose";
             btnClose.Size = new Size(45, 45);
             btnClose.TabIndex = 0;
