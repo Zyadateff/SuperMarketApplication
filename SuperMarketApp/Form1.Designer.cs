@@ -37,6 +37,7 @@
             label3 = new Label();
             btnlogin = new Button();
             btnSignup = new Button();
+            label4 = new Label();
             SuspendLayout();
             // 
             // label1
@@ -81,6 +82,7 @@
             comboBox1.Size = new Size(278, 33);
             comboBox1.TabIndex = 6;
             comboBox1.Text = "Select Role";
+            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
             // guna2HtmlLabel1
             // 
@@ -89,6 +91,7 @@
             guna2HtmlLabel1.Name = "guna2HtmlLabel1";
             guna2HtmlLabel1.Size = new Size(3, 2);
             guna2HtmlLabel1.TabIndex = 7;
+            guna2HtmlLabel1.Text = null;
             // 
             // label3
             // 
@@ -120,11 +123,21 @@
             btnSignup.UseVisualStyleBackColor = true;
             btnSignup.Click += button2_Click;
             // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(362, 73);
+            label4.Name = "label4";
+            label4.Size = new Size(59, 25);
+            label4.TabIndex = 10;
+            label4.Text = "label4";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(949, 582);
+            Controls.Add(label4);
             Controls.Add(btnSignup);
             Controls.Add(label3);
             Controls.Add(guna2HtmlLabel1);
@@ -151,5 +164,6 @@
         private Label label3;
         private Button btnlogin;
         private Button btnSignup;
+        private Label label4;
     }
 }
