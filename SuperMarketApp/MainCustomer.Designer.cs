@@ -34,7 +34,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(255, 114);
+            label1.Location = new Point(370, 243);
             label1.Name = "label1";
             label1.Size = new Size(161, 25);
             label1.TabIndex = 0;
@@ -44,7 +44,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(925, 538);
             Controls.Add(label1);
             Name = "MainCustomer";
             Text = "MainCustomer";

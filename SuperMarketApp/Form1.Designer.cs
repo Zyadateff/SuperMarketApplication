@@ -37,7 +37,7 @@
             label3 = new Label();
             btnlogin = new Button();
             btnSignup = new Button();
-            label4 = new Label();
+            lblwelcome = new Label();
             SuspendLayout();
             // 
             // label1
@@ -123,21 +123,21 @@
             btnSignup.UseVisualStyleBackColor = true;
             btnSignup.Click += button2_Click;
             // 
-            // label4
+            // lblwelcome
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(362, 73);
-            label4.Name = "label4";
-            label4.Size = new Size(59, 25);
-            label4.TabIndex = 10;
-            label4.Text = "label4";
+            lblwelcome.AutoSize = true;
+            lblwelcome.Location = new Point(413, 70);
+            lblwelcome.Name = "lblwelcome";
+            lblwelcome.Size = new Size(160, 25);
+            lblwelcome.TabIndex = 10;
+            lblwelcome.Text = "Welcome to Panda";
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(949, 582);
-            Controls.Add(label4);
+            Controls.Add(lblwelcome);
             Controls.Add(btnSignup);
             Controls.Add(label3);
             Controls.Add(guna2HtmlLabel1);
@@ -164,6 +164,6 @@
         private Label label3;
         private Button btnlogin;
         private Button btnSignup;
-        private Label label4;
+        private Label lblwelcome;
     }
 }
