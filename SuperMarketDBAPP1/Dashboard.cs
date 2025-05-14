@@ -8,7 +8,7 @@ namespace SuperMarketDBAPP1
     public partial class Dashboard : Form
     {
         // Connection string to your SQL Server
-        static string sql = "Data Source=MARO25;Initial Catalog=SupermarketDatabase;Integrated Security=True;Encrypt=False;Trust Server Certificate=True";
+        static string sql = "Data Source=DESKTOP-V936GVE;Initial Catalog=SupermarketDatabase;Integrated Security=True;Encrypt=False;Trust Server Certificate=True";
 
         public Dashboard()
         {
@@ -108,6 +108,11 @@ namespace SuperMarketDBAPP1
             {
                 MessageBox.Show("Error updating data: " + ex.Message);
             }
+        }
+
+        private void panel20_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

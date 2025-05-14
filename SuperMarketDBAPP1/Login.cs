@@ -21,6 +21,7 @@ namespace SuperMarketDBAPP1
             InitializeComponent();
         }
 
+
         // removed the btn
         private void btnClose_Click(object sender, EventArgs e)
         {
@@ -30,7 +31,7 @@ namespace SuperMarketDBAPP1
         private void btnLogin_Click(object sender, EventArgs e)
         {
             string role = comboBox1.SelectedItem?.ToString();
-            string username = txtName.Text;
+            string username = txtName.Text.Trim();
             string password = txtPass.Text;
 
             if (string.IsNullOrEmpty(role) || string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
@@ -43,7 +44,7 @@ namespace SuperMarketDBAPP1
             if (role == "Admin")
                 query = "SELECT COUNT(*) FROM Admin WHERE Name = @username AND Password = @password";
             else if (role == "Customer")
-                query = "SELECT COUNT(*) FROM Customer WHERE Name = @username AND Password = @password";
+                query = "SELECT Customer_id FROM Customer WHERE Name = @username AND Password = @password";
             else
             {
                 MessageBox.Show("Invalid role selected.");
@@ -58,38 +59,57 @@ namespace SuperMarketDBAPP1
 
                 con.Open();
                 int result = (int)cmd.ExecuteScalar();
-                con.Close();
 
-                if (result > 0)
+
+                if (role == "Admin")
                 {
-                    MessageBox.Show("Login successful!");
-
-                    if (role == "Admin")
+                    int count = (int)cmd.ExecuteScalar();
+                    if (count > 0)
                     {
+                        MessageBox.Show("Admin login successful!");
                         AdminDashboard adminForm = new AdminDashboard();
                         adminForm.Show();
+                        this.Hide();
                     }
                     else
                     {
-                        //MainCustomer customerForm = new MainCustomer();
-                        //customerForm.Show();
+                        MessageBox.Show("Invalid admin credentials.");
                     }
-
-                    this.Hide(); // hide login form
                 }
-                else
+                else // Customer
                 {
-                    MessageBox.Show("Invalid credentials.");
+                    object customerIdObj = cmd.ExecuteScalar();
+                    if (customerIdObj != null)
+                    {
+                        int customerId = Convert.ToInt32(customerIdObj);
+                        Session.CurrentCustomerId = customerId;
+
+                        MessageBox.Show("Customer login successful!");
+                        Dashboard customerForm = new Dashboard();
+                        customerForm.Show();
+                        this.Hide();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid customer credentials.");
+                    }
                 }
+
+                con.Close();
             }
         }
 
         private void btnsignup_Click(object sender, EventArgs e)
         {
             SignUp signUpForm = new SignUp();
-            this.Hide(); 
+            this.Hide();
             signUpForm.ShowDialog();
             this.Show(); // show login again after signup closes
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

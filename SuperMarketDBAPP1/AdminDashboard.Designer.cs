@@ -116,6 +116,7 @@
             btnEdit = new Button();
             txtCustomerID = new TextBox();
             label12 = new Label();
+            label30 = new Label();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPageProducts.SuspendLayout();
@@ -319,9 +320,9 @@
             btnProductPerCustomer.BackColor = Color.LightSeaGreen;
             btnProductPerCustomer.CausesValidation = false;
             btnProductPerCustomer.ForeColor = Color.White;
-            btnProductPerCustomer.Location = new Point(623, 526);
+            btnProductPerCustomer.Location = new Point(633, 535);
             btnProductPerCustomer.Name = "btnProductPerCustomer";
-            btnProductPerCustomer.Size = new Size(303, 46);
+            btnProductPerCustomer.Size = new Size(290, 46);
             btnProductPerCustomer.TabIndex = 28;
             btnProductPerCustomer.Text = "Products Per Customer";
             btnProductPerCustomer.UseVisualStyleBackColor = false;
@@ -332,9 +333,9 @@
             btnNotBought.BackColor = Color.LightSeaGreen;
             btnNotBought.CausesValidation = false;
             btnNotBought.ForeColor = Color.White;
-            btnNotBought.Location = new Point(699, 394);
+            btnNotBought.Location = new Point(929, 535);
             btnNotBought.Name = "btnNotBought";
-            btnNotBought.Size = new Size(303, 46);
+            btnNotBought.Size = new Size(290, 46);
             btnNotBought.TabIndex = 27;
             btnNotBought.Text = "Not Bought This Month";
             btnNotBought.UseVisualStyleBackColor = false;
@@ -345,7 +346,7 @@
             btnMostBought.BackColor = Color.LightSeaGreen;
             btnMostBought.CausesValidation = false;
             btnMostBought.ForeColor = Color.White;
-            btnMostBought.Location = new Point(1023, 394);
+            btnMostBought.Location = new Point(811, 466);
             btnMostBought.Name = "btnMostBought";
             btnMostBought.Size = new Size(201, 46);
             btnMostBought.TabIndex = 26;
@@ -358,7 +359,7 @@
             btnShowAllProducts.BackColor = Color.LightSeaGreen;
             btnShowAllProducts.CausesValidation = false;
             btnShowAllProducts.ForeColor = Color.White;
-            btnShowAllProducts.Location = new Point(623, 587);
+            btnShowAllProducts.Location = new Point(633, 587);
             btnShowAllProducts.Name = "btnShowAllProducts";
             btnShowAllProducts.Size = new Size(290, 46);
             btnShowAllProducts.TabIndex = 25;
@@ -371,7 +372,7 @@
             btnShowLowStock.BackColor = Color.LightSeaGreen;
             btnShowLowStock.CausesValidation = false;
             btnShowLowStock.ForeColor = Color.White;
-            btnShowLowStock.Location = new Point(919, 587);
+            btnShowLowStock.Location = new Point(929, 587);
             btnShowLowStock.Name = "btnShowLowStock";
             btnShowLowStock.Size = new Size(290, 46);
             btnShowLowStock.TabIndex = 24;
@@ -384,7 +385,7 @@
             btnReset.BackColor = Color.LightSeaGreen;
             btnReset.CausesValidation = false;
             btnReset.ForeColor = Color.White;
-            btnReset.Location = new Point(1112, 337);
+            btnReset.Location = new Point(1138, 337);
             btnReset.Name = "btnReset";
             btnReset.Size = new Size(97, 38);
             btnReset.TabIndex = 23;
@@ -411,7 +412,7 @@
             // 
             // txtPSearch
             // 
-            txtPSearch.Location = new Point(914, 287);
+            txtPSearch.Location = new Point(919, 287);
             txtPSearch.Name = "txtPSearch";
             txtPSearch.Size = new Size(310, 37);
             txtPSearch.TabIndex = 20;
@@ -421,7 +422,7 @@
             btnSearchProduct.BackColor = Color.LightSeaGreen;
             btnSearchProduct.CausesValidation = false;
             btnSearchProduct.ForeColor = Color.White;
-            btnSearchProduct.Location = new Point(770, 286);
+            btnSearchProduct.Location = new Point(790, 286);
             btnSearchProduct.Name = "btnSearchProduct";
             btnSearchProduct.Size = new Size(123, 38);
             btnSearchProduct.TabIndex = 19;
@@ -434,7 +435,7 @@
             btnRestock.BackColor = Color.LightSeaGreen;
             btnRestock.CausesValidation = false;
             btnRestock.ForeColor = Color.White;
-            btnRestock.Location = new Point(461, 539);
+            btnRestock.Location = new Point(461, 535);
             btnRestock.Name = "btnRestock";
             btnRestock.Size = new Size(128, 46);
             btnRestock.TabIndex = 18;
@@ -447,7 +448,7 @@
             btnDeleteProduct.BackColor = Color.LightSeaGreen;
             btnDeleteProduct.CausesValidation = false;
             btnDeleteProduct.ForeColor = Color.White;
-            btnDeleteProduct.Location = new Point(461, 598);
+            btnDeleteProduct.Location = new Point(461, 587);
             btnDeleteProduct.Name = "btnDeleteProduct";
             btnDeleteProduct.Size = new Size(128, 46);
             btnDeleteProduct.TabIndex = 17;
@@ -460,7 +461,7 @@
             btnEditProduct.BackColor = Color.LightSeaGreen;
             btnEditProduct.CausesValidation = false;
             btnEditProduct.ForeColor = Color.White;
-            btnEditProduct.Location = new Point(461, 424);
+            btnEditProduct.Location = new Point(461, 343);
             btnEditProduct.Name = "btnEditProduct";
             btnEditProduct.Size = new Size(128, 46);
             btnEditProduct.TabIndex = 16;
@@ -473,7 +474,7 @@
             btnAddProduct.BackColor = Color.LightSeaGreen;
             btnAddProduct.CausesValidation = false;
             btnAddProduct.ForeColor = Color.White;
-            btnAddProduct.Location = new Point(461, 372);
+            btnAddProduct.Location = new Point(461, 291);
             btnAddProduct.Name = "btnAddProduct";
             btnAddProduct.Size = new Size(128, 46);
             btnAddProduct.TabIndex = 15;
@@ -613,20 +614,21 @@
             // 
             // tabPage3
             // 
+            tabPage3.BackColor = Color.LightSeaGreen;
+            tabPage3.Controls.Add(label30);
             tabPage3.Controls.Add(dataGridViewOrders);
-            tabPage3.Location = new Point(4, 34);
+            tabPage3.Location = new Point(4, 39);
             tabPage3.Name = "tabPage3";
             tabPage3.Padding = new Padding(3);
-            tabPage3.Size = new Size(1250, 676);
+            tabPage3.Size = new Size(1250, 671);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Orders";
-            tabPage3.UseVisualStyleBackColor = true;
             // 
             // dataGridViewOrders
             // 
             dataGridViewOrders.BackgroundColor = Color.White;
             dataGridViewOrders.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewOrders.Location = new Point(63, 36);
+            dataGridViewOrders.Location = new Point(51, 105);
             dataGridViewOrders.Name = "dataGridViewOrders";
             dataGridViewOrders.RowHeadersWidth = 62;
             dataGridViewOrders.Size = new Size(1142, 533);
@@ -647,10 +649,10 @@
             tabPagefreqCustomers.Controls.Add(btnAddVoucher);
             tabPagefreqCustomers.Controls.Add(dgvFreqCustomers);
             tabPagefreqCustomers.ForeColor = Color.Cornsilk;
-            tabPagefreqCustomers.Location = new Point(4, 34);
+            tabPagefreqCustomers.Location = new Point(4, 39);
             tabPagefreqCustomers.Name = "tabPagefreqCustomers";
             tabPagefreqCustomers.Padding = new Padding(3);
-            tabPagefreqCustomers.Size = new Size(1250, 676);
+            tabPagefreqCustomers.Size = new Size(1250, 671);
             tabPagefreqCustomers.TabIndex = 3;
             tabPagefreqCustomers.Text = "Frequent Customers";
             tabPagefreqCustomers.Click += tabPagefreqCustomers_Click;
@@ -789,10 +791,10 @@
             tabPage4.Controls.Add(btnEdit);
             tabPage4.Controls.Add(txtCustomerID);
             tabPage4.Controls.Add(label12);
-            tabPage4.Location = new Point(4, 34);
+            tabPage4.Location = new Point(4, 39);
             tabPage4.Name = "tabPage4";
             tabPage4.Padding = new Padding(3);
-            tabPage4.Size = new Size(1250, 676);
+            tabPage4.Size = new Size(1250, 671);
             tabPage4.TabIndex = 4;
             tabPage4.Text = "Customers";
             tabPage4.Click += tabPage4_Click;
@@ -1085,6 +1087,17 @@
             label12.TabIndex = 0;
             label12.Text = "Customer ID";
             // 
+            // label30
+            // 
+            label30.AutoSize = true;
+            label30.Font = new Font("Century Gothic", 20F);
+            label30.ForeColor = Color.White;
+            label30.Location = new Point(461, 26);
+            label30.Name = "label30";
+            label30.Size = new Size(262, 49);
+            label30.TabIndex = 1;
+            label30.Text = "Track Orders";
+            // 
             // AdminDashboard
             // 
             AutoScaleDimensions = new SizeF(14F, 30F);
@@ -1103,6 +1116,7 @@
             tabPageProducts.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvProducts).EndInit();
             tabPage3.ResumeLayout(false);
+            tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewOrders).EndInit();
             tabPagefreqCustomers.ResumeLayout(false);
             tabPagefreqCustomers.PerformLayout();
@@ -1203,5 +1217,6 @@
         private Button btnResetCutomers;
         private Button button1;
         private Button btnProductPerCustomer;
+        private Label label30;
     }
 }
