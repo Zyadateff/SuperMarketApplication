@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             CircleButton1 = new Guna.UI2.WinForms.Guna2CircleButton();
             label2 = new Label();
             label1 = new Label();
@@ -39,6 +39,8 @@
             lblName = new Label();
             lblPass = new Label();
             btnLogin = new Button();
+            label4 = new Label();
+            btnsignup = new Button();
             SuspendLayout();
             // 
             // CircleButton1
@@ -52,7 +54,7 @@
             CircleButton1.ForeColor = Color.White;
             CircleButton1.Location = new Point(-283, -8);
             CircleButton1.Name = "CircleButton1";
-            CircleButton1.ShadowDecoration.CustomizableEdges = customizableEdges3;
+            CircleButton1.ShadowDecoration.CustomizableEdges = customizableEdges1;
             CircleButton1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             CircleButton1.Size = new Size(618, 581);
             CircleButton1.TabIndex = 0;
@@ -146,11 +148,36 @@
             btnLogin.UseVisualStyleBackColor = false;
             btnLogin.Click += btnLogin_Click;
             // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Calibri", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label4.ForeColor = Color.LightSeaGreen;
+            label4.Location = new Point(375, 460);
+            label4.Name = "label4";
+            label4.Size = new Size(230, 27);
+            label4.TabIndex = 12;
+            label4.Text = "Don't Have an Account?";
+            // 
+            // btnsignup
+            // 
+            btnsignup.BackColor = Color.LightSeaGreen;
+            btnsignup.ForeColor = Color.White;
+            btnsignup.Location = new Point(629, 448);
+            btnsignup.Name = "btnsignup";
+            btnsignup.Size = new Size(133, 48);
+            btnsignup.TabIndex = 13;
+            btnsignup.Text = "Sign Up";
+            btnsignup.UseVisualStyleBackColor = false;
+            btnsignup.Click += btnsignup_Click;
+            // 
             // Login
             // 
             AutoScaleDimensions = new SizeF(14F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(900, 560);
+            Controls.Add(btnsignup);
+            Controls.Add(label4);
             Controls.Add(btnLogin);
             Controls.Add(lblPass);
             Controls.Add(lblName);
@@ -182,5 +209,7 @@
         private Label lblName;
         private Label lblPass;
         private Button btnLogin;
+        private Label label4;
+        private Button btnsignup;
     }
 }

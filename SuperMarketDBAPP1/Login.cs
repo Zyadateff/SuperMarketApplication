@@ -66,8 +66,8 @@ namespace SuperMarketDBAPP1
 
                     if (role == "Admin")
                     {
-                        //MainAdmin adminForm = new MainAdmin();
-                        //adminForm.Show();
+                        AdminDashboard adminForm = new AdminDashboard();
+                        adminForm.Show();
                     }
                     else
                     {
@@ -82,6 +82,14 @@ namespace SuperMarketDBAPP1
                     MessageBox.Show("Invalid credentials.");
                 }
             }
+        }
+
+        private void btnsignup_Click(object sender, EventArgs e)
+        {
+            SignUp signUpForm = new SignUp();
+            this.Hide(); 
+            signUpForm.ShowDialog();
+            this.Show(); // show login again after signup closes
         }
     }
 }
