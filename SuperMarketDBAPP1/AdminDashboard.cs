@@ -29,6 +29,38 @@ namespace SuperMarketDBAPP1
 
         }
 
+        //======================================
+        // Products tab
+        private void LoadAllProducts()
+        {
+            using (SqlConnection conn = new SqlConnection(sql))
+            {
+                string query = "SELECT * FROM Product";
+                SqlDataAdapter da = new SqlDataAdapter(query, conn);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                dgvProducts.DataSource = dt;
+            }
+        }
+
+        private void LoadLowStockProducts()
+        {
+            using (SqlConnection conn = new SqlConnection(sql))
+            {
+                string query = "SELECT * FROM Product WHERE StockQuantity < MinStockThreshold";
+                SqlDataAdapter da = new SqlDataAdapter(query, conn);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                dgvProducts.DataSource = dt;
+            }
+        }
+
+
+
+        //======================================
+
+
+
         private void btnSave_Click(object sender, EventArgs e)
         {
             string username = textBoxName.Text.Trim();
@@ -118,6 +150,13 @@ namespace SuperMarketDBAPP1
             {
                 LoadFrequentCustomers();
             }
+
+            // Check if the selected tab is the Products tab
+            if (tabControl1.SelectedTab == tabPageProducts)
+            {
+                LoadAllProducts();
+            }
+
         }
 
         private void LoadFrequentCustomers()
@@ -435,8 +474,8 @@ namespace SuperMarketDBAPP1
             string vCode = txtVCode.Text.Trim();
             DateTime expiryDate = dateTimePicker2.Value;
 
-            
-            using (SqlConnection conn = new SqlConnection(sql)) 
+
+            using (SqlConnection conn = new SqlConnection(sql))
             {
                 try
                 {
@@ -467,6 +506,374 @@ namespace SuperMarketDBAPP1
                 }
             }
 
+        }
+
+        private void btnAddProduct_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection conn = new SqlConnection(sql))
+            {
+                string query = @"INSERT INTO Product (P_Name, Description, Price, Quantity, StockQuantity, MinStockThreshold, Category_id, Supplier_id) 
+                         VALUES (@Name, @Desc, @Price, @Qty, @Stock, @Min, @CatId, @SupId)";
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@Name", txtPname.Text);
+                cmd.Parameters.AddWithValue("@Desc", txtPdesc.Text);
+                if (string.IsNullOrWhiteSpace(txtPprice.Text))
+                {
+                    MessageBox.Show("Please enter a valid price.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                decimal price;
+                if (!decimal.TryParse(txtPprice.Text, out price))
+                {
+                    MessageBox.Show("Invalid format for price. Please enter a numeric value.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                cmd.Parameters.AddWithValue("@Price", Convert.ToDecimal(txtPprice.Text));
+                cmd.Parameters.AddWithValue("@Qty", Convert.ToInt32(txtPquantity.Text));
+                cmd.Parameters.AddWithValue("@Stock", Convert.ToInt32(txtPquantity.Text));
+                cmd.Parameters.AddWithValue("@Min", Convert.ToInt32(txtPminThres.Text));
+                cmd.Parameters.AddWithValue("@CatId", Convert.ToInt32(txtPcategory.Text));
+                cmd.Parameters.AddWithValue("@SupId", Convert.ToInt32(txtPsupplier.Text));
+
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
+            LoadAllProducts();
+        }
+
+        private void btnEditProduct_Click(object sender, EventArgs e)
+        {
+            if (dgvProducts.CurrentRow != null)
+            {
+                int productId = Convert.ToInt32(dgvProducts.CurrentRow.Cells["Product_id"].Value);
+
+                using (SqlConnection conn = new SqlConnection(sql))
+                {
+                    string query = @"UPDATE Product SET P_Name=@Name, Description=@Desc, Price=@Price, Quantity=@Qty, 
+                             StockQuantity=@Stock, MinStockThreshold=@Min, Category_id=@CatId, Supplier_id=@SupId 
+                             WHERE Product_id=@Id";
+
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@Name", txtPname.Text);
+                    cmd.Parameters.AddWithValue("@Desc", txtPdesc.Text);
+                    cmd.Parameters.AddWithValue("@Price", Convert.ToDecimal(txtPprice.Text));
+                    cmd.Parameters.AddWithValue("@Qty", Convert.ToInt32(txtPquantity.Text));
+                    cmd.Parameters.AddWithValue("@Stock", Convert.ToInt32(txtPquantity.Text));
+                    cmd.Parameters.AddWithValue("@Min", Convert.ToInt32(txtPminThres.Text));
+                    cmd.Parameters.AddWithValue("@CatId", Convert.ToInt32(txtPcategory.Text));
+                    cmd.Parameters.AddWithValue("@SupId", Convert.ToInt32(txtPsupplier.Text));
+                    cmd.Parameters.AddWithValue("@Id", productId);
+
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                }
+                LoadAllProducts();
+            }
+        }
+
+        private void btnDeleteProduct_Click(object sender, EventArgs e)
+        {
+            int productId = -1;
+
+            // Try getting ID from txtPID
+            if (!string.IsNullOrWhiteSpace(txtPID.Text))
+            {
+                if (!int.TryParse(txtPID.Text, out productId))
+                {
+                    MessageBox.Show("Invalid Product ID. Please enter a valid number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+            }
+            else if (dgvProducts.CurrentRow != null)
+            {
+                // Try getting ID from selected row if textbox is empty
+                productId = Convert.ToInt32(dgvProducts.CurrentRow.Cells["Product_id"].Value);
+            }
+            else
+            {
+                MessageBox.Show("Please select a product or enter a valid Product ID.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Confirm delete
+            var confirm = MessageBox.Show("Are you sure you want to delete this product?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (confirm == DialogResult.Yes)
+            {
+                try
+                {
+                    using (SqlConnection conn = new SqlConnection(sql))
+                    {
+                        string query = "DELETE FROM Product WHERE Product_id = @Id";
+                        SqlCommand cmd = new SqlCommand(query, conn);
+                        cmd.Parameters.AddWithValue("@Id", productId);
+
+                        conn.Open();
+                        int rowsAffected = cmd.ExecuteNonQuery();
+
+                        if (rowsAffected > 0)
+                        {
+                            MessageBox.Show("Product deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            LoadAllProducts();
+                            txtPID.Clear(); // optional: clear textbox
+                        }
+                        else
+                        {
+                            MessageBox.Show("No product found with the given ID.", "Not Found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show("Error deleting product:\n" + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void btnSearchProduct_Click(object sender, EventArgs e)
+        {
+            string keyword = txtPSearch.Text.Trim();
+
+            if (string.IsNullOrEmpty(keyword))
+            {
+                MessageBox.Show("Please enter a product name to search.", "Input Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            using (SqlConnection conn = new SqlConnection(sql))
+            {
+                string query = "SELECT * FROM Product WHERE P_Name LIKE @Keyword";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@Keyword", "%" + keyword + "%");
+
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+
+                try
+                {
+                    conn.Open();
+                    adapter.Fill(dt);
+
+                    if (dt.Rows.Count == 0)
+                    {
+                        MessageBox.Show("No products found matching your search.", "No Results", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+
+                    dgvProducts.DataSource = dt;
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show("Database error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void btnRestock_Click(object sender, EventArgs e)
+        {
+            if (dgvProducts.CurrentRow != null)
+            {
+                int productId = Convert.ToInt32(dgvProducts.CurrentRow.Cells["Product_id"].Value);
+                int restockAmount = Convert.ToInt32(txtPquantity.Text);
+
+                using (SqlConnection conn = new SqlConnection(sql))
+                {
+                    string query = "UPDATE Product SET StockQuantity = StockQuantity + @Amount WHERE Product_id = @Id";
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@Amount", restockAmount);
+                    cmd.Parameters.AddWithValue("@Id", productId);
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                }
+                LoadAllProducts();
+            }
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            txtPSearch.Clear();
+            LoadAllProducts();
+        }
+
+        private void btnShowLowStock_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection conn = new SqlConnection(sql))
+            {
+                string query = "SELECT * FROM Product WHERE StockQuantity < MinStockThreshold";
+                SqlDataAdapter adapter = new SqlDataAdapter(query, conn);
+                DataTable table = new DataTable();
+                adapter.Fill(table);
+                dgvProducts.DataSource = table;
+            }
+        }
+
+        private void btnShowAllProducts_Click(object sender, EventArgs e)
+        {
+            LoadAllProducts();
+
+        }
+
+        private void btnMostBought_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection conn = new SqlConnection(sql))
+            {
+                string query = @"
+            SELECT TOP 1 
+                P.*, 
+                SUM(OI.Quantity) AS TotalSold
+            FROM 
+                Product P
+            JOIN 
+                OrderItem OI ON P.Product_id = OI.Product_id
+            GROUP BY 
+                P.Product_id, P.P_Name, P.Description, P.Price, P.Quantity, 
+                P.StockQuantity, P.MinStockThreshold, P.Category_id, P.Supplier_id
+            ORDER BY 
+                TotalSold DESC";
+
+                SqlDataAdapter adapter = new SqlDataAdapter(query, conn);
+                DataTable table = new DataTable();
+                adapter.Fill(table);
+                dgvProducts.DataSource = table;
+            }
+        }
+
+        private void btnNotBought_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection conn = new SqlConnection(sql))
+            {
+                string query = @"
+            SELECT * 
+            FROM Product 
+            WHERE Product_id NOT IN (
+                SELECT DISTINCT OI.Product_id
+                FROM OrderItem OI
+                JOIN [Order] O ON O.Order_id = OI.Order_id
+                WHERE MONTH(O.Order_Date) = MONTH(GETDATE())
+                  AND YEAR(O.Order_Date) = YEAR(GETDATE())
+            )";
+
+                SqlDataAdapter adapter = new SqlDataAdapter(query, conn);
+                DataTable table = new DataTable();
+                adapter.Fill(table);
+                dgvProducts.DataSource = table;
+            }
+        }
+
+        private void btnInactive_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection conn = new SqlConnection(sql))
+            {
+                string query = @"
+            SELECT * 
+            FROM Customer
+            WHERE Customer_id NOT IN (
+                SELECT DISTINCT Customer_id
+                FROM [Order]
+                WHERE Order_Date >= DATEADD(YEAR, -1, GETDATE())
+            )";
+
+                SqlDataAdapter adapter = new SqlDataAdapter(query, conn);
+                DataTable table = new DataTable();
+                adapter.Fill(table);
+                dgvCustomers.DataSource = table;
+            }
+        }
+
+        private void btnResetCutomers_Click(object sender, EventArgs e)
+        {
+            LoadAllCustomers();
+        }
+
+
+        // top selling category
+        private void button1_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection conn = new SqlConnection(sql))
+            {
+                string query = @"
+            SELECT c.Category_name, SUM(oi.Quantity * oi.U_Price) AS TotalSales
+            FROM OrderItem oi
+            JOIN Product p ON oi.Product_id = p.Product_id
+            JOIN Category c ON p.Category_id = c.Category_id
+            GROUP BY c.Category_name";
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+                conn.Open();
+
+                Dictionary<string, decimal> categorySales = new Dictionary<string, decimal>();
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        string category = reader["Category_name"].ToString();
+                        decimal sales = Convert.ToDecimal(reader["TotalSales"]);
+                        categorySales[category] = sales;
+                    }
+                }
+
+                if (categorySales.Count == 0)
+                {
+                    MessageBox.Show("No sales data available.");
+                    return;
+                }
+
+                // Now compare
+                string topCategory = categorySales.OrderByDescending(x => x.Value).First().Key;
+                decimal topSales = categorySales[topCategory];
+
+                string message = $" The supermarket is selling more **{topCategory}** products!\n\nTotal Sales: {topSales:C2}";
+                MessageBox.Show(message, "Sales Comparison", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void dgvProducts_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void LoadProductsWithCustomerCount()
+        {
+            using (SqlConnection conn = new SqlConnection(sql))
+            {
+                string query = @"
+            SELECT 
+                p.Product_id,
+                p.P_Name,
+                p.Description,
+                p.Price,
+                p.Quantity,
+                p.StockQuantity,
+                p.MinStockThreshold,
+                p.Category_id,
+                p.Supplier_id,
+                COUNT(DISTINCT o.Customer_id) AS NumberOfCustomers
+            FROM Product p
+            LEFT JOIN OrderItem oi ON p.Product_id = oi.Product_id
+            LEFT JOIN [Order] o ON oi.Order_id = o.Order_id
+            GROUP BY 
+                p.Product_id,
+                p.P_Name,
+                p.Description,
+                p.Price,
+                p.Quantity,
+                p.StockQuantity,
+                p.MinStockThreshold,
+                p.Category_id,
+                p.Supplier_id
+        ";
+
+                SqlDataAdapter adapter = new SqlDataAdapter(query, conn);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+                dgvProducts.DataSource = dt;
+            }
+        }
+
+        private void btnProductPerCustomer_Click(object sender, EventArgs e)
+        {
+            LoadProductsWithCustomerCount();
         }
     }
 }
