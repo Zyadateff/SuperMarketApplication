@@ -24,6 +24,7 @@ namespace SuperMarketDBAPP1
         private void InitializeComponent()
         {
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SignUp));
             guna2CircleButton1 = new Guna.UI2.WinForms.Guna2CircleButton();
             label3 = new Label();
             label1 = new Label();
@@ -213,6 +214,7 @@ namespace SuperMarketDBAPP1
             Controls.Add(label1);
             Controls.Add(guna2CircleButton1);
             Font = new Font("Century Gothic", 12F, FontStyle.Bold);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "SignUp";
             Load += SignUp_Load;
             ResumeLayout(false);

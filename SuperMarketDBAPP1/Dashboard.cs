@@ -7,12 +7,14 @@ namespace SuperMarketDBAPP1
 {
     public partial class Dashboard : Form
     {
+        static String sql = "Data Source=MARO25;Initial Catalog=SupermarketDatabase;Integrated Security=True;Encrypt=False;Trust Server Certificate=True";
 
-        static string sql = "Data Source=DESKTOP-V936GVE;Initial Catalog=SupermarketDatabase;Integrated Security=True;Encrypt=False;Trust Server Certificate=True";
+        //static string sql = "Data Source=DESKTOP-V936GVE;Initial Catalog=SupermarketDatabase;Integrated Security=True;Encrypt=False;Trust Server Certificate=True";
         private int _customerId;
         public Dashboard(int customerId)
 
         {
+
             InitializeComponent();
             _customerId = customerId;
             // Attach Load event
@@ -28,6 +30,10 @@ namespace SuperMarketDBAPP1
             // Save button click event
             saveBtn.Click += BtnSave_Click;
             saveBtn.Enabled = false; // Disabled by default
+
+            // Delete button click event
+            DeleteBtn.Click += DeleteBtn_Click; // delete account
+
         }
 
         // Load the first customer record into the textboxes
@@ -195,6 +201,51 @@ namespace SuperMarketDBAPP1
                 reader.Close();
             }
         }
+
+
+
+        //Delete button
+
+        private void DeleteBtn_Click(object sender, EventArgs e)
+        {
+            DialogResult confirm = MessageBox.Show("Are you sure you want to delete your account? This action cannot be undone.", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (confirm != DialogResult.Yes)
+                return;
+
+            try
+            {
+                int customerId = Session.CurrentCustomerId;
+                string query = "DELETE FROM Customer WHERE Customer_id = @id";
+
+                using (SqlConnection con = new SqlConnection(sql))
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@id", customerId);
+
+                    con.Open();
+                    int rowsAffected = cmd.ExecuteNonQuery();
+
+                    if (rowsAffected > 0)
+                    {
+                        MessageBox.Show("Account deleted successfully.");
+
+                        // Optionally return to login screen or close app
+                        Application.Restart(); // or navigate to Login form
+                    }
+                    else
+                    {
+                        MessageBox.Show("No matching account found to delete.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error deleting account: " + ex.Message);
+            }
+        }
+
+
 
 
         private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)

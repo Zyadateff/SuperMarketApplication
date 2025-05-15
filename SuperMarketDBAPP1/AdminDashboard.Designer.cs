@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminDashboard));
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
             btnSave = new Button();
@@ -1106,6 +1107,7 @@
             ClientSize = new Size(1258, 712);
             Controls.Add(tabControl1);
             Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(4);
             Name = "AdminDashboard";
             Text = "AdminDashboard";
