@@ -115,6 +115,7 @@ namespace SuperMarketDBAPP1
             label10 = new Label();
             label9 = new Label();
             label13 = new Label();
+            DeleteBtn = new Button();
             saveBtn = new Button();
             txtPhone = new TextBox();
             txtAddress = new TextBox();
@@ -123,8 +124,11 @@ namespace SuperMarketDBAPP1
             txtName = new TextBox();
             label14 = new Label();
             shoptab = new TabPage();
+            btnSearch = new Button();
+            txtSearch = new TextBox();
+            label1 = new Label();
             flowLayoutPanelProducts = new FlowLayoutPanel();
-            DeleteBtn = new Button();
+            txtSerch = new TextBox();
             tabPage3.SuspendLayout();
             panel44.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox42).BeginInit();
@@ -212,7 +216,7 @@ namespace SuperMarketDBAPP1
             tabPage3.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             tabPage3.Location = new Point(4, 29);
             tabPage3.Name = "tabPage3";
-            tabPage3.Padding = new Padding(5, 5, 5, 5);
+            tabPage3.Padding = new Padding(5);
             tabPage3.Size = new Size(1002, 565);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Your Cart";
@@ -996,7 +1000,7 @@ namespace SuperMarketDBAPP1
             tabPage1.Controls.Add(panel19);
             tabPage1.Location = new Point(4, 29);
             tabPage1.Name = "tabPage1";
-            tabPage1.Padding = new Padding(5, 5, 5, 5);
+            tabPage1.Padding = new Padding(5);
             tabPage1.Size = new Size(1002, 565);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Profile Page";
@@ -1081,6 +1085,19 @@ namespace SuperMarketDBAPP1
             label13.TabIndex = 19;
             label13.Text = "Name";
             // 
+            // DeleteBtn
+            // 
+            DeleteBtn.BackColor = Color.LightSeaGreen;
+            DeleteBtn.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            DeleteBtn.ForeColor = SystemColors.Control;
+            DeleteBtn.Location = new Point(568, 479);
+            DeleteBtn.Name = "DeleteBtn";
+            DeleteBtn.Size = new Size(94, 33);
+            DeleteBtn.TabIndex = 14;
+            DeleteBtn.Text = "Delete";
+            DeleteBtn.UseVisualStyleBackColor = false;
+            DeleteBtn.Click += saveBtn_Click;
+            // 
             // saveBtn
             // 
             saveBtn.BackColor = Color.LightSeaGreen;
@@ -1148,42 +1165,67 @@ namespace SuperMarketDBAPP1
             // 
             // shoptab
             // 
+            shoptab.Controls.Add(btnSearch);
+            shoptab.Controls.Add(txtSearch);
+            shoptab.Controls.Add(label1);
             shoptab.Controls.Add(flowLayoutPanelProducts);
             shoptab.Location = new Point(4, 29);
-            shoptab.Margin = new Padding(2, 2, 2, 2);
+            shoptab.Margin = new Padding(2);
             shoptab.Name = "shoptab";
-            shoptab.Padding = new Padding(2, 2, 2, 2);
+            shoptab.Padding = new Padding(2);
             shoptab.Size = new Size(1002, 565);
             shoptab.TabIndex = 3;
             shoptab.Text = "Shop";
             shoptab.UseVisualStyleBackColor = true;
             shoptab.Click += shoptab_Click;
             // 
+            // btnSearch
+            // 
+            btnSearch.Location = new Point(833, 19);
+            btnSearch.Name = "btnSearch";
+            btnSearch.Size = new Size(64, 29);
+            btnSearch.TabIndex = 5;
+            btnSearch.Text = "Search";
+            btnSearch.UseVisualStyleBackColor = true;
+            btnSearch.Click += button2_Click;
+            // 
+            // txtSearch
+            // 
+            txtSearch.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txtSearch.Location = new Point(627, 17);
+            txtSearch.Name = "txtSearch";
+            txtSearch.Size = new Size(200, 32);
+            txtSearch.TabIndex = 4;
+            txtSearch.TextChanged += textBox1_TextChanged;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Century Gothic", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(28, 9);
+            label1.Name = "label1";
+            label1.Size = new Size(324, 40);
+            label1.TabIndex = 2;
+            label1.Text = "Products Available";
+            // 
             // flowLayoutPanelProducts
             // 
-            flowLayoutPanelProducts.Location = new Point(5, 5);
-            flowLayoutPanelProducts.Margin = new Padding(2, 2, 2, 2);
+            flowLayoutPanelProducts.Location = new Point(5, 62);
+            flowLayoutPanelProducts.Margin = new Padding(2);
             flowLayoutPanelProducts.Name = "flowLayoutPanelProducts";
-
-            flowLayoutPanelProducts.Size = new Size(1242, 645);
-
+            flowLayoutPanelProducts.Size = new Size(1242, 588);
             flowLayoutPanelProducts.TabIndex = 0;
             flowLayoutPanelProducts.TabIndexChanged += flowLayoutPanelProducts_TabIndexChanged;
             flowLayoutPanelProducts.Paint += flowLayoutPanel1_Paint;
             flowLayoutPanelProducts.Enter += flowLayoutPanelProducts_Enter;
             // 
-            // DeleteBtn
+            // txtSerch
             // 
-            DeleteBtn.BackColor = Color.LightSeaGreen;
-            DeleteBtn.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            DeleteBtn.ForeColor = SystemColors.Control;
-            DeleteBtn.Location = new Point(568, 479);
-            DeleteBtn.Name = "DeleteBtn";
-            DeleteBtn.Size = new Size(94, 33);
-            DeleteBtn.TabIndex = 14;
-            DeleteBtn.Text = "Delete";
-            DeleteBtn.UseVisualStyleBackColor = false;
-            DeleteBtn.Click += saveBtn_Click;
+            txtSerch.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txtSerch.Location = new Point(622, 17);
+            txtSerch.Name = "txtSerch";
+            txtSerch.Size = new Size(220, 32);
+            txtSerch.TabIndex = 1;
             // 
             // Dashboard
             // 
@@ -1277,6 +1319,7 @@ namespace SuperMarketDBAPP1
             panel19.ResumeLayout(false);
             panel19.PerformLayout();
             shoptab.ResumeLayout(false);
+            shoptab.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -1402,5 +1445,9 @@ namespace SuperMarketDBAPP1
         private TabPage shoptab;
         private FlowLayoutPanel flowLayoutPanelProducts;
         private Button DeleteBtn;
+        private Label label1;
+        private TextBox txtSerch;
+        private TextBox txtSearch;
+        private Button btnSearch;
     }
 }

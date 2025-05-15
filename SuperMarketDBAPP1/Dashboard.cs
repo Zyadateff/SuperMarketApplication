@@ -11,10 +11,10 @@ namespace SuperMarketDBAPP1
 
         //static string sql = "Data Source=DESKTOP-V936GVE;Initial Catalog=SupermarketDatabase;Integrated Security=True;Encrypt=False;Trust Server Certificate=True";
         private int _customerId;
+
         public Dashboard(int customerId)
 
         {
-
             InitializeComponent();
             _customerId = customerId;
             // Attach Load event
@@ -140,7 +140,7 @@ namespace SuperMarketDBAPP1
         private void LoadProducts()
         {
             flowLayoutPanelProducts.Controls.Clear(); // Clear old items
-           // MessageBox.Show("Loaded!"); // Test line
+                                                      // MessageBox.Show("Loaded!"); // Test line
             string query = "SELECT P_Name, Description, Price FROM Product";
 
             using (SqlConnection con = new SqlConnection(sql))
@@ -197,6 +197,9 @@ namespace SuperMarketDBAPP1
 
                     flowLayoutPanelProducts.Controls.Add(card);
                 }
+
+
+
 
                 reader.Close();
             }
@@ -260,7 +263,7 @@ namespace SuperMarketDBAPP1
 
         private void flowLayoutPanelProducts_TabIndexChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void shoptab_Click(object sender, EventArgs e)
@@ -271,9 +274,37 @@ namespace SuperMarketDBAPP1
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (tabControl1.SelectedTab == shoptab)
+            {
+                LoadProducts();
+            }
+        }
+
+
+        // search text box
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            string search = txtSearch.Text.Trim();
+            flowLayoutPanelProducts.Controls.Clear();
+
+            string query = "SELECT P_Name, Description, Price FROM Product WHERE P_Name LIKE @search";
+            using (SqlConnection con = new SqlConnection(sql))
+            using (SqlCommand cmd = new SqlCommand(query, con))
+            {
+                cmd.Parameters.AddWithValue("@search", "%" + search + "%");
+
+                con.Open();
+                using (SqlDataReader reader = cmd.ExecuteReader())
                 {
-                    LoadProducts();
+                    // logic of creating the product card here YA NOURAAAANN
                 }
+            }
+        }
+
+
+        // search button
+        private void button2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
