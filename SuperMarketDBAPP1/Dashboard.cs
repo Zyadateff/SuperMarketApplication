@@ -8,7 +8,7 @@ namespace SuperMarketDBAPP1
     public partial class Dashboard : Form
     {
         // Connection string to your SQL Server
-        static string sql = "Data Source=DESKTOP-V936GVE;Initial Catalog=SupermarketDatabase;Integrated Security=True;Encrypt=False;Trust Server Certificate=True";
+        static string sql = "Data Source=MARO25;Initial Catalog=SupermarketDatabase;Integrated Security=True;Encrypt=False;Trust Server Certificate=True";
 
         public Dashboard()
         {
@@ -34,22 +34,31 @@ namespace SuperMarketDBAPP1
         {
             try
             {
-                string query = "SELECT * FROM Customer";
+                int customerId = Session.CurrentCustomerId;
+
+                string query = "SELECT * FROM Customer WHERE Customer_id = @id";
 
                 using (SqlConnection con = new SqlConnection(sql))
                 using (SqlCommand cmd = new SqlCommand(query, con))
-                using (SqlDataAdapter da = new SqlDataAdapter(cmd))
                 {
-                    DataTable dt = new DataTable();
-                    da.Fill(dt);
+                    cmd.Parameters.AddWithValue("@id", customerId);
 
-                    if (dt.Rows.Count > 0)
+                    con.Open();
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
                     {
-                        txtName.Text = dt.Rows[0]["Name"].ToString();
-                        txtEmail.Text = dt.Rows[0]["Email"].ToString();
-                        txtAddress.Text = dt.Rows[0]["Address"].ToString();
-                        txtPhone.Text = dt.Rows[0]["Phone"].ToString();
-                        txtPassword.Text = dt.Rows[0]["Password"].ToString();
+                        if (reader.Read())
+                        {
+                            txtName.Text = reader["Name"].ToString();
+                            txtEmail.Text = reader["Email"].ToString();
+                            txtAddress.Text = reader["Address"].ToString();
+                            txtPhone.Text = reader["Phone"].ToString();
+                            txtPassword.Text = reader["Password"].ToString(); // Optional: hide or mask
+                        }
+                        else
+                        {
+                            MessageBox.Show("Customer record not found.");
+                        }
                     }
                 }
             }
@@ -58,6 +67,7 @@ namespace SuperMarketDBAPP1
                 MessageBox.Show("Error loading customer data: " + ex.Message);
             }
         }
+
 
         // Enable the Save button when any field is edited
         private void EnableSaveButton(object sender, EventArgs e)
