@@ -9,11 +9,11 @@ namespace SuperMarketDBAPP1
     {
         // Connection string to your SQL Server
         static string sql = "Data Source=DESKTOP-V936GVE;Initial Catalog=SupermarketDatabase;Integrated Security=True;Encrypt=False;Trust Server Certificate=True";
-
-        public Dashboard()
+        private int _customerId;
+        public Dashboard(int customerId)
         {
             InitializeComponent();
-
+            _customerId = customerId;
             // Attach Load event
             this.Load += Dashboard_Load;
 
@@ -122,6 +122,8 @@ namespace SuperMarketDBAPP1
 
         private void LoadProducts()
         {
+            flowLayoutPanelProducts.Controls.Clear(); // Clear old items
+           // MessageBox.Show("Loaded!"); // Test line
             string query = "SELECT P_Name, Description, Price FROM Product";
 
             using (SqlConnection con = new SqlConnection(sql))
@@ -139,25 +141,42 @@ namespace SuperMarketDBAPP1
 
                     Label nameLabel = new Label();
                     nameLabel.Text = reader["P_Name"].ToString();
-                    nameLabel.Font = new Font("Segoe UI", 10, FontStyle.Bold);
+                    nameLabel.Font = new Font("Century Gothic", 10, FontStyle.Bold);
                     nameLabel.Location = new Point(10, 10);
                     nameLabel.AutoSize = true;
 
                     Label priceLabel = new Label();
                     priceLabel.Text = "$" + Convert.ToDecimal(reader["Price"]).ToString("F2");
-                    priceLabel.Font = new Font("Segoe UI", 9);
+                    priceLabel.Font = new Font("Century Gothic", 9);
                     priceLabel.Location = new Point(10, 40);
                     priceLabel.AutoSize = true;
 
                     Label descLabel = new Label();
                     descLabel.Text = reader["Description"].ToString();
-                    descLabel.Font = new Font("Segoe UI", 8);
+                    descLabel.Font = new Font("Century Gothic", 8);
                     descLabel.Location = new Point(10, 70);
-                    descLabel.Size = new Size(180, 100);  // Allow room for a paragraph
+                    descLabel.Size = new Size(180, 100);
+
+
+                    Button addToCartBtn = new Button();
+                    addToCartBtn.Text = "Add to Cart";
+                    addToCartBtn.BackColor = Color.LightSeaGreen;
+                    addToCartBtn.ForeColor = Color.White;
+                    addToCartBtn.FlatStyle = FlatStyle.Flat;
+                    addToCartBtn.Font = new Font("Century Gothic", 9, FontStyle.Bold);
+                    addToCartBtn.Size = new Size(150, 30);
+                    addToCartBtn.Location = new Point(40, 170); // Adjust as needed
+                    addToCartBtn.Tag = reader["P_Name"].ToString();
+                    addToCartBtn.Click += (s, ev) =>
+                    {
+                        string productName = (string)((Button)s).Tag;
+                        MessageBox.Show($"{productName} added to cart!");
+                    };
 
                     card.Controls.Add(nameLabel);
                     card.Controls.Add(priceLabel);
                     card.Controls.Add(descLabel);
+                    card.Controls.Add(addToCartBtn);
 
                     flowLayoutPanelProducts.Controls.Add(card);
                 }
@@ -174,7 +193,25 @@ namespace SuperMarketDBAPP1
 
         private void flowLayoutPanelProducts_Enter(object sender, EventArgs e)
         {
-            LoadProducts(); 
+            //LoadProducts();
+        }
+
+        private void flowLayoutPanelProducts_TabIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void shoptab_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tabControl1.SelectedTab == shoptab)
+                {
+                    LoadProducts();
+                }
         }
     }
 }

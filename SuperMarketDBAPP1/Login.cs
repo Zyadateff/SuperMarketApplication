@@ -13,7 +13,7 @@ namespace SuperMarketDBAPP1
 {
     public partial class Login : Form
     {
-        static string sql = "Data Source=DESKTOP-V936GVE;Initial Catalog=SupermarketDatabase;Integrated Security=True;Encrypt=False";
+        static string sql = "Data Source=DESKTOP-V936GVE;Initial Catalog=SupermarketDatabase;Integrated Security=True;Encrypt=False;Trust Server Certificate=True";
 
         SqlConnection con = new SqlConnection(sql);
         public Login()
@@ -58,12 +58,12 @@ namespace SuperMarketDBAPP1
                 cmd.Parameters.AddWithValue("@password", password);
 
                 con.Open();
-                int result = (int)cmd.ExecuteScalar();
 
+                object result = cmd.ExecuteScalar();
 
                 if (role == "Admin")
                 {
-                    int count = (int)cmd.ExecuteScalar();
+                    int count = Convert.ToInt32(result);
                     if (count > 0)
                     {
                         MessageBox.Show("Admin login successful!");
@@ -78,14 +78,10 @@ namespace SuperMarketDBAPP1
                 }
                 else // Customer
                 {
-                    object customerIdObj = cmd.ExecuteScalar();
-                    if (customerIdObj != null)
+                    if (result != null && result != DBNull.Value)
                     {
-                        int customerId = Convert.ToInt32(customerIdObj);
-                        Session.CurrentCustomerId = customerId;
-
-                        MessageBox.Show("Customer login successful!");
-                        Dashboard customerForm = new Dashboard();
+                        int customerId = Convert.ToInt32(result);
+                        Dashboard customerForm = new Dashboard(customerId);
                         customerForm.Show();
                         this.Hide();
                     }
@@ -94,7 +90,6 @@ namespace SuperMarketDBAPP1
                         MessageBox.Show("Invalid customer credentials.");
                     }
                 }
-
                 con.Close();
             }
         }

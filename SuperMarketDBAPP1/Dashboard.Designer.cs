@@ -1066,6 +1066,7 @@ namespace SuperMarketDBAPP1
             tabControl1.Size = new Size(1262, 748);
             tabControl1.TabIndex = 0;
             tabControl1.Tag = "";
+            tabControl1.SelectedIndexChanged += tabControl1_SelectedIndexChanged;
             // 
             // tabPage1
             // 
@@ -1243,13 +1244,15 @@ namespace SuperMarketDBAPP1
             shoptab.TabIndex = 3;
             shoptab.Text = "Shop";
             shoptab.UseVisualStyleBackColor = true;
+            shoptab.Click += shoptab_Click;
             // 
             // flowLayoutPanelProducts
             // 
             flowLayoutPanelProducts.Location = new Point(6, 6);
             flowLayoutPanelProducts.Name = "flowLayoutPanelProducts";
-            flowLayoutPanelProducts.Size = new Size(1248, 645);
+            flowLayoutPanelProducts.Size = new Size(1242, 645);
             flowLayoutPanelProducts.TabIndex = 0;
+            flowLayoutPanelProducts.TabIndexChanged += flowLayoutPanelProducts_TabIndexChanged;
             flowLayoutPanelProducts.Paint += flowLayoutPanel1_Paint;
             flowLayoutPanelProducts.Enter += flowLayoutPanelProducts_Enter;
             // 

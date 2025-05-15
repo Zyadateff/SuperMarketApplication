@@ -12,7 +12,8 @@ namespace SuperMarketDBAPP1
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Application.Run(new Login());
-           // Application.Run(new AdminDashboard());
+            // Application.Run(new AdminDashboard());
+            //Application.Run(new Dashboard());
         }
     }
 }
