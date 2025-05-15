@@ -15,7 +15,7 @@ namespace SuperMarketDBAPP1
 {
     public partial class AdminDashboard : Form
     {
-        static String sql = "Data Source=DESKTOP-V936GVE;Initial Catalog=SupermarketDatabase;Integrated Security=True;Encrypt=False";
+        static String sql = "Data Source=MARO25;Initial Catalog=SupermarketDatabase;Integrated Security=True;Encrypt=False;Trust Server Certificate=True";
 
         public AdminDashboard()
         {
@@ -874,6 +874,11 @@ namespace SuperMarketDBAPP1
         private void btnProductPerCustomer_Click(object sender, EventArgs e)
         {
             LoadProductsWithCustomerCount();
+        }
+
+        private void AdminDashboard_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -124,6 +124,7 @@ namespace SuperMarketDBAPP1
             label14 = new Label();
             shoptab = new TabPage();
             flowLayoutPanelProducts = new FlowLayoutPanel();
+            DeleteBtn = new Button();
             tabPage3.SuspendLayout();
             panel44.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox42).BeginInit();
@@ -209,11 +210,10 @@ namespace SuperMarketDBAPP1
             tabPage3.Controls.Add(label31);
             tabPage3.Controls.Add(panel20);
             tabPage3.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            tabPage3.Location = new Point(4, 34);
-            tabPage3.Margin = new Padding(4);
+            tabPage3.Location = new Point(4, 29);
             tabPage3.Name = "tabPage3";
-            tabPage3.Padding = new Padding(6);
-            tabPage3.Size = new Size(1254, 710);
+            tabPage3.Padding = new Padding(5, 5, 5, 5);
+            tabPage3.Size = new Size(1002, 565);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Your Cart";
             tabPage3.UseVisualStyleBackColor = true;
@@ -223,19 +223,17 @@ namespace SuperMarketDBAPP1
             panel44.BackColor = SystemColors.Control;
             panel44.Controls.Add(pictureBox42);
             panel44.Controls.Add(label51);
-            panel44.Location = new Point(745, 499);
-            panel44.Margin = new Padding(4);
+            panel44.Location = new Point(596, 399);
             panel44.Name = "panel44";
-            panel44.Size = new Size(176, 202);
+            panel44.Size = new Size(141, 162);
             panel44.TabIndex = 26;
             // 
             // pictureBox42
             // 
             pictureBox42.Image = (Image)resources.GetObject("pictureBox42.Image");
-            pictureBox42.Location = new Point(15, 15);
-            pictureBox42.Margin = new Padding(4);
+            pictureBox42.Location = new Point(12, 12);
             pictureBox42.Name = "pictureBox42";
-            pictureBox42.Size = new Size(146, 94);
+            pictureBox42.Size = new Size(117, 75);
             pictureBox42.SizeMode = PictureBoxSizeMode.CenterImage;
             pictureBox42.TabIndex = 1;
             pictureBox42.TabStop = false;
@@ -244,10 +242,9 @@ namespace SuperMarketDBAPP1
             // 
             label51.AutoSize = true;
             label51.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
-            label51.Location = new Point(34, 145);
-            label51.Margin = new Padding(4, 0, 4, 0);
+            label51.Location = new Point(27, 116);
             label51.Name = "label51";
-            label51.Size = new Size(100, 28);
+            label51.Size = new Size(84, 23);
             label51.TabIndex = 0;
             label51.Text = "Product";
             // 
@@ -256,19 +253,17 @@ namespace SuperMarketDBAPP1
             panel40.BackColor = SystemColors.Control;
             panel40.Controls.Add(pictureBox38);
             panel40.Controls.Add(label47);
-            panel40.Location = new Point(561, 499);
-            panel40.Margin = new Padding(4);
+            panel40.Location = new Point(449, 399);
             panel40.Name = "panel40";
-            panel40.Size = new Size(176, 202);
+            panel40.Size = new Size(141, 162);
             panel40.TabIndex = 26;
             // 
             // pictureBox38
             // 
             pictureBox38.Image = (Image)resources.GetObject("pictureBox38.Image");
-            pictureBox38.Location = new Point(15, 15);
-            pictureBox38.Margin = new Padding(4);
+            pictureBox38.Location = new Point(12, 12);
             pictureBox38.Name = "pictureBox38";
-            pictureBox38.Size = new Size(146, 94);
+            pictureBox38.Size = new Size(117, 75);
             pictureBox38.SizeMode = PictureBoxSizeMode.CenterImage;
             pictureBox38.TabIndex = 1;
             pictureBox38.TabStop = false;
@@ -277,10 +272,9 @@ namespace SuperMarketDBAPP1
             // 
             label47.AutoSize = true;
             label47.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
-            label47.Location = new Point(34, 145);
-            label47.Margin = new Padding(4, 0, 4, 0);
+            label47.Location = new Point(27, 116);
             label47.Name = "label47";
-            label47.Size = new Size(100, 28);
+            label47.Size = new Size(84, 23);
             label47.TabIndex = 0;
             label47.Text = "Product";
             // 
@@ -289,19 +283,17 @@ namespace SuperMarketDBAPP1
             panel36.BackColor = SystemColors.Control;
             panel36.Controls.Add(pictureBox34);
             panel36.Controls.Add(label43);
-            panel36.Location = new Point(378, 499);
-            panel36.Margin = new Padding(4);
+            panel36.Location = new Point(302, 399);
             panel36.Name = "panel36";
-            panel36.Size = new Size(176, 202);
+            panel36.Size = new Size(141, 162);
             panel36.TabIndex = 26;
             // 
             // pictureBox34
             // 
             pictureBox34.Image = (Image)resources.GetObject("pictureBox34.Image");
-            pictureBox34.Location = new Point(15, 15);
-            pictureBox34.Margin = new Padding(4);
+            pictureBox34.Location = new Point(12, 12);
             pictureBox34.Name = "pictureBox34";
-            pictureBox34.Size = new Size(146, 94);
+            pictureBox34.Size = new Size(117, 75);
             pictureBox34.SizeMode = PictureBoxSizeMode.CenterImage;
             pictureBox34.TabIndex = 1;
             pictureBox34.TabStop = false;
@@ -310,10 +302,9 @@ namespace SuperMarketDBAPP1
             // 
             label43.AutoSize = true;
             label43.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
-            label43.Location = new Point(34, 145);
-            label43.Margin = new Padding(4, 0, 4, 0);
+            label43.Location = new Point(27, 116);
             label43.Name = "label43";
-            label43.Size = new Size(100, 28);
+            label43.Size = new Size(84, 23);
             label43.TabIndex = 0;
             label43.Text = "Product";
             // 
@@ -322,19 +313,17 @@ namespace SuperMarketDBAPP1
             panel32.BackColor = SystemColors.Control;
             panel32.Controls.Add(pictureBox15);
             panel32.Controls.Add(label27);
-            panel32.Location = new Point(194, 499);
-            panel32.Margin = new Padding(4);
+            panel32.Location = new Point(155, 399);
             panel32.Name = "panel32";
-            panel32.Size = new Size(176, 202);
+            panel32.Size = new Size(141, 162);
             panel32.TabIndex = 26;
             // 
             // pictureBox15
             // 
             pictureBox15.Image = (Image)resources.GetObject("pictureBox15.Image");
-            pictureBox15.Location = new Point(15, 15);
-            pictureBox15.Margin = new Padding(4);
+            pictureBox15.Location = new Point(12, 12);
             pictureBox15.Name = "pictureBox15";
-            pictureBox15.Size = new Size(146, 94);
+            pictureBox15.Size = new Size(117, 75);
             pictureBox15.SizeMode = PictureBoxSizeMode.CenterImage;
             pictureBox15.TabIndex = 1;
             pictureBox15.TabStop = false;
@@ -343,10 +332,9 @@ namespace SuperMarketDBAPP1
             // 
             label27.AutoSize = true;
             label27.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
-            label27.Location = new Point(34, 145);
-            label27.Margin = new Padding(4, 0, 4, 0);
+            label27.Location = new Point(27, 116);
             label27.Name = "label27";
-            label27.Size = new Size(100, 28);
+            label27.Size = new Size(84, 23);
             label27.TabIndex = 0;
             label27.Text = "Product";
             // 
@@ -355,19 +343,17 @@ namespace SuperMarketDBAPP1
             panel28.BackColor = SystemColors.Control;
             panel28.Controls.Add(pictureBox11);
             panel28.Controls.Add(label23);
-            panel28.Location = new Point(194, 499);
-            panel28.Margin = new Padding(4);
+            panel28.Location = new Point(155, 399);
             panel28.Name = "panel28";
-            panel28.Size = new Size(176, 202);
+            panel28.Size = new Size(141, 162);
             panel28.TabIndex = 26;
             // 
             // pictureBox11
             // 
             pictureBox11.Image = (Image)resources.GetObject("pictureBox11.Image");
-            pictureBox11.Location = new Point(15, 15);
-            pictureBox11.Margin = new Padding(4);
+            pictureBox11.Location = new Point(12, 12);
             pictureBox11.Name = "pictureBox11";
-            pictureBox11.Size = new Size(146, 94);
+            pictureBox11.Size = new Size(117, 75);
             pictureBox11.SizeMode = PictureBoxSizeMode.CenterImage;
             pictureBox11.TabIndex = 1;
             pictureBox11.TabStop = false;
@@ -376,10 +362,9 @@ namespace SuperMarketDBAPP1
             // 
             label23.AutoSize = true;
             label23.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
-            label23.Location = new Point(34, 145);
-            label23.Margin = new Padding(4, 0, 4, 0);
+            label23.Location = new Point(27, 116);
             label23.Name = "label23";
-            label23.Size = new Size(100, 28);
+            label23.Size = new Size(84, 23);
             label23.TabIndex = 0;
             label23.Text = "Product";
             // 
@@ -388,19 +373,17 @@ namespace SuperMarketDBAPP1
             panel24.BackColor = SystemColors.Control;
             panel24.Controls.Add(pictureBox7);
             panel24.Controls.Add(label19);
-            panel24.Location = new Point(10, 499);
-            panel24.Margin = new Padding(4);
+            panel24.Location = new Point(8, 399);
             panel24.Name = "panel24";
-            panel24.Size = new Size(176, 202);
+            panel24.Size = new Size(141, 162);
             panel24.TabIndex = 26;
             // 
             // pictureBox7
             // 
             pictureBox7.Image = (Image)resources.GetObject("pictureBox7.Image");
-            pictureBox7.Location = new Point(15, 15);
-            pictureBox7.Margin = new Padding(4);
+            pictureBox7.Location = new Point(12, 12);
             pictureBox7.Name = "pictureBox7";
-            pictureBox7.Size = new Size(146, 94);
+            pictureBox7.Size = new Size(117, 75);
             pictureBox7.SizeMode = PictureBoxSizeMode.CenterImage;
             pictureBox7.TabIndex = 1;
             pictureBox7.TabStop = false;
@@ -409,10 +392,9 @@ namespace SuperMarketDBAPP1
             // 
             label19.AutoSize = true;
             label19.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
-            label19.Location = new Point(34, 145);
-            label19.Margin = new Padding(4, 0, 4, 0);
+            label19.Location = new Point(27, 116);
             label19.Name = "label19";
-            label19.Size = new Size(100, 28);
+            label19.Size = new Size(84, 23);
             label19.TabIndex = 0;
             label19.Text = "Product";
             // 
@@ -421,19 +403,17 @@ namespace SuperMarketDBAPP1
             panel43.BackColor = SystemColors.Control;
             panel43.Controls.Add(pictureBox41);
             panel43.Controls.Add(label50);
-            panel43.Location = new Point(745, 289);
-            panel43.Margin = new Padding(4);
+            panel43.Location = new Point(596, 231);
             panel43.Name = "panel43";
-            panel43.Size = new Size(176, 202);
+            panel43.Size = new Size(141, 162);
             panel43.TabIndex = 26;
             // 
             // pictureBox41
             // 
             pictureBox41.Image = (Image)resources.GetObject("pictureBox41.Image");
-            pictureBox41.Location = new Point(15, 15);
-            pictureBox41.Margin = new Padding(4);
+            pictureBox41.Location = new Point(12, 12);
             pictureBox41.Name = "pictureBox41";
-            pictureBox41.Size = new Size(146, 94);
+            pictureBox41.Size = new Size(117, 75);
             pictureBox41.SizeMode = PictureBoxSizeMode.CenterImage;
             pictureBox41.TabIndex = 1;
             pictureBox41.TabStop = false;
@@ -442,10 +422,9 @@ namespace SuperMarketDBAPP1
             // 
             label50.AutoSize = true;
             label50.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
-            label50.Location = new Point(34, 145);
-            label50.Margin = new Padding(4, 0, 4, 0);
+            label50.Location = new Point(27, 116);
             label50.Name = "label50";
-            label50.Size = new Size(100, 28);
+            label50.Size = new Size(84, 23);
             label50.TabIndex = 0;
             label50.Text = "Product";
             // 
@@ -454,19 +433,17 @@ namespace SuperMarketDBAPP1
             panel39.BackColor = SystemColors.Control;
             panel39.Controls.Add(pictureBox37);
             panel39.Controls.Add(label46);
-            panel39.Location = new Point(561, 289);
-            panel39.Margin = new Padding(4);
+            panel39.Location = new Point(449, 231);
             panel39.Name = "panel39";
-            panel39.Size = new Size(176, 202);
+            panel39.Size = new Size(141, 162);
             panel39.TabIndex = 26;
             // 
             // pictureBox37
             // 
             pictureBox37.Image = (Image)resources.GetObject("pictureBox37.Image");
-            pictureBox37.Location = new Point(15, 15);
-            pictureBox37.Margin = new Padding(4);
+            pictureBox37.Location = new Point(12, 12);
             pictureBox37.Name = "pictureBox37";
-            pictureBox37.Size = new Size(146, 94);
+            pictureBox37.Size = new Size(117, 75);
             pictureBox37.SizeMode = PictureBoxSizeMode.CenterImage;
             pictureBox37.TabIndex = 1;
             pictureBox37.TabStop = false;
@@ -475,10 +452,9 @@ namespace SuperMarketDBAPP1
             // 
             label46.AutoSize = true;
             label46.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
-            label46.Location = new Point(34, 145);
-            label46.Margin = new Padding(4, 0, 4, 0);
+            label46.Location = new Point(27, 116);
             label46.Name = "label46";
-            label46.Size = new Size(100, 28);
+            label46.Size = new Size(84, 23);
             label46.TabIndex = 0;
             label46.Text = "Product";
             // 
@@ -487,19 +463,17 @@ namespace SuperMarketDBAPP1
             panel35.BackColor = SystemColors.Control;
             panel35.Controls.Add(pictureBox18);
             panel35.Controls.Add(label30);
-            panel35.Location = new Point(378, 289);
-            panel35.Margin = new Padding(4);
+            panel35.Location = new Point(302, 231);
             panel35.Name = "panel35";
-            panel35.Size = new Size(176, 202);
+            panel35.Size = new Size(141, 162);
             panel35.TabIndex = 26;
             // 
             // pictureBox18
             // 
             pictureBox18.Image = (Image)resources.GetObject("pictureBox18.Image");
-            pictureBox18.Location = new Point(15, 15);
-            pictureBox18.Margin = new Padding(4);
+            pictureBox18.Location = new Point(12, 12);
             pictureBox18.Name = "pictureBox18";
-            pictureBox18.Size = new Size(146, 94);
+            pictureBox18.Size = new Size(117, 75);
             pictureBox18.SizeMode = PictureBoxSizeMode.CenterImage;
             pictureBox18.TabIndex = 1;
             pictureBox18.TabStop = false;
@@ -508,10 +482,9 @@ namespace SuperMarketDBAPP1
             // 
             label30.AutoSize = true;
             label30.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
-            label30.Location = new Point(34, 145);
-            label30.Margin = new Padding(4, 0, 4, 0);
+            label30.Location = new Point(27, 116);
             label30.Name = "label30";
-            label30.Size = new Size(100, 28);
+            label30.Size = new Size(84, 23);
             label30.TabIndex = 0;
             label30.Text = "Product";
             // 
@@ -520,19 +493,17 @@ namespace SuperMarketDBAPP1
             panel31.BackColor = SystemColors.Control;
             panel31.Controls.Add(pictureBox14);
             panel31.Controls.Add(label26);
-            panel31.Location = new Point(194, 289);
-            panel31.Margin = new Padding(4);
+            panel31.Location = new Point(155, 231);
             panel31.Name = "panel31";
-            panel31.Size = new Size(176, 202);
+            panel31.Size = new Size(141, 162);
             panel31.TabIndex = 26;
             // 
             // pictureBox14
             // 
             pictureBox14.Image = (Image)resources.GetObject("pictureBox14.Image");
-            pictureBox14.Location = new Point(15, 15);
-            pictureBox14.Margin = new Padding(4);
+            pictureBox14.Location = new Point(12, 12);
             pictureBox14.Name = "pictureBox14";
-            pictureBox14.Size = new Size(146, 94);
+            pictureBox14.Size = new Size(117, 75);
             pictureBox14.SizeMode = PictureBoxSizeMode.CenterImage;
             pictureBox14.TabIndex = 1;
             pictureBox14.TabStop = false;
@@ -541,10 +512,9 @@ namespace SuperMarketDBAPP1
             // 
             label26.AutoSize = true;
             label26.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
-            label26.Location = new Point(34, 145);
-            label26.Margin = new Padding(4, 0, 4, 0);
+            label26.Location = new Point(27, 116);
             label26.Name = "label26";
-            label26.Size = new Size(100, 28);
+            label26.Size = new Size(84, 23);
             label26.TabIndex = 0;
             label26.Text = "Product";
             // 
@@ -553,19 +523,17 @@ namespace SuperMarketDBAPP1
             panel27.BackColor = SystemColors.Control;
             panel27.Controls.Add(pictureBox10);
             panel27.Controls.Add(label22);
-            panel27.Location = new Point(194, 289);
-            panel27.Margin = new Padding(4);
+            panel27.Location = new Point(155, 231);
             panel27.Name = "panel27";
-            panel27.Size = new Size(176, 202);
+            panel27.Size = new Size(141, 162);
             panel27.TabIndex = 26;
             // 
             // pictureBox10
             // 
             pictureBox10.Image = (Image)resources.GetObject("pictureBox10.Image");
-            pictureBox10.Location = new Point(15, 15);
-            pictureBox10.Margin = new Padding(4);
+            pictureBox10.Location = new Point(12, 12);
             pictureBox10.Name = "pictureBox10";
-            pictureBox10.Size = new Size(146, 94);
+            pictureBox10.Size = new Size(117, 75);
             pictureBox10.SizeMode = PictureBoxSizeMode.CenterImage;
             pictureBox10.TabIndex = 1;
             pictureBox10.TabStop = false;
@@ -574,10 +542,9 @@ namespace SuperMarketDBAPP1
             // 
             label22.AutoSize = true;
             label22.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
-            label22.Location = new Point(34, 145);
-            label22.Margin = new Padding(4, 0, 4, 0);
+            label22.Location = new Point(27, 116);
             label22.Name = "label22";
-            label22.Size = new Size(100, 28);
+            label22.Size = new Size(84, 23);
             label22.TabIndex = 0;
             label22.Text = "Product";
             // 
@@ -586,19 +553,17 @@ namespace SuperMarketDBAPP1
             panel23.BackColor = SystemColors.Control;
             panel23.Controls.Add(pictureBox6);
             panel23.Controls.Add(label18);
-            panel23.Location = new Point(10, 289);
-            panel23.Margin = new Padding(4);
+            panel23.Location = new Point(8, 231);
             panel23.Name = "panel23";
-            panel23.Size = new Size(176, 202);
+            panel23.Size = new Size(141, 162);
             panel23.TabIndex = 26;
             // 
             // pictureBox6
             // 
             pictureBox6.Image = (Image)resources.GetObject("pictureBox6.Image");
-            pictureBox6.Location = new Point(15, 15);
-            pictureBox6.Margin = new Padding(4);
+            pictureBox6.Location = new Point(12, 12);
             pictureBox6.Name = "pictureBox6";
-            pictureBox6.Size = new Size(146, 94);
+            pictureBox6.Size = new Size(117, 75);
             pictureBox6.SizeMode = PictureBoxSizeMode.CenterImage;
             pictureBox6.TabIndex = 1;
             pictureBox6.TabStop = false;
@@ -607,10 +572,9 @@ namespace SuperMarketDBAPP1
             // 
             label18.AutoSize = true;
             label18.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
-            label18.Location = new Point(34, 145);
-            label18.Margin = new Padding(4, 0, 4, 0);
+            label18.Location = new Point(27, 116);
             label18.Name = "label18";
-            label18.Size = new Size(100, 28);
+            label18.Size = new Size(84, 23);
             label18.TabIndex = 0;
             label18.Text = "Product";
             // 
@@ -619,19 +583,17 @@ namespace SuperMarketDBAPP1
             panel42.BackColor = SystemColors.Control;
             panel42.Controls.Add(pictureBox40);
             panel42.Controls.Add(label49);
-            panel42.Location = new Point(745, 79);
-            panel42.Margin = new Padding(4);
+            panel42.Location = new Point(596, 63);
             panel42.Name = "panel42";
-            panel42.Size = new Size(176, 202);
+            panel42.Size = new Size(141, 162);
             panel42.TabIndex = 26;
             // 
             // pictureBox40
             // 
             pictureBox40.Image = (Image)resources.GetObject("pictureBox40.Image");
-            pictureBox40.Location = new Point(15, 15);
-            pictureBox40.Margin = new Padding(4);
+            pictureBox40.Location = new Point(12, 12);
             pictureBox40.Name = "pictureBox40";
-            pictureBox40.Size = new Size(146, 94);
+            pictureBox40.Size = new Size(117, 75);
             pictureBox40.SizeMode = PictureBoxSizeMode.CenterImage;
             pictureBox40.TabIndex = 1;
             pictureBox40.TabStop = false;
@@ -640,10 +602,9 @@ namespace SuperMarketDBAPP1
             // 
             label49.AutoSize = true;
             label49.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
-            label49.Location = new Point(34, 145);
-            label49.Margin = new Padding(4, 0, 4, 0);
+            label49.Location = new Point(27, 116);
             label49.Name = "label49";
-            label49.Size = new Size(100, 28);
+            label49.Size = new Size(84, 23);
             label49.TabIndex = 0;
             label49.Text = "Product";
             // 
@@ -652,19 +613,17 @@ namespace SuperMarketDBAPP1
             panel41.BackColor = SystemColors.Control;
             panel41.Controls.Add(pictureBox39);
             panel41.Controls.Add(label48);
-            panel41.Location = new Point(745, 79);
-            panel41.Margin = new Padding(4);
+            panel41.Location = new Point(596, 63);
             panel41.Name = "panel41";
-            panel41.Size = new Size(176, 202);
+            panel41.Size = new Size(141, 162);
             panel41.TabIndex = 26;
             // 
             // pictureBox39
             // 
             pictureBox39.Image = (Image)resources.GetObject("pictureBox39.Image");
-            pictureBox39.Location = new Point(15, 15);
-            pictureBox39.Margin = new Padding(4);
+            pictureBox39.Location = new Point(12, 12);
             pictureBox39.Name = "pictureBox39";
-            pictureBox39.Size = new Size(146, 94);
+            pictureBox39.Size = new Size(117, 75);
             pictureBox39.SizeMode = PictureBoxSizeMode.CenterImage;
             pictureBox39.TabIndex = 1;
             pictureBox39.TabStop = false;
@@ -673,10 +632,9 @@ namespace SuperMarketDBAPP1
             // 
             label48.AutoSize = true;
             label48.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
-            label48.Location = new Point(34, 145);
-            label48.Margin = new Padding(4, 0, 4, 0);
+            label48.Location = new Point(27, 116);
             label48.Name = "label48";
-            label48.Size = new Size(100, 28);
+            label48.Size = new Size(84, 23);
             label48.TabIndex = 0;
             label48.Text = "Product";
             // 
@@ -685,19 +643,17 @@ namespace SuperMarketDBAPP1
             panel38.BackColor = SystemColors.Control;
             panel38.Controls.Add(pictureBox36);
             panel38.Controls.Add(label45);
-            panel38.Location = new Point(561, 79);
-            panel38.Margin = new Padding(4);
+            panel38.Location = new Point(449, 63);
             panel38.Name = "panel38";
-            panel38.Size = new Size(176, 202);
+            panel38.Size = new Size(141, 162);
             panel38.TabIndex = 26;
             // 
             // pictureBox36
             // 
             pictureBox36.Image = (Image)resources.GetObject("pictureBox36.Image");
-            pictureBox36.Location = new Point(15, 15);
-            pictureBox36.Margin = new Padding(4);
+            pictureBox36.Location = new Point(12, 12);
             pictureBox36.Name = "pictureBox36";
-            pictureBox36.Size = new Size(146, 94);
+            pictureBox36.Size = new Size(117, 75);
             pictureBox36.SizeMode = PictureBoxSizeMode.CenterImage;
             pictureBox36.TabIndex = 1;
             pictureBox36.TabStop = false;
@@ -706,10 +662,9 @@ namespace SuperMarketDBAPP1
             // 
             label45.AutoSize = true;
             label45.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
-            label45.Location = new Point(34, 145);
-            label45.Margin = new Padding(4, 0, 4, 0);
+            label45.Location = new Point(27, 116);
             label45.Name = "label45";
-            label45.Size = new Size(100, 28);
+            label45.Size = new Size(84, 23);
             label45.TabIndex = 0;
             label45.Text = "Product";
             // 
@@ -718,19 +673,17 @@ namespace SuperMarketDBAPP1
             panel37.BackColor = SystemColors.Control;
             panel37.Controls.Add(pictureBox35);
             panel37.Controls.Add(label44);
-            panel37.Location = new Point(561, 79);
-            panel37.Margin = new Padding(4);
+            panel37.Location = new Point(449, 63);
             panel37.Name = "panel37";
-            panel37.Size = new Size(176, 202);
+            panel37.Size = new Size(141, 162);
             panel37.TabIndex = 26;
             // 
             // pictureBox35
             // 
             pictureBox35.Image = (Image)resources.GetObject("pictureBox35.Image");
-            pictureBox35.Location = new Point(15, 15);
-            pictureBox35.Margin = new Padding(4);
+            pictureBox35.Location = new Point(12, 12);
             pictureBox35.Name = "pictureBox35";
-            pictureBox35.Size = new Size(146, 94);
+            pictureBox35.Size = new Size(117, 75);
             pictureBox35.SizeMode = PictureBoxSizeMode.CenterImage;
             pictureBox35.TabIndex = 1;
             pictureBox35.TabStop = false;
@@ -739,10 +692,9 @@ namespace SuperMarketDBAPP1
             // 
             label44.AutoSize = true;
             label44.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
-            label44.Location = new Point(34, 145);
-            label44.Margin = new Padding(4, 0, 4, 0);
+            label44.Location = new Point(27, 116);
             label44.Name = "label44";
-            label44.Size = new Size(100, 28);
+            label44.Size = new Size(84, 23);
             label44.TabIndex = 0;
             label44.Text = "Product";
             // 
@@ -751,19 +703,17 @@ namespace SuperMarketDBAPP1
             panel34.BackColor = SystemColors.Control;
             panel34.Controls.Add(pictureBox17);
             panel34.Controls.Add(label29);
-            panel34.Location = new Point(378, 79);
-            panel34.Margin = new Padding(4);
+            panel34.Location = new Point(302, 63);
             panel34.Name = "panel34";
-            panel34.Size = new Size(176, 202);
+            panel34.Size = new Size(141, 162);
             panel34.TabIndex = 26;
             // 
             // pictureBox17
             // 
             pictureBox17.Image = (Image)resources.GetObject("pictureBox17.Image");
-            pictureBox17.Location = new Point(15, 15);
-            pictureBox17.Margin = new Padding(4);
+            pictureBox17.Location = new Point(12, 12);
             pictureBox17.Name = "pictureBox17";
-            pictureBox17.Size = new Size(146, 94);
+            pictureBox17.Size = new Size(117, 75);
             pictureBox17.SizeMode = PictureBoxSizeMode.CenterImage;
             pictureBox17.TabIndex = 1;
             pictureBox17.TabStop = false;
@@ -772,10 +722,9 @@ namespace SuperMarketDBAPP1
             // 
             label29.AutoSize = true;
             label29.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
-            label29.Location = new Point(34, 145);
-            label29.Margin = new Padding(4, 0, 4, 0);
+            label29.Location = new Point(27, 116);
             label29.Name = "label29";
-            label29.Size = new Size(100, 28);
+            label29.Size = new Size(84, 23);
             label29.TabIndex = 0;
             label29.Text = "Product";
             // 
@@ -784,19 +733,17 @@ namespace SuperMarketDBAPP1
             panel33.BackColor = SystemColors.Control;
             panel33.Controls.Add(pictureBox16);
             panel33.Controls.Add(label28);
-            panel33.Location = new Point(378, 79);
-            panel33.Margin = new Padding(4);
+            panel33.Location = new Point(302, 63);
             panel33.Name = "panel33";
-            panel33.Size = new Size(176, 202);
+            panel33.Size = new Size(141, 162);
             panel33.TabIndex = 26;
             // 
             // pictureBox16
             // 
             pictureBox16.Image = (Image)resources.GetObject("pictureBox16.Image");
-            pictureBox16.Location = new Point(15, 15);
-            pictureBox16.Margin = new Padding(4);
+            pictureBox16.Location = new Point(12, 12);
             pictureBox16.Name = "pictureBox16";
-            pictureBox16.Size = new Size(146, 94);
+            pictureBox16.Size = new Size(117, 75);
             pictureBox16.SizeMode = PictureBoxSizeMode.CenterImage;
             pictureBox16.TabIndex = 1;
             pictureBox16.TabStop = false;
@@ -805,10 +752,9 @@ namespace SuperMarketDBAPP1
             // 
             label28.AutoSize = true;
             label28.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
-            label28.Location = new Point(34, 145);
-            label28.Margin = new Padding(4, 0, 4, 0);
+            label28.Location = new Point(27, 116);
             label28.Name = "label28";
-            label28.Size = new Size(100, 28);
+            label28.Size = new Size(84, 23);
             label28.TabIndex = 0;
             label28.Text = "Product";
             // 
@@ -817,19 +763,17 @@ namespace SuperMarketDBAPP1
             panel30.BackColor = SystemColors.Control;
             panel30.Controls.Add(pictureBox13);
             panel30.Controls.Add(label25);
-            panel30.Location = new Point(194, 79);
-            panel30.Margin = new Padding(4);
+            panel30.Location = new Point(155, 63);
             panel30.Name = "panel30";
-            panel30.Size = new Size(176, 202);
+            panel30.Size = new Size(141, 162);
             panel30.TabIndex = 26;
             // 
             // pictureBox13
             // 
             pictureBox13.Image = (Image)resources.GetObject("pictureBox13.Image");
-            pictureBox13.Location = new Point(15, 15);
-            pictureBox13.Margin = new Padding(4);
+            pictureBox13.Location = new Point(12, 12);
             pictureBox13.Name = "pictureBox13";
-            pictureBox13.Size = new Size(146, 94);
+            pictureBox13.Size = new Size(117, 75);
             pictureBox13.SizeMode = PictureBoxSizeMode.CenterImage;
             pictureBox13.TabIndex = 1;
             pictureBox13.TabStop = false;
@@ -838,10 +782,9 @@ namespace SuperMarketDBAPP1
             // 
             label25.AutoSize = true;
             label25.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
-            label25.Location = new Point(34, 145);
-            label25.Margin = new Padding(4, 0, 4, 0);
+            label25.Location = new Point(27, 116);
             label25.Name = "label25";
-            label25.Size = new Size(100, 28);
+            label25.Size = new Size(84, 23);
             label25.TabIndex = 0;
             label25.Text = "Product";
             // 
@@ -850,19 +793,17 @@ namespace SuperMarketDBAPP1
             panel29.BackColor = SystemColors.Control;
             panel29.Controls.Add(pictureBox12);
             panel29.Controls.Add(label24);
-            panel29.Location = new Point(194, 79);
-            panel29.Margin = new Padding(4);
+            panel29.Location = new Point(155, 63);
             panel29.Name = "panel29";
-            panel29.Size = new Size(176, 202);
+            panel29.Size = new Size(141, 162);
             panel29.TabIndex = 26;
             // 
             // pictureBox12
             // 
             pictureBox12.Image = (Image)resources.GetObject("pictureBox12.Image");
-            pictureBox12.Location = new Point(15, 15);
-            pictureBox12.Margin = new Padding(4);
+            pictureBox12.Location = new Point(12, 12);
             pictureBox12.Name = "pictureBox12";
-            pictureBox12.Size = new Size(146, 94);
+            pictureBox12.Size = new Size(117, 75);
             pictureBox12.SizeMode = PictureBoxSizeMode.CenterImage;
             pictureBox12.TabIndex = 1;
             pictureBox12.TabStop = false;
@@ -871,10 +812,9 @@ namespace SuperMarketDBAPP1
             // 
             label24.AutoSize = true;
             label24.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
-            label24.Location = new Point(34, 145);
-            label24.Margin = new Padding(4, 0, 4, 0);
+            label24.Location = new Point(27, 116);
             label24.Name = "label24";
-            label24.Size = new Size(100, 28);
+            label24.Size = new Size(84, 23);
             label24.TabIndex = 0;
             label24.Text = "Product";
             // 
@@ -883,19 +823,17 @@ namespace SuperMarketDBAPP1
             panel26.BackColor = SystemColors.Control;
             panel26.Controls.Add(pictureBox9);
             panel26.Controls.Add(label21);
-            panel26.Location = new Point(194, 79);
-            panel26.Margin = new Padding(4);
+            panel26.Location = new Point(155, 63);
             panel26.Name = "panel26";
-            panel26.Size = new Size(176, 202);
+            panel26.Size = new Size(141, 162);
             panel26.TabIndex = 26;
             // 
             // pictureBox9
             // 
             pictureBox9.Image = (Image)resources.GetObject("pictureBox9.Image");
-            pictureBox9.Location = new Point(15, 15);
-            pictureBox9.Margin = new Padding(4);
+            pictureBox9.Location = new Point(12, 12);
             pictureBox9.Name = "pictureBox9";
-            pictureBox9.Size = new Size(146, 94);
+            pictureBox9.Size = new Size(117, 75);
             pictureBox9.SizeMode = PictureBoxSizeMode.CenterImage;
             pictureBox9.TabIndex = 1;
             pictureBox9.TabStop = false;
@@ -904,10 +842,9 @@ namespace SuperMarketDBAPP1
             // 
             label21.AutoSize = true;
             label21.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
-            label21.Location = new Point(34, 145);
-            label21.Margin = new Padding(4, 0, 4, 0);
+            label21.Location = new Point(27, 116);
             label21.Name = "label21";
-            label21.Size = new Size(100, 28);
+            label21.Size = new Size(84, 23);
             label21.TabIndex = 0;
             label21.Text = "Product";
             // 
@@ -916,19 +853,17 @@ namespace SuperMarketDBAPP1
             panel25.BackColor = SystemColors.Control;
             panel25.Controls.Add(pictureBox8);
             panel25.Controls.Add(label20);
-            panel25.Location = new Point(194, 79);
-            panel25.Margin = new Padding(4);
+            panel25.Location = new Point(155, 63);
             panel25.Name = "panel25";
-            panel25.Size = new Size(176, 202);
+            panel25.Size = new Size(141, 162);
             panel25.TabIndex = 26;
             // 
             // pictureBox8
             // 
             pictureBox8.Image = (Image)resources.GetObject("pictureBox8.Image");
-            pictureBox8.Location = new Point(15, 15);
-            pictureBox8.Margin = new Padding(4);
+            pictureBox8.Location = new Point(12, 12);
             pictureBox8.Name = "pictureBox8";
-            pictureBox8.Size = new Size(146, 94);
+            pictureBox8.Size = new Size(117, 75);
             pictureBox8.SizeMode = PictureBoxSizeMode.CenterImage;
             pictureBox8.TabIndex = 1;
             pictureBox8.TabStop = false;
@@ -937,10 +872,9 @@ namespace SuperMarketDBAPP1
             // 
             label20.AutoSize = true;
             label20.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
-            label20.Location = new Point(34, 145);
-            label20.Margin = new Padding(4, 0, 4, 0);
+            label20.Location = new Point(27, 116);
             label20.Name = "label20";
-            label20.Size = new Size(100, 28);
+            label20.Size = new Size(84, 23);
             label20.TabIndex = 0;
             label20.Text = "Product";
             // 
@@ -949,19 +883,17 @@ namespace SuperMarketDBAPP1
             panel22.BackColor = SystemColors.Control;
             panel22.Controls.Add(pictureBox5);
             panel22.Controls.Add(label17);
-            panel22.Location = new Point(10, 79);
-            panel22.Margin = new Padding(4);
+            panel22.Location = new Point(8, 63);
             panel22.Name = "panel22";
-            panel22.Size = new Size(176, 202);
+            panel22.Size = new Size(141, 162);
             panel22.TabIndex = 26;
             // 
             // pictureBox5
             // 
             pictureBox5.Image = (Image)resources.GetObject("pictureBox5.Image");
-            pictureBox5.Location = new Point(15, 4);
-            pictureBox5.Margin = new Padding(4);
+            pictureBox5.Location = new Point(12, 3);
             pictureBox5.Name = "pictureBox5";
-            pictureBox5.Size = new Size(146, 94);
+            pictureBox5.Size = new Size(117, 75);
             pictureBox5.SizeMode = PictureBoxSizeMode.CenterImage;
             pictureBox5.TabIndex = 1;
             pictureBox5.TabStop = false;
@@ -970,10 +902,9 @@ namespace SuperMarketDBAPP1
             // 
             label17.AutoSize = true;
             label17.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
-            label17.Location = new Point(34, 145);
-            label17.Margin = new Padding(4, 0, 4, 0);
+            label17.Location = new Point(27, 116);
             label17.Name = "label17";
-            label17.Size = new Size(100, 28);
+            label17.Size = new Size(84, 23);
             label17.TabIndex = 0;
             label17.Text = "Product";
             // 
@@ -982,19 +913,17 @@ namespace SuperMarketDBAPP1
             panel21.BackColor = SystemColors.Control;
             panel21.Controls.Add(pictureBox4);
             panel21.Controls.Add(label16);
-            panel21.Location = new Point(10, 79);
-            panel21.Margin = new Padding(4);
+            panel21.Location = new Point(8, 63);
             panel21.Name = "panel21";
-            panel21.Size = new Size(176, 202);
+            panel21.Size = new Size(141, 162);
             panel21.TabIndex = 26;
             // 
             // pictureBox4
             // 
             pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
-            pictureBox4.Location = new Point(15, 15);
-            pictureBox4.Margin = new Padding(4);
+            pictureBox4.Location = new Point(12, 12);
             pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(146, 94);
+            pictureBox4.Size = new Size(117, 75);
             pictureBox4.SizeMode = PictureBoxSizeMode.CenterImage;
             pictureBox4.TabIndex = 1;
             pictureBox4.TabStop = false;
@@ -1003,10 +932,9 @@ namespace SuperMarketDBAPP1
             // 
             label16.AutoSize = true;
             label16.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
-            label16.Location = new Point(34, 145);
-            label16.Margin = new Padding(4, 0, 4, 0);
+            label16.Location = new Point(27, 116);
             label16.Name = "label16";
-            label16.Size = new Size(100, 28);
+            label16.Size = new Size(84, 23);
             label16.TabIndex = 0;
             label16.Text = "Product";
             // 
@@ -1014,10 +942,9 @@ namespace SuperMarketDBAPP1
             // 
             label31.AutoSize = true;
             label31.Font = new Font("Century Gothic", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label31.Location = new Point(395, 10);
-            label31.Margin = new Padding(4, 0, 4, 0);
+            label31.Location = new Point(316, 8);
             label31.Name = "label31";
-            label31.Size = new Size(201, 47);
+            label31.Size = new Size(171, 40);
             label31.TabIndex = 25;
             label31.Text = "Your Cart";
             // 
@@ -1026,19 +953,17 @@ namespace SuperMarketDBAPP1
             panel20.BackColor = SystemColors.Control;
             panel20.Controls.Add(button1);
             panel20.Controls.Add(label15);
-            panel20.Location = new Point(970, 8);
-            panel20.Margin = new Padding(4);
+            panel20.Location = new Point(776, 6);
             panel20.Name = "panel20";
-            panel20.Size = new Size(275, 691);
+            panel20.Size = new Size(220, 553);
             panel20.TabIndex = 0;
             panel20.Paint += panel20_Paint;
             // 
             // button1
             // 
-            button1.Location = new Point(25, 611);
-            button1.Margin = new Padding(4);
+            button1.Location = new Point(20, 489);
             button1.Name = "button1";
-            button1.Size = new Size(229, 64);
+            button1.Size = new Size(183, 51);
             button1.TabIndex = 25;
             button1.Text = "Buy";
             button1.UseVisualStyleBackColor = true;
@@ -1047,10 +972,9 @@ namespace SuperMarketDBAPP1
             // 
             label15.AutoSize = true;
             label15.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label15.Location = new Point(44, 6);
-            label15.Margin = new Padding(4, 0, 4, 0);
+            label15.Location = new Point(35, 5);
             label15.Name = "label15";
-            label15.Size = new Size(185, 43);
+            label15.Size = new Size(154, 37);
             label15.TabIndex = 0;
             label15.Text = "Vouchers";
             // 
@@ -1059,11 +983,10 @@ namespace SuperMarketDBAPP1
             tabControl1.Controls.Add(tabPage3);
             tabControl1.Controls.Add(tabPage1);
             tabControl1.Controls.Add(shoptab);
-            tabControl1.Location = new Point(15, 15);
-            tabControl1.Margin = new Padding(4);
+            tabControl1.Location = new Point(12, 12);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(1262, 748);
+            tabControl1.Size = new Size(1010, 598);
             tabControl1.TabIndex = 0;
             tabControl1.Tag = "";
             tabControl1.SelectedIndexChanged += tabControl1_SelectedIndexChanged;
@@ -1071,11 +994,10 @@ namespace SuperMarketDBAPP1
             // tabPage1
             // 
             tabPage1.Controls.Add(panel19);
-            tabPage1.Location = new Point(4, 34);
-            tabPage1.Margin = new Padding(4);
+            tabPage1.Location = new Point(4, 29);
             tabPage1.Name = "tabPage1";
-            tabPage1.Padding = new Padding(6);
-            tabPage1.Size = new Size(1254, 710);
+            tabPage1.Padding = new Padding(5, 5, 5, 5);
+            tabPage1.Size = new Size(1002, 565);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Profile Page";
             tabPage1.UseVisualStyleBackColor = true;
@@ -1089,6 +1011,7 @@ namespace SuperMarketDBAPP1
             panel19.Controls.Add(label10);
             panel19.Controls.Add(label9);
             panel19.Controls.Add(label13);
+            panel19.Controls.Add(DeleteBtn);
             panel19.Controls.Add(saveBtn);
             panel19.Controls.Add(txtPhone);
             panel19.Controls.Add(txtAddress);
@@ -1096,10 +1019,10 @@ namespace SuperMarketDBAPP1
             panel19.Controls.Add(txtEmail);
             panel19.Controls.Add(txtName);
             panel19.Controls.Add(label14);
-            panel19.Location = new Point(10, 10);
-            panel19.Margin = new Padding(4);
+            panel19.Dock = DockStyle.Fill;
+            panel19.Location = new Point(5, 5);
             panel19.Name = "panel19";
-            panel19.Size = new Size(1232, 686);
+            panel19.Size = new Size(992, 555);
             panel19.TabIndex = 0;
             panel19.Paint += panel19_Paint;
             // 
@@ -1108,10 +1031,9 @@ namespace SuperMarketDBAPP1
             label12.AutoSize = true;
             label12.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label12.ForeColor = SystemColors.Control;
-            label12.Location = new Point(342, 510);
-            label12.Margin = new Padding(4, 0, 4, 0);
+            label12.Location = new Point(274, 408);
             label12.Name = "label12";
-            label12.Size = new Size(83, 28);
+            label12.Size = new Size(71, 23);
             label12.TabIndex = 19;
             label12.Text = "Phone";
             // 
@@ -1120,10 +1042,9 @@ namespace SuperMarketDBAPP1
             label11.AutoSize = true;
             label11.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label11.ForeColor = SystemColors.Control;
-            label11.Location = new Point(342, 419);
-            label11.Margin = new Padding(4, 0, 4, 0);
+            label11.Location = new Point(274, 335);
             label11.Name = "label11";
-            label11.Size = new Size(107, 28);
+            label11.Size = new Size(88, 23);
             label11.TabIndex = 19;
             label11.Text = "Address";
             // 
@@ -1132,10 +1053,9 @@ namespace SuperMarketDBAPP1
             label10.AutoSize = true;
             label10.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label10.ForeColor = SystemColors.Control;
-            label10.Location = new Point(342, 326);
-            label10.Margin = new Padding(4, 0, 4, 0);
+            label10.Location = new Point(274, 261);
             label10.Name = "label10";
-            label10.Size = new Size(121, 28);
+            label10.Size = new Size(100, 23);
             label10.TabIndex = 19;
             label10.Text = "Password";
             // 
@@ -1144,10 +1064,9 @@ namespace SuperMarketDBAPP1
             label9.AutoSize = true;
             label9.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label9.ForeColor = SystemColors.Control;
-            label9.Location = new Point(340, 231);
-            label9.Margin = new Padding(4, 0, 4, 0);
+            label9.Location = new Point(272, 185);
             label9.Name = "label9";
-            label9.Size = new Size(85, 28);
+            label9.Size = new Size(70, 23);
             label9.TabIndex = 19;
             label9.Text = "E-mail";
             // 
@@ -1156,21 +1075,20 @@ namespace SuperMarketDBAPP1
             label13.AutoSize = true;
             label13.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label13.ForeColor = SystemColors.Control;
-            label13.Location = new Point(338, 140);
-            label13.Margin = new Padding(4, 0, 4, 0);
+            label13.Location = new Point(270, 112);
             label13.Name = "label13";
-            label13.Size = new Size(84, 28);
+            label13.Size = new Size(70, 23);
             label13.TabIndex = 19;
             label13.Text = "Name";
             // 
             // saveBtn
             // 
             saveBtn.BackColor = Color.LightSeaGreen;
+            saveBtn.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             saveBtn.ForeColor = SystemColors.Control;
-            saveBtn.Location = new Point(560, 599);
-            saveBtn.Margin = new Padding(4);
+            saveBtn.Location = new Point(351, 479);
             saveBtn.Name = "saveBtn";
-            saveBtn.Size = new Size(118, 41);
+            saveBtn.Size = new Size(94, 33);
             saveBtn.TabIndex = 14;
             saveBtn.Text = "Save";
             saveBtn.UseVisualStyleBackColor = false;
@@ -1179,46 +1097,41 @@ namespace SuperMarketDBAPP1
             // txtPhone
             // 
             txtPhone.Font = new Font("Segoe UI", 14F);
-            txtPhone.Location = new Point(340, 542);
-            txtPhone.Margin = new Padding(4);
+            txtPhone.Location = new Point(272, 434);
             txtPhone.Name = "txtPhone";
-            txtPhone.Size = new Size(564, 45);
+            txtPhone.Size = new Size(452, 39);
             txtPhone.TabIndex = 9;
             // 
             // txtAddress
             // 
             txtAddress.Font = new Font("Segoe UI", 14F);
-            txtAddress.Location = new Point(340, 449);
-            txtAddress.Margin = new Padding(4);
+            txtAddress.Location = new Point(272, 359);
             txtAddress.Name = "txtAddress";
-            txtAddress.Size = new Size(564, 45);
+            txtAddress.Size = new Size(452, 39);
             txtAddress.TabIndex = 9;
             // 
             // txtPassword
             // 
             txtPassword.Font = new Font("Segoe UI", 14F);
-            txtPassword.Location = new Point(340, 355);
-            txtPassword.Margin = new Padding(4);
+            txtPassword.Location = new Point(272, 284);
             txtPassword.Name = "txtPassword";
-            txtPassword.Size = new Size(564, 45);
+            txtPassword.Size = new Size(452, 39);
             txtPassword.TabIndex = 9;
             // 
             // txtEmail
             // 
             txtEmail.Font = new Font("Segoe UI", 14F);
-            txtEmail.Location = new Point(340, 264);
-            txtEmail.Margin = new Padding(4);
+            txtEmail.Location = new Point(272, 211);
             txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(564, 45);
+            txtEmail.Size = new Size(452, 39);
             txtEmail.TabIndex = 9;
             // 
             // txtName
             // 
             txtName.Font = new Font("Segoe UI", 14F);
-            txtName.Location = new Point(338, 172);
-            txtName.Margin = new Padding(4);
+            txtName.Location = new Point(270, 138);
             txtName.Name = "txtName";
-            txtName.Size = new Size(566, 45);
+            txtName.Size = new Size(454, 39);
             txtName.TabIndex = 9;
             txtName.TextChanged += txtName_TextChanged;
             // 
@@ -1227,20 +1140,20 @@ namespace SuperMarketDBAPP1
             label14.AutoSize = true;
             label14.Font = new Font("Century Gothic", 30F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label14.ForeColor = SystemColors.Control;
-            label14.Location = new Point(439, 24);
-            label14.Margin = new Padding(4, 0, 4, 0);
+            label14.Location = new Point(351, 19);
             label14.Name = "label14";
-            label14.Size = new Size(373, 70);
+            label14.Size = new Size(311, 59);
             label14.TabIndex = 8;
             label14.Text = "Profile Page";
             // 
             // shoptab
             // 
             shoptab.Controls.Add(flowLayoutPanelProducts);
-            shoptab.Location = new Point(4, 34);
+            shoptab.Location = new Point(4, 29);
+            shoptab.Margin = new Padding(2, 2, 2, 2);
             shoptab.Name = "shoptab";
-            shoptab.Padding = new Padding(3);
-            shoptab.Size = new Size(1254, 710);
+            shoptab.Padding = new Padding(2, 2, 2, 2);
+            shoptab.Size = new Size(1002, 565);
             shoptab.TabIndex = 3;
             shoptab.Text = "Shop";
             shoptab.UseVisualStyleBackColor = true;
@@ -1248,22 +1161,38 @@ namespace SuperMarketDBAPP1
             // 
             // flowLayoutPanelProducts
             // 
-            flowLayoutPanelProducts.Location = new Point(6, 6);
+            flowLayoutPanelProducts.Location = new Point(5, 5);
+            flowLayoutPanelProducts.Margin = new Padding(2, 2, 2, 2);
             flowLayoutPanelProducts.Name = "flowLayoutPanelProducts";
+
             flowLayoutPanelProducts.Size = new Size(1242, 645);
+
             flowLayoutPanelProducts.TabIndex = 0;
             flowLayoutPanelProducts.TabIndexChanged += flowLayoutPanelProducts_TabIndexChanged;
             flowLayoutPanelProducts.Paint += flowLayoutPanel1_Paint;
             flowLayoutPanelProducts.Enter += flowLayoutPanelProducts_Enter;
             // 
+            // DeleteBtn
+            // 
+            DeleteBtn.BackColor = Color.LightSeaGreen;
+            DeleteBtn.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            DeleteBtn.ForeColor = SystemColors.Control;
+            DeleteBtn.Location = new Point(568, 479);
+            DeleteBtn.Name = "DeleteBtn";
+            DeleteBtn.Size = new Size(94, 33);
+            DeleteBtn.TabIndex = 14;
+            DeleteBtn.Text = "Delete";
+            DeleteBtn.UseVisualStyleBackColor = false;
+            DeleteBtn.Click += saveBtn_Click;
+            // 
             // Dashboard
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightSeaGreen;
-            ClientSize = new Size(1292, 778);
+            ClientSize = new Size(1034, 622);
             Controls.Add(tabControl1);
-            Margin = new Padding(4);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Dashboard";
             Text = "Dashboard";
             Load += Dashboard_Load;
@@ -1472,5 +1401,6 @@ namespace SuperMarketDBAPP1
         private Label label17;
         private TabPage shoptab;
         private FlowLayoutPanel flowLayoutPanelProducts;
+        private Button DeleteBtn;
     }
 }
