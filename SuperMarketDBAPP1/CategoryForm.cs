@@ -17,7 +17,7 @@ namespace SuperMarketDBAPP1
             InitializeComponent();
         }
 
-        static string sql = "Data Source=MARO25;Initial Catalog=SupermarketDatabase;Integrated Security=True;Encrypt=False;Trust Server Certificate=True";
+        static string sql = "Data Source=DESKTOP-V936GVE;Initial Catalog=SupermarketDatabase;Integrated Security=True;Encrypt=False;Trust Server Certificate=True";
         SqlConnection con = new SqlConnection(sql);
 
         private void populate()
@@ -76,6 +76,11 @@ namespace SuperMarketDBAPP1
         {
             txtCategoryName.Text = CategoryDGV.SelectedRows[0].Cells[1].Value.ToString();
             TxtCategoryDescription.Text = CategoryDGV.SelectedRows[0].Cells[2].Value.ToString();
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
