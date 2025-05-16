@@ -137,78 +137,108 @@ namespace SuperMarketDBAPP1
 
         }
 
-        private void LoadProducts()
+        // LoadProducts with optional search term
+        private void LoadProducts(string searchTerm = "")
         {
             flowLayoutPanelProducts.Controls.Clear(); // Clear old items
-                                                      // MessageBox.Show("Loaded!"); // Test line
-            string query = "SELECT P_Name, Description, Price FROM Product";
+
+            string query = "SELECT P_Name, Description, Price, Quantity FROM Product";
+            if (!string.IsNullOrWhiteSpace(searchTerm))
+            {
+                query += " WHERE P_Name LIKE @search";
+            }
 
             using (SqlConnection con = new SqlConnection(sql))
             using (SqlCommand cmd = new SqlCommand(query, con))
             {
-                con.Open();
-                SqlDataReader reader = cmd.ExecuteReader();
-
-                while (reader.Read())
+                if (!string.IsNullOrWhiteSpace(searchTerm))
                 {
-                    Panel card = new Panel();
-                    card.Size = new Size(200, 200);
-                    card.BorderStyle = BorderStyle.FixedSingle;
-                    card.Margin = new Padding(10);
-
-                    Label nameLabel = new Label();
-                    nameLabel.Text = reader["P_Name"].ToString();
-                    nameLabel.Font = new Font("Century Gothic", 10, FontStyle.Bold);
-                    nameLabel.Location = new Point(10, 10);
-                    nameLabel.AutoSize = true;
-
-                    Label priceLabel = new Label();
-                    priceLabel.Text = "$" + Convert.ToDecimal(reader["Price"]).ToString("F2");
-                    priceLabel.Font = new Font("Century Gothic", 9);
-                    priceLabel.Location = new Point(10, 40);
-                    priceLabel.AutoSize = true;
-
-                    Label descLabel = new Label();
-                    descLabel.Text = reader["Description"].ToString();
-                    descLabel.Font = new Font("Century Gothic", 8);
-                    descLabel.Location = new Point(10, 70);
-                    descLabel.Size = new Size(180, 100);
-
-
-                    Button addToCartBtn = new Button();
-                    addToCartBtn.Text = "Add to Cart";
-                    addToCartBtn.BackColor = Color.LightSeaGreen;
-                    addToCartBtn.ForeColor = Color.White;
-                    addToCartBtn.FlatStyle = FlatStyle.Flat;
-                    addToCartBtn.Font = new Font("Century Gothic", 9, FontStyle.Bold);
-                    addToCartBtn.Size = new Size(150, 30);
-                    addToCartBtn.Location = new Point(40, 170); // Adjust as needed
-                    addToCartBtn.Tag = reader["P_Name"].ToString();
-                    addToCartBtn.Click += (s, ev) =>
-                    {
-                        string productName = (string)((Button)s).Tag;
-                        MessageBox.Show($"{productName} added to cart!");
-                    };
-
-                    card.Controls.Add(nameLabel);
-                    card.Controls.Add(priceLabel);
-                    card.Controls.Add(descLabel);
-                    card.Controls.Add(addToCartBtn);
-
-                    flowLayoutPanelProducts.Controls.Add(card);
+                    cmd.Parameters.AddWithValue("@search", "%" + searchTerm + "%");
                 }
 
+                con.Open();
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        int quantity = Convert.ToInt32(reader["Quantity"]);
+
+                        // panel for each product
+                        Panel card = new Panel();
+                        card.Size = new Size(200, 200);
+                        card.BorderStyle = BorderStyle.FixedSingle;
+                        card.Margin = new Padding(10);
+
+                        // product name
+                        Label nameLabel = new Label();
+                        //nameLabel.Text = quantity > 0 ? reader["P_Name"].ToString() : "Out Of Stock";
+
+                        string productName = reader["P_Name"].ToString();
+                        nameLabel.Text = quantity > 0 ? productName : $"{productName}\nOut of Stock";
+
+
+                        nameLabel.Font = new Font("Century Gothic", 10, FontStyle.Bold);
+                        nameLabel.ForeColor = quantity > 0 ? Color.Black : Color.Red;
+                        nameLabel.Location = new Point(10, 10);
+                        nameLabel.Size = new Size(180, 40); // Set width to allow line wrap
+                        nameLabel.AutoSize = false;         // Needed for multiline
+                        nameLabel.TextAlign = ContentAlignment.TopLeft;
+
+
+                        // price label
+                        Label priceLabel = new Label();
+                        priceLabel.Text = "$" + Convert.ToDecimal(reader["Price"]).ToString("F2");
+                        priceLabel.Font = new Font("Century Gothic", 9);
+                        priceLabel.Location = new Point(10, 50);
+                        priceLabel.AutoSize = true;
+
+                        // description label
+                        Label descLabel = new Label();
+                        descLabel.Text = reader["Description"].ToString();
+                        descLabel.Font = new Font("Century Gothic", 8);
+                        descLabel.Location = new Point(10, 70);
+                        descLabel.Size = new Size(180, 100);
+
+                        // add to cart button
+                        Button addToCartBtn = new Button();
+                        addToCartBtn.Text = "Add to Cart";
+                        addToCartBtn.BackColor = Color.LightSeaGreen;
+                        addToCartBtn.ForeColor = Color.White;
+                        addToCartBtn.FlatStyle = FlatStyle.Flat;
+                        addToCartBtn.Font = new Font("Century Gothic", 9, FontStyle.Bold);
+                        addToCartBtn.Size = new Size(150, 30);
+                        addToCartBtn.Location = new Point(40, 170);
+                        addToCartBtn.Tag = reader["P_Name"].ToString();
 
 
 
-                reader.Close();
+                        if (quantity == 0)
+                        {
+                            addToCartBtn.Enabled = false;
+                            addToCartBtn.BackColor = Color.Gray;
+                        }
+                        else
+                        {
+                            addToCartBtn.Click += (s, ev) =>
+                            {
+                                string productName = (string)((Button)s).Tag;
+                                MessageBox.Show($"{productName} added to cart!");
+                            };
+                        }
+
+                        card.Controls.Add(nameLabel);
+                        card.Controls.Add(priceLabel);
+                        card.Controls.Add(descLabel);
+                        card.Controls.Add(addToCartBtn);
+
+                        flowLayoutPanelProducts.Controls.Add(card);
+                    }
+                }
             }
         }
 
 
-
         //Delete button
-
         private void DeleteBtn_Click(object sender, EventArgs e)
         {
             DialogResult confirm = MessageBox.Show("Are you sure you want to delete your account? This action cannot be undone.", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
@@ -271,40 +301,34 @@ namespace SuperMarketDBAPP1
 
         }
 
+
+        // tab switch
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (tabControl1.SelectedTab == shoptab)
             {
-                LoadProducts();
+                LoadProducts(); // Load all products initially
             }
         }
+
 
 
         // search text box
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            string search = txtSearch.Text.Trim();
-            flowLayoutPanelProducts.Controls.Clear();
-
-            string query = "SELECT P_Name, Description, Price FROM Product WHERE P_Name LIKE @search";
-            using (SqlConnection con = new SqlConnection(sql))
-            using (SqlCommand cmd = new SqlCommand(query, con))
-            {
-                cmd.Parameters.AddWithValue("@search", "%" + search + "%");
-
-                con.Open();
-                using (SqlDataReader reader = cmd.ExecuteReader())
-                {
-                    // logic of creating the product card here YA NOURAAAANN
-                }
-            }
+            
         }
 
 
         // search button
+        // Search button click
         private void button2_Click(object sender, EventArgs e)
         {
-
+            string searchTerm = txtSearch.Text.Trim();
+            LoadProducts(searchTerm);
         }
+
+
+
     }
 }
