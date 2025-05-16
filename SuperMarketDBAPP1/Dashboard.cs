@@ -8,8 +8,8 @@ namespace SuperMarketDBAPP1
     public partial class Dashboard : Form
     {
         static String sql = "Data Source=DESKTOP-V936GVE;Initial Catalog=SupermarketDatabase;Integrated Security=True;Encrypt=False;Trust Server Certificate=True";
+        //static String sql = "Data Source=MARO25;Initial Catalog=SupermarketDatabase;Integrated Security=True;Encrypt=False;Trust Server Certificate=True";
 
-        //static string sql = "Data Source=DESKTOP-V936GVE;Initial Catalog=SupermarketDatabase;Integrated Security=True;Encrypt=False;Trust Server Certificate=True";
         private int _customerId;
 
         public Dashboard(int customerId)
@@ -174,6 +174,35 @@ namespace SuperMarketDBAPP1
             return orderId;
         }
 
+        private void UpdateTotalPrice()
+        {
+            decimal total = 0;
+
+            using (SqlConnection con = new SqlConnection(sql))
+            {
+                con.Open();
+
+                string query = @"
+            SELECT SUM(U_Price * Quantity)
+            FROM OrderItem
+            WHERE Order_id = @OrderId";
+
+                int orderId = GetOrCreateCurrentOrderId(_customerId);
+
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@OrderId", orderId);
+
+                    object result = cmd.ExecuteScalar();
+                    if (result != DBNull.Value)
+                        total = Convert.ToDecimal(result);
+                }
+            }
+
+            lblTotalPrice.Text = $"Total: ${total:F2}";
+        }
+
+
 
         // LoadProducts with optional search term
         private void LoadProducts(string searchTerm = "")
@@ -329,6 +358,7 @@ namespace SuperMarketDBAPP1
                                 }
 
                                 MessageBox.Show($"{productName} added to cart!");
+                                UpdateTotalPrice(); // Update total price after adding to cart
                             };
                         }
 

@@ -108,9 +108,12 @@ namespace SuperMarketDBAPP1
         private void btnsignup_Click(object sender, EventArgs e)
         {
             SignUp signUpForm = new SignUp();
+
+            // When signup closes, show the login form again
+            signUpForm.FormClosed += (s, args) => this.Show();
+
             this.Hide();
-            signUpForm.ShowDialog();
-            this.Show(); // show login again after signup closes
+            signUpForm.Show();
         }
     }
 }

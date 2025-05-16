@@ -13,7 +13,8 @@ namespace SuperMarketDBAPP1
         // Connection String to SQL Server (not yet used)
         //  static String sql = "Data Source=MARO25;Initial Catalog=SupermarketDatabase;Integrated Security=True;Encrypt=False;Trust Server Certificate=True";
 
-        static String sql = "Data Source=MARO25;Initial Catalog=SupermarketDatabase;Integrated Security=True;Encrypt=False;Trust Server Certificate=True";
+        // static String sql = "Data Source=MARO25;Initial Catalog=SupermarketDatabase;Integrated Security=True;Encrypt=False;Trust Server Certificate=True";
+        static String sql = "Data Source=DESKTOP-V936GVE;Initial Catalog=SupermarketDatabase;Integrated Security=True;Encrypt=False;Trust Server Certificate=True";
 
 
         public SignUp()
@@ -63,7 +64,7 @@ namespace SuperMarketDBAPP1
             label3.ForeColor = Color.LightSeaGreen;
             label3.Location = new Point(536, 475);
             label3.Name = "label3";
-            label3.Size = new Size(195, 32);
+            label3.Size = new Size(230, 38);
             label3.TabIndex = 6;
             label3.Text = "By FCAI Team";
             // 
@@ -74,7 +75,7 @@ namespace SuperMarketDBAPP1
             label1.ForeColor = Color.LightSeaGreen;
             label1.Location = new Point(483, 9);
             label1.Name = "label1";
-            label1.Size = new Size(281, 32);
+            label1.Size = new Size(333, 38);
             label1.TabIndex = 4;
             label1.Text = "Supermarket System";
             // 
@@ -83,7 +84,7 @@ namespace SuperMarketDBAPP1
             comboBoxRole.FormattingEnabled = true;
             comboBoxRole.Location = new Point(457, 71);
             comboBoxRole.Name = "comboBoxRole";
-            comboBoxRole.Size = new Size(321, 31);
+            comboBoxRole.Size = new Size(321, 36);
             comboBoxRole.TabIndex = 7;
             comboBoxRole.SelectedIndexChanged += ComboBoxRole_SelectedIndexChanged;
             // 
@@ -91,7 +92,7 @@ namespace SuperMarketDBAPP1
             // 
             txtUsername.Location = new Point(457, 132);
             txtUsername.Name = "txtUsername";
-            txtUsername.Size = new Size(321, 32);
+            txtUsername.Size = new Size(321, 37);
             txtUsername.TabIndex = 8;
             // 
             // labelRole
@@ -100,7 +101,7 @@ namespace SuperMarketDBAPP1
             labelRole.ForeColor = Color.LightSeaGreen;
             labelRole.Location = new Point(457, 48);
             labelRole.Name = "labelRole";
-            labelRole.Size = new Size(53, 23);
+            labelRole.Size = new Size(62, 28);
             labelRole.TabIndex = 9;
             labelRole.Text = "Role";
             // 
@@ -110,7 +111,7 @@ namespace SuperMarketDBAPP1
             labelName.ForeColor = Color.LightSeaGreen;
             labelName.Location = new Point(457, 107);
             labelName.Name = "labelName";
-            labelName.Size = new Size(70, 23);
+            labelName.Size = new Size(84, 28);
             labelName.TabIndex = 10;
             labelName.Text = "Name";
             // 
@@ -120,7 +121,7 @@ namespace SuperMarketDBAPP1
             labelPassword.ForeColor = Color.LightSeaGreen;
             labelPassword.Location = new Point(457, 244);
             labelPassword.Name = "labelPassword";
-            labelPassword.Size = new Size(100, 23);
+            labelPassword.Size = new Size(121, 28);
             labelPassword.TabIndex = 12;
             labelPassword.Text = "Password";
             // 
@@ -128,7 +129,7 @@ namespace SuperMarketDBAPP1
             // 
             txtPassword.Location = new Point(457, 269);
             txtPassword.Name = "txtPassword";
-            txtPassword.Size = new Size(321, 32);
+            txtPassword.Size = new Size(321, 37);
             txtPassword.TabIndex = 11;
             // 
             // Submitbtn
@@ -149,7 +150,7 @@ namespace SuperMarketDBAPP1
             labelEmail.ForeColor = Color.LightSeaGreen;
             labelEmail.Location = new Point(457, 173);
             labelEmail.Name = "labelEmail";
-            labelEmail.Size = new Size(70, 23);
+            labelEmail.Size = new Size(85, 28);
             labelEmail.TabIndex = 15;
             labelEmail.Text = "E-mail";
             // 
@@ -157,7 +158,7 @@ namespace SuperMarketDBAPP1
             // 
             txtEmail.Location = new Point(457, 198);
             txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(321, 32);
+            txtEmail.Size = new Size(321, 37);
             txtEmail.TabIndex = 14;
             // 
             // labelPhone
@@ -166,7 +167,7 @@ namespace SuperMarketDBAPP1
             labelPhone.ForeColor = Color.LightSeaGreen;
             labelPhone.Location = new Point(457, 305);
             labelPhone.Name = "labelPhone";
-            labelPhone.Size = new Size(71, 23);
+            labelPhone.Size = new Size(83, 28);
             labelPhone.TabIndex = 19;
             labelPhone.Text = "Phone";
             // 
@@ -174,7 +175,7 @@ namespace SuperMarketDBAPP1
             // 
             txtPhone.Location = new Point(457, 330);
             txtPhone.Name = "txtPhone";
-            txtPhone.Size = new Size(321, 32);
+            txtPhone.Size = new Size(321, 37);
             txtPhone.TabIndex = 18;
             // 
             // labelAddress
@@ -183,7 +184,7 @@ namespace SuperMarketDBAPP1
             labelAddress.ForeColor = Color.LightSeaGreen;
             labelAddress.Location = new Point(457, 367);
             labelAddress.Name = "labelAddress";
-            labelAddress.Size = new Size(88, 23);
+            labelAddress.Size = new Size(107, 28);
             labelAddress.TabIndex = 21;
             labelAddress.Text = "Address";
             // 
@@ -191,7 +192,7 @@ namespace SuperMarketDBAPP1
             // 
             txtAdress.Location = new Point(457, 392);
             txtAdress.Name = "txtAdress";
-            txtAdress.Size = new Size(321, 32);
+            txtAdress.Size = new Size(321, 37);
             txtAdress.TabIndex = 20;
             // 
             // SignUp
@@ -216,6 +217,7 @@ namespace SuperMarketDBAPP1
             Font = new Font("Century Gothic", 12F, FontStyle.Bold);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "SignUp";
+            StartPosition = FormStartPosition.CenterScreen;
             Load += SignUp_Load;
             ResumeLayout(false);
             PerformLayout();
@@ -309,6 +311,7 @@ namespace SuperMarketDBAPP1
                         if (rowsAffected > 0)
                         {
                             MessageBox.Show($"{role} registered successfully!");
+                            this.Close();
                         }
                         else
                         {

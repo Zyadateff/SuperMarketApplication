@@ -31,8 +31,11 @@ namespace SuperMarketDBAPP1
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
             tabPage3 = new TabPage();
+            flowLayoutPanel1 = new FlowLayoutPanel();
+            flowLayoutPanelCartProducts = new FlowLayoutPanel();
             label31 = new Label();
             panel20 = new Panel();
+            flowLayoutPanelVouchers = new FlowLayoutPanel();
             button1 = new Button();
             label15 = new Label();
             tabControl1 = new TabControl();
@@ -57,16 +60,15 @@ namespace SuperMarketDBAPP1
             label1 = new Label();
             flowLayoutPanelProducts = new FlowLayoutPanel();
             txtSerch = new TextBox();
-            flowLayoutPanel1 = new FlowLayoutPanel();
-            flowLayoutPanelCartProducts = new FlowLayoutPanel();
-            flowLayoutPanelVouchers = new FlowLayoutPanel();
+            label2 = new Label();
+            lblTotalPrice = new Label();
             tabPage3.SuspendLayout();
+            flowLayoutPanel1.SuspendLayout();
             panel20.SuspendLayout();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             panel19.SuspendLayout();
             shoptab.SuspendLayout();
-            flowLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
             // tabPage3
@@ -76,13 +78,32 @@ namespace SuperMarketDBAPP1
             tabPage3.Controls.Add(panel20);
             tabPage3.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             tabPage3.Location = new Point(4, 34);
-            tabPage3.Margin = new Padding(4, 4, 4, 4);
+            tabPage3.Margin = new Padding(4);
             tabPage3.Name = "tabPage3";
-            tabPage3.Padding = new Padding(6, 6, 6, 6);
+            tabPage3.Padding = new Padding(6);
             tabPage3.Size = new Size(1254, 710);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Your Cart";
             tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // flowLayoutPanel1
+            // 
+            flowLayoutPanel1.Controls.Add(flowLayoutPanelCartProducts);
+            flowLayoutPanel1.Location = new Point(9, 65);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            flowLayoutPanel1.Size = new Size(954, 634);
+            flowLayoutPanel1.TabIndex = 26;
+            // 
+            // flowLayoutPanelCartProducts
+            // 
+            flowLayoutPanelCartProducts.AutoScroll = true;
+            flowLayoutPanelCartProducts.FlowDirection = FlowDirection.TopDown;
+            flowLayoutPanelCartProducts.Location = new Point(3, 3);
+            flowLayoutPanelCartProducts.Name = "flowLayoutPanelCartProducts";
+            flowLayoutPanelCartProducts.Size = new Size(954, 634);
+            flowLayoutPanelCartProducts.TabIndex = 27;
+            flowLayoutPanelCartProducts.WrapContents = false;
+            flowLayoutPanelCartProducts.Paint += flowLayoutPanelCartProducts_Paint;
             // 
             // label31
             // 
@@ -98,20 +119,29 @@ namespace SuperMarketDBAPP1
             // panel20
             // 
             panel20.BackColor = SystemColors.Control;
+            panel20.Controls.Add(lblTotalPrice);
+            panel20.Controls.Add(label2);
             panel20.Controls.Add(flowLayoutPanelVouchers);
             panel20.Controls.Add(button1);
             panel20.Controls.Add(label15);
             panel20.Location = new Point(970, 8);
-            panel20.Margin = new Padding(4, 4, 4, 4);
+            panel20.Margin = new Padding(4);
             panel20.Name = "panel20";
             panel20.Size = new Size(275, 691);
             panel20.TabIndex = 0;
             panel20.Paint += panel20_Paint;
             // 
+            // flowLayoutPanelVouchers
+            // 
+            flowLayoutPanelVouchers.Location = new Point(3, 60);
+            flowLayoutPanelVouchers.Name = "flowLayoutPanelVouchers";
+            flowLayoutPanelVouchers.Size = new Size(278, 499);
+            flowLayoutPanelVouchers.TabIndex = 26;
+            // 
             // button1
             // 
             button1.Location = new Point(25, 611);
-            button1.Margin = new Padding(4, 4, 4, 4);
+            button1.Margin = new Padding(4);
             button1.Name = "button1";
             button1.Size = new Size(229, 64);
             button1.TabIndex = 25;
@@ -135,7 +165,7 @@ namespace SuperMarketDBAPP1
             tabControl1.Controls.Add(tabPage1);
             tabControl1.Controls.Add(shoptab);
             tabControl1.Location = new Point(15, 15);
-            tabControl1.Margin = new Padding(4, 4, 4, 4);
+            tabControl1.Margin = new Padding(4);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
             tabControl1.Size = new Size(1262, 748);
@@ -147,9 +177,9 @@ namespace SuperMarketDBAPP1
             // 
             tabPage1.Controls.Add(panel19);
             tabPage1.Location = new Point(4, 34);
-            tabPage1.Margin = new Padding(4, 4, 4, 4);
+            tabPage1.Margin = new Padding(4);
             tabPage1.Name = "tabPage1";
-            tabPage1.Padding = new Padding(6, 6, 6, 6);
+            tabPage1.Padding = new Padding(6);
             tabPage1.Size = new Size(1254, 710);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Profile Page";
@@ -174,7 +204,7 @@ namespace SuperMarketDBAPP1
             panel19.Controls.Add(label14);
             panel19.Dock = DockStyle.Fill;
             panel19.Location = new Point(6, 6);
-            panel19.Margin = new Padding(4, 4, 4, 4);
+            panel19.Margin = new Padding(4);
             panel19.Name = "panel19";
             panel19.Size = new Size(1242, 698);
             panel19.TabIndex = 0;
@@ -246,7 +276,7 @@ namespace SuperMarketDBAPP1
             DeleteBtn.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             DeleteBtn.ForeColor = SystemColors.Control;
             DeleteBtn.Location = new Point(710, 599);
-            DeleteBtn.Margin = new Padding(4, 4, 4, 4);
+            DeleteBtn.Margin = new Padding(4);
             DeleteBtn.Name = "DeleteBtn";
             DeleteBtn.Size = new Size(118, 41);
             DeleteBtn.TabIndex = 14;
@@ -260,7 +290,7 @@ namespace SuperMarketDBAPP1
             saveBtn.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             saveBtn.ForeColor = SystemColors.Control;
             saveBtn.Location = new Point(439, 599);
-            saveBtn.Margin = new Padding(4, 4, 4, 4);
+            saveBtn.Margin = new Padding(4);
             saveBtn.Name = "saveBtn";
             saveBtn.Size = new Size(118, 41);
             saveBtn.TabIndex = 14;
@@ -272,7 +302,7 @@ namespace SuperMarketDBAPP1
             // 
             txtPhone.Font = new Font("Segoe UI", 14F);
             txtPhone.Location = new Point(340, 542);
-            txtPhone.Margin = new Padding(4, 4, 4, 4);
+            txtPhone.Margin = new Padding(4);
             txtPhone.Name = "txtPhone";
             txtPhone.Size = new Size(564, 45);
             txtPhone.TabIndex = 9;
@@ -281,7 +311,7 @@ namespace SuperMarketDBAPP1
             // 
             txtAddress.Font = new Font("Segoe UI", 14F);
             txtAddress.Location = new Point(340, 449);
-            txtAddress.Margin = new Padding(4, 4, 4, 4);
+            txtAddress.Margin = new Padding(4);
             txtAddress.Name = "txtAddress";
             txtAddress.Size = new Size(564, 45);
             txtAddress.TabIndex = 9;
@@ -290,7 +320,7 @@ namespace SuperMarketDBAPP1
             // 
             txtPassword.Font = new Font("Segoe UI", 14F);
             txtPassword.Location = new Point(340, 355);
-            txtPassword.Margin = new Padding(4, 4, 4, 4);
+            txtPassword.Margin = new Padding(4);
             txtPassword.Name = "txtPassword";
             txtPassword.Size = new Size(564, 45);
             txtPassword.TabIndex = 9;
@@ -299,7 +329,7 @@ namespace SuperMarketDBAPP1
             // 
             txtEmail.Font = new Font("Segoe UI", 14F);
             txtEmail.Location = new Point(340, 264);
-            txtEmail.Margin = new Padding(4, 4, 4, 4);
+            txtEmail.Margin = new Padding(4);
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(564, 45);
             txtEmail.TabIndex = 9;
@@ -308,7 +338,7 @@ namespace SuperMarketDBAPP1
             // 
             txtName.Font = new Font("Segoe UI", 14F);
             txtName.Location = new Point(338, 172);
-            txtName.Margin = new Padding(4, 4, 4, 4);
+            txtName.Margin = new Padding(4);
             txtName.Name = "txtName";
             txtName.Size = new Size(566, 45);
             txtName.TabIndex = 9;
@@ -345,7 +375,7 @@ namespace SuperMarketDBAPP1
             // btnSearch
             // 
             btnSearch.Location = new Point(1041, 24);
-            btnSearch.Margin = new Padding(4, 4, 4, 4);
+            btnSearch.Margin = new Padding(4);
             btnSearch.Name = "btnSearch";
             btnSearch.Size = new Size(80, 36);
             btnSearch.TabIndex = 5;
@@ -357,7 +387,7 @@ namespace SuperMarketDBAPP1
             // 
             txtSearch.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             txtSearch.Location = new Point(784, 21);
-            txtSearch.Margin = new Padding(4, 4, 4, 4);
+            txtSearch.Margin = new Padding(4);
             txtSearch.Name = "txtSearch";
             txtSearch.Size = new Size(249, 37);
             txtSearch.TabIndex = 4;
@@ -376,11 +406,14 @@ namespace SuperMarketDBAPP1
             // 
             // flowLayoutPanelProducts
             // 
-            flowLayoutPanelProducts.Location = new Point(6, 78);
+            flowLayoutPanelProducts.AutoScroll = true;
+            flowLayoutPanelProducts.FlowDirection = FlowDirection.TopDown;
+            flowLayoutPanelProducts.Location = new Point(16, 66);
             flowLayoutPanelProducts.Margin = new Padding(2);
             flowLayoutPanelProducts.Name = "flowLayoutPanelProducts";
-            flowLayoutPanelProducts.Size = new Size(1552, 735);
+            flowLayoutPanelProducts.Size = new Size(1234, 640);
             flowLayoutPanelProducts.TabIndex = 0;
+            flowLayoutPanelProducts.WrapContents = false;
             flowLayoutPanelProducts.TabIndexChanged += flowLayoutPanelProducts_TabIndexChanged;
             flowLayoutPanelProducts.Paint += flowLayoutPanel1_Paint;
             flowLayoutPanelProducts.Enter += flowLayoutPanelProducts_Enter;
@@ -393,28 +426,23 @@ namespace SuperMarketDBAPP1
             txtSerch.Size = new Size(220, 37);
             txtSerch.TabIndex = 1;
             // 
-            // flowLayoutPanel1
+            // label2
             // 
-            flowLayoutPanel1.Controls.Add(flowLayoutPanelCartProducts);
-            flowLayoutPanel1.Location = new Point(9, 65);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(954, 634);
-            flowLayoutPanel1.TabIndex = 26;
+            label2.AutoSize = true;
+            label2.Font = new Font("Century Gothic", 14F, FontStyle.Bold);
+            label2.Location = new Point(59, 562);
+            label2.Name = "label2";
+            label2.Size = new Size(0, 34);
+            label2.TabIndex = 27;
             // 
-            // flowLayoutPanelCartProducts
+            // lblTotalPrice
             // 
-            flowLayoutPanelCartProducts.Location = new Point(3, 3);
-            flowLayoutPanelCartProducts.Name = "flowLayoutPanelCartProducts";
-            flowLayoutPanelCartProducts.Size = new Size(954, 634);
-            flowLayoutPanelCartProducts.TabIndex = 27;
-            flowLayoutPanelCartProducts.Paint += flowLayoutPanelCartProducts_Paint;
-            // 
-            // flowLayoutPanelVouchers
-            // 
-            flowLayoutPanelVouchers.Location = new Point(3, 60);
-            flowLayoutPanelVouchers.Name = "flowLayoutPanelVouchers";
-            flowLayoutPanelVouchers.Size = new Size(278, 544);
-            flowLayoutPanelVouchers.TabIndex = 26;
+            lblTotalPrice.AutoSize = true;
+            lblTotalPrice.Location = new Point(93, 579);
+            lblTotalPrice.Name = "lblTotalPrice";
+            lblTotalPrice.Size = new Size(84, 28);
+            lblTotalPrice.TabIndex = 28;
+            lblTotalPrice.Text = "label3";
             // 
             // Dashboard
             // 
@@ -424,12 +452,14 @@ namespace SuperMarketDBAPP1
             ClientSize = new Size(1292, 778);
             Controls.Add(tabControl1);
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Margin = new Padding(4, 4, 4, 4);
+            Margin = new Padding(4);
             Name = "Dashboard";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Dashboard";
             Load += Dashboard_Load;
             tabPage3.ResumeLayout(false);
             tabPage3.PerformLayout();
+            flowLayoutPanel1.ResumeLayout(false);
             panel20.ResumeLayout(false);
             panel20.PerformLayout();
             tabControl1.ResumeLayout(false);
@@ -438,7 +468,6 @@ namespace SuperMarketDBAPP1
             panel19.PerformLayout();
             shoptab.ResumeLayout(false);
             shoptab.PerformLayout();
-            flowLayoutPanel1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -499,5 +528,7 @@ namespace SuperMarketDBAPP1
         private FlowLayoutPanel flowLayoutPanel1;
         private FlowLayoutPanel flowLayoutPanelCartProducts;
         private FlowLayoutPanel flowLayoutPanelVouchers;
+        private Label label2;
+        private Label lblTotalPrice;
     }
 }

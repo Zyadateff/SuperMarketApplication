@@ -160,10 +160,10 @@
             tabPage1.Controls.Add(label2);
             tabPage1.Controls.Add(label1);
             tabPage1.ForeColor = Color.LightSlateGray;
-            tabPage1.Location = new Point(4, 32);
+            tabPage1.Location = new Point(4, 39);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(1250, 678);
+            tabPage1.Size = new Size(1250, 671);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Add Customer";
             // 
@@ -184,35 +184,35 @@
             // 
             textBox5Address.Location = new Point(548, 357);
             textBox5Address.Name = "textBox5Address";
-            textBox5Address.Size = new Size(302, 32);
+            textBox5Address.Size = new Size(302, 37);
             textBox5Address.TabIndex = 11;
             // 
             // textBox4Phone
             // 
             textBox4Phone.Location = new Point(548, 310);
             textBox4Phone.Name = "textBox4Phone";
-            textBox4Phone.Size = new Size(302, 32);
+            textBox4Phone.Size = new Size(302, 37);
             textBox4Phone.TabIndex = 10;
             // 
             // textBox3Pass
             // 
             textBox3Pass.Location = new Point(548, 266);
             textBox3Pass.Name = "textBox3Pass";
-            textBox3Pass.Size = new Size(302, 32);
+            textBox3Pass.Size = new Size(302, 37);
             textBox3Pass.TabIndex = 9;
             // 
             // textBox2Email
             // 
             textBox2Email.Location = new Point(548, 218);
             textBox2Email.Name = "textBox2Email";
-            textBox2Email.Size = new Size(302, 32);
+            textBox2Email.Size = new Size(302, 37);
             textBox2Email.TabIndex = 8;
             // 
             // textBoxName
             // 
             textBoxName.Location = new Point(548, 169);
             textBoxName.Name = "textBoxName";
-            textBoxName.Size = new Size(302, 32);
+            textBoxName.Size = new Size(302, 37);
             textBoxName.TabIndex = 7;
             // 
             // label6
@@ -221,7 +221,7 @@
             label6.ForeColor = Color.White;
             label6.Location = new Point(410, 357);
             label6.Name = "label6";
-            label6.Size = new Size(88, 23);
+            label6.Size = new Size(105, 30);
             label6.TabIndex = 5;
             label6.Text = "Address";
             // 
@@ -231,7 +231,7 @@
             label5.ForeColor = Color.White;
             label5.Location = new Point(410, 310);
             label5.Name = "label5";
-            label5.Size = new Size(72, 23);
+            label5.Size = new Size(89, 30);
             label5.TabIndex = 4;
             label5.Text = "Phone";
             label5.Click += label5_Click;
@@ -242,7 +242,7 @@
             label4.ForeColor = Color.White;
             label4.Location = new Point(410, 266);
             label4.Name = "label4";
-            label4.Size = new Size(103, 23);
+            label4.Size = new Size(122, 30);
             label4.TabIndex = 3;
             label4.Text = "Password";
             // 
@@ -252,7 +252,7 @@
             label3.ForeColor = Color.White;
             label3.Location = new Point(410, 218);
             label3.Name = "label3";
-            label3.Size = new Size(62, 23);
+            label3.Size = new Size(78, 30);
             label3.TabIndex = 2;
             label3.Text = "Email";
             // 
@@ -262,7 +262,7 @@
             label2.ForeColor = Color.White;
             label2.Location = new Point(410, 172);
             label2.Name = "label2";
-            label2.Size = new Size(71, 23);
+            label2.Size = new Size(87, 30);
             label2.TabIndex = 1;
             label2.Text = "Name";
             // 
@@ -273,7 +273,7 @@
             label1.ForeColor = Color.White;
             label1.Location = new Point(448, 76);
             label1.Name = "label1";
-            label1.Size = new Size(301, 33);
+            label1.Size = new Size(355, 39);
             label1.TabIndex = 0;
             label1.Text = "Add a New Customer";
             // 
@@ -309,10 +309,10 @@
             tabPageProducts.Controls.Add(txtPdesc);
             tabPageProducts.Controls.Add(txtPname);
             tabPageProducts.Controls.Add(dgvProducts);
-            tabPageProducts.Location = new Point(4, 29);
+            tabPageProducts.Location = new Point(4, 34);
             tabPageProducts.Name = "tabPageProducts";
             tabPageProducts.Padding = new Padding(3);
-            tabPageProducts.Size = new Size(1250, 681);
+            tabPageProducts.Size = new Size(1250, 676);
             tabPageProducts.TabIndex = 1;
             tabPageProducts.Text = "Products";
             // 
@@ -400,7 +400,7 @@
             label29.ForeColor = Color.White;
             label29.Location = new Point(10, 603);
             label29.Name = "label29";
-            label29.Size = new Size(113, 23);
+            label29.Size = new Size(136, 30);
             label29.TabIndex = 22;
             label29.Text = "Product ID";
             // 
@@ -408,14 +408,14 @@
             // 
             txtPID.Location = new Point(200, 596);
             txtPID.Name = "txtPID";
-            txtPID.Size = new Size(235, 32);
+            txtPID.Size = new Size(235, 37);
             txtPID.TabIndex = 21;
             // 
             // txtPSearch
             // 
             txtPSearch.Location = new Point(919, 287);
             txtPSearch.Name = "txtPSearch";
-            txtPSearch.Size = new Size(310, 32);
+            txtPSearch.Size = new Size(310, 37);
             txtPSearch.TabIndex = 20;
             // 
             // btnSearchProduct
@@ -487,7 +487,7 @@
             // 
             txtPsupplier.Location = new Point(200, 508);
             txtPsupplier.Name = "txtPsupplier";
-            txtPsupplier.Size = new Size(235, 32);
+            txtPsupplier.Size = new Size(235, 37);
             txtPsupplier.TabIndex = 14;
             // 
             // label26
@@ -496,7 +496,7 @@
             label26.ForeColor = Color.White;
             label26.Location = new Point(8, 511);
             label26.Name = "label26";
-            label26.Size = new Size(113, 23);
+            label26.Size = new Size(138, 30);
             label26.TabIndex = 13;
             label26.Text = "Supplier ID";
             // 
@@ -506,7 +506,7 @@
             label27.ForeColor = Color.White;
             label27.Location = new Point(8, 466);
             label27.Name = "label27";
-            label27.Size = new Size(129, 23);
+            label27.Size = new Size(156, 30);
             label27.TabIndex = 12;
             label27.Text = "Category ID";
             // 
@@ -516,7 +516,7 @@
             label28.ForeColor = Color.White;
             label28.Location = new Point(8, 423);
             label28.Name = "label28";
-            label28.Size = new Size(139, 23);
+            label28.Size = new Size(176, 30);
             label28.TabIndex = 11;
             label28.Text = "Min Threshold";
             // 
@@ -524,21 +524,21 @@
             // 
             txtPcategory.Location = new Point(200, 463);
             txtPcategory.Name = "txtPcategory";
-            txtPcategory.Size = new Size(235, 32);
+            txtPcategory.Size = new Size(235, 37);
             txtPcategory.TabIndex = 10;
             // 
             // txtPminThres
             // 
             txtPminThres.Location = new Point(200, 420);
             txtPminThres.Name = "txtPminThres";
-            txtPminThres.Size = new Size(235, 32);
+            txtPminThres.Size = new Size(235, 37);
             txtPminThres.TabIndex = 9;
             // 
             // txtPquantity
             // 
             txtPquantity.Location = new Point(200, 551);
             txtPquantity.Name = "txtPquantity";
-            txtPquantity.Size = new Size(235, 32);
+            txtPquantity.Size = new Size(235, 37);
             txtPquantity.TabIndex = 8;
             // 
             // label25
@@ -547,7 +547,7 @@
             label25.ForeColor = Color.White;
             label25.Location = new Point(8, 555);
             label25.Name = "label25";
-            label25.Size = new Size(93, 23);
+            label25.Size = new Size(115, 30);
             label25.TabIndex = 7;
             label25.Text = "Quantity";
             // 
@@ -557,7 +557,7 @@
             label24.ForeColor = Color.White;
             label24.Location = new Point(8, 380);
             label24.Name = "label24";
-            label24.Size = new Size(57, 23);
+            label24.Size = new Size(72, 30);
             label24.TabIndex = 6;
             label24.Text = "Price";
             // 
@@ -567,7 +567,7 @@
             label23.ForeColor = Color.White;
             label23.Location = new Point(8, 337);
             label23.Name = "label23";
-            label23.Size = new Size(117, 23);
+            label23.Size = new Size(147, 30);
             label23.TabIndex = 5;
             label23.Text = "Description";
             // 
@@ -577,7 +577,7 @@
             label22.ForeColor = Color.White;
             label22.Location = new Point(8, 294);
             label22.Name = "label22";
-            label22.Size = new Size(154, 23);
+            label22.Size = new Size(186, 30);
             label22.TabIndex = 4;
             label22.Text = "Product Name";
             // 
@@ -585,21 +585,21 @@
             // 
             txtPprice.Location = new Point(200, 377);
             txtPprice.Name = "txtPprice";
-            txtPprice.Size = new Size(235, 32);
+            txtPprice.Size = new Size(235, 37);
             txtPprice.TabIndex = 3;
             // 
             // txtPdesc
             // 
             txtPdesc.Location = new Point(200, 334);
             txtPdesc.Name = "txtPdesc";
-            txtPdesc.Size = new Size(235, 32);
+            txtPdesc.Size = new Size(235, 37);
             txtPdesc.TabIndex = 2;
             // 
             // txtPname
             // 
             txtPname.Location = new Point(200, 291);
             txtPname.Name = "txtPname";
-            txtPname.Size = new Size(235, 32);
+            txtPname.Size = new Size(235, 37);
             txtPname.TabIndex = 1;
             // 
             // dgvProducts
@@ -618,10 +618,10 @@
             tabPage3.BackColor = Color.LightSeaGreen;
             tabPage3.Controls.Add(label30);
             tabPage3.Controls.Add(dataGridViewOrders);
-            tabPage3.Location = new Point(4, 29);
+            tabPage3.Location = new Point(4, 34);
             tabPage3.Name = "tabPage3";
             tabPage3.Padding = new Padding(3);
-            tabPage3.Size = new Size(1250, 681);
+            tabPage3.Size = new Size(1250, 676);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Orders";
             // 
@@ -632,7 +632,7 @@
             label30.ForeColor = Color.White;
             label30.Location = new Point(461, 26);
             label30.Name = "label30";
-            label30.Size = new Size(219, 40);
+            label30.Size = new Size(262, 49);
             label30.TabIndex = 1;
             label30.Text = "Track Orders";
             // 
@@ -661,10 +661,10 @@
             tabPagefreqCustomers.Controls.Add(btnAddVoucher);
             tabPagefreqCustomers.Controls.Add(dgvFreqCustomers);
             tabPagefreqCustomers.ForeColor = Color.Cornsilk;
-            tabPagefreqCustomers.Location = new Point(4, 29);
+            tabPagefreqCustomers.Location = new Point(4, 34);
             tabPagefreqCustomers.Name = "tabPagefreqCustomers";
             tabPagefreqCustomers.Padding = new Padding(3);
-            tabPagefreqCustomers.Size = new Size(1250, 681);
+            tabPagefreqCustomers.Size = new Size(1250, 676);
             tabPagefreqCustomers.TabIndex = 3;
             tabPagefreqCustomers.Text = "Frequent Customers";
             tabPagefreqCustomers.Click += tabPagefreqCustomers_Click;
@@ -675,7 +675,7 @@
             label11.ForeColor = Color.LightSeaGreen;
             label11.Location = new Point(92, 31);
             label11.Name = "label11";
-            label11.Size = new Size(163, 23);
+            label11.Size = new Size(194, 30);
             label11.TabIndex = 11;
             label11.Text = "Add a Voucher";
             // 
@@ -683,7 +683,7 @@
             // 
             dateTimePicker1.Location = new Point(186, 210);
             dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(261, 32);
+            dateTimePicker1.Size = new Size(261, 37);
             dateTimePicker1.TabIndex = 10;
             // 
             // label10
@@ -692,7 +692,7 @@
             label10.ForeColor = Color.LightSeaGreen;
             label10.Location = new Point(3, 210);
             label10.Name = "label10";
-            label10.Size = new Size(120, 23);
+            label10.Size = new Size(145, 30);
             label10.TabIndex = 9;
             label10.Text = "Expiry Date";
             // 
@@ -702,7 +702,7 @@
             label9.ForeColor = Color.LightSeaGreen;
             label9.Location = new Point(3, 167);
             label9.Name = "label9";
-            label9.Size = new Size(88, 23);
+            label9.Size = new Size(108, 30);
             label9.TabIndex = 7;
             label9.Text = "Amount";
             // 
@@ -710,7 +710,7 @@
             // 
             txtAmount.Location = new Point(186, 167);
             txtAmount.Name = "txtAmount";
-            txtAmount.Size = new Size(261, 32);
+            txtAmount.Size = new Size(261, 37);
             txtAmount.TabIndex = 6;
             // 
             // label8
@@ -719,7 +719,7 @@
             label8.ForeColor = Color.LightSeaGreen;
             label8.Location = new Point(3, 124);
             label8.Name = "label8";
-            label8.Size = new Size(156, 23);
+            label8.Size = new Size(190, 30);
             label8.TabIndex = 5;
             label8.Text = "Voucher Code";
             // 
@@ -727,7 +727,7 @@
             // 
             txtCode.Location = new Point(186, 124);
             txtCode.Name = "txtCode";
-            txtCode.Size = new Size(261, 32);
+            txtCode.Size = new Size(261, 37);
             txtCode.TabIndex = 4;
             // 
             // label7
@@ -736,7 +736,7 @@
             label7.ForeColor = Color.LightSeaGreen;
             label7.Location = new Point(3, 81);
             label7.Name = "label7";
-            label7.Size = new Size(130, 23);
+            label7.Size = new Size(160, 30);
             label7.TabIndex = 3;
             label7.Text = "Customer ID";
             // 
@@ -744,7 +744,7 @@
             // 
             txtCID.Location = new Point(186, 74);
             txtCID.Name = "txtCID";
-            txtCID.Size = new Size(261, 32);
+            txtCID.Size = new Size(261, 37);
             txtCID.TabIndex = 2;
             // 
             // btnAddVoucher
@@ -803,10 +803,10 @@
             tabPage4.Controls.Add(btnEdit);
             tabPage4.Controls.Add(txtCustomerID);
             tabPage4.Controls.Add(label12);
-            tabPage4.Location = new Point(4, 29);
+            tabPage4.Location = new Point(4, 34);
             tabPage4.Name = "tabPage4";
             tabPage4.Padding = new Padding(3);
-            tabPage4.Size = new Size(1250, 681);
+            tabPage4.Size = new Size(1250, 676);
             tabPage4.TabIndex = 4;
             tabPage4.Text = "Customers";
             tabPage4.Click += tabPage4_Click;
@@ -854,7 +854,7 @@
             // 
             txtCIDDel.Location = new Point(972, 330);
             txtCIDDel.Name = "txtCIDDel";
-            txtCIDDel.Size = new Size(270, 32);
+            txtCIDDel.Size = new Size(270, 37);
             txtCIDDel.TabIndex = 27;
             // 
             // label21
@@ -863,7 +863,7 @@
             label21.ForeColor = Color.White;
             label21.Location = new Point(781, 337);
             label21.Name = "label21";
-            label21.Size = new Size(130, 23);
+            label21.Size = new Size(160, 30);
             label21.TabIndex = 26;
             label21.Text = "Customer ID";
             // 
@@ -871,7 +871,7 @@
             // 
             txtCName.Location = new Point(972, 383);
             txtCName.Name = "txtCName";
-            txtCName.Size = new Size(270, 32);
+            txtCName.Size = new Size(270, 37);
             txtCName.TabIndex = 25;
             // 
             // label20
@@ -880,7 +880,7 @@
             label20.ForeColor = Color.White;
             label20.Location = new Point(781, 383);
             label20.Name = "label20";
-            label20.Size = new Size(71, 23);
+            label20.Size = new Size(87, 30);
             label20.TabIndex = 24;
             label20.Text = "Name";
             // 
@@ -888,7 +888,7 @@
             // 
             dateTimePicker2.Location = new Point(199, 536);
             dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new Size(270, 32);
+            dateTimePicker2.Size = new Size(270, 37);
             dateTimePicker2.TabIndex = 23;
             // 
             // label16
@@ -897,7 +897,7 @@
             label16.ForeColor = Color.White;
             label16.Location = new Point(8, 551);
             label16.Name = "label16";
-            label16.Size = new Size(120, 23);
+            label16.Size = new Size(145, 30);
             label16.TabIndex = 22;
             label16.Text = "Expiry Date";
             // 
@@ -907,7 +907,7 @@
             label18.ForeColor = Color.White;
             label18.Location = new Point(8, 504);
             label18.Name = "label18";
-            label18.Size = new Size(88, 23);
+            label18.Size = new Size(108, 30);
             label18.TabIndex = 21;
             label18.Text = "Amount";
             // 
@@ -915,7 +915,7 @@
             // 
             txtVAmount.Location = new Point(199, 493);
             txtVAmount.Name = "txtVAmount";
-            txtVAmount.Size = new Size(270, 32);
+            txtVAmount.Size = new Size(270, 37);
             txtVAmount.TabIndex = 20;
             // 
             // label19
@@ -924,7 +924,7 @@
             label19.ForeColor = Color.White;
             label19.Location = new Point(3, 461);
             label19.Name = "label19";
-            label19.Size = new Size(156, 23);
+            label19.Size = new Size(190, 30);
             label19.TabIndex = 19;
             label19.Text = "Voucher Code";
             // 
@@ -932,7 +932,7 @@
             // 
             txtVCode.Location = new Point(199, 450);
             txtVCode.Name = "txtVCode";
-            txtVCode.Size = new Size(270, 32);
+            txtVCode.Size = new Size(270, 37);
             txtVCode.TabIndex = 18;
             // 
             // btnAddV
@@ -990,7 +990,7 @@
             // 
             txtCAddress.Location = new Point(972, 556);
             txtCAddress.Name = "txtCAddress";
-            txtCAddress.Size = new Size(270, 32);
+            txtCAddress.Size = new Size(270, 37);
             txtCAddress.TabIndex = 13;
             // 
             // label17
@@ -999,7 +999,7 @@
             label17.ForeColor = Color.White;
             label17.Location = new Point(781, 556);
             label17.Name = "label17";
-            label17.Size = new Size(88, 23);
+            label17.Size = new Size(105, 30);
             label17.TabIndex = 12;
             label17.Text = "Address";
             // 
@@ -1007,7 +1007,7 @@
             // 
             txtCPhone.Location = new Point(972, 513);
             txtCPhone.Name = "txtCPhone";
-            txtCPhone.Size = new Size(270, 32);
+            txtCPhone.Size = new Size(270, 37);
             txtCPhone.TabIndex = 9;
             // 
             // label15
@@ -1016,7 +1016,7 @@
             label15.ForeColor = Color.White;
             label15.Location = new Point(781, 513);
             label15.Name = "label15";
-            label15.Size = new Size(72, 23);
+            label15.Size = new Size(89, 30);
             label15.TabIndex = 8;
             label15.Text = "Phone";
             // 
@@ -1024,7 +1024,7 @@
             // 
             txtCPass.Location = new Point(972, 469);
             txtCPass.Name = "txtCPass";
-            txtCPass.Size = new Size(270, 32);
+            txtCPass.Size = new Size(270, 37);
             txtCPass.TabIndex = 7;
             // 
             // label14
@@ -1033,7 +1033,7 @@
             label14.ForeColor = Color.White;
             label14.Location = new Point(781, 473);
             label14.Name = "label14";
-            label14.Size = new Size(103, 23);
+            label14.Size = new Size(122, 30);
             label14.TabIndex = 6;
             label14.Text = "Password";
             // 
@@ -1041,7 +1041,7 @@
             // 
             txtCEmail.Location = new Point(972, 426);
             txtCEmail.Name = "txtCEmail";
-            txtCEmail.Size = new Size(270, 32);
+            txtCEmail.Size = new Size(270, 37);
             txtCEmail.TabIndex = 5;
             // 
             // label13
@@ -1050,7 +1050,7 @@
             label13.ForeColor = Color.White;
             label13.Location = new Point(781, 430);
             label13.Name = "label13";
-            label13.Size = new Size(62, 23);
+            label13.Size = new Size(78, 30);
             label13.TabIndex = 4;
             label13.Text = "Email";
             // 
@@ -1086,7 +1086,7 @@
             // 
             txtCustomerID.Location = new Point(199, 407);
             txtCustomerID.Name = "txtCustomerID";
-            txtCustomerID.Size = new Size(270, 32);
+            txtCustomerID.Size = new Size(270, 37);
             txtCustomerID.TabIndex = 1;
             // 
             // label12
@@ -1095,13 +1095,13 @@
             label12.ForeColor = Color.White;
             label12.Location = new Point(6, 414);
             label12.Name = "label12";
-            label12.Size = new Size(130, 23);
+            label12.Size = new Size(160, 30);
             label12.TabIndex = 0;
             label12.Text = "Customer ID";
             // 
             // AdminDashboard
             // 
-            AutoScaleDimensions = new SizeF(12F, 23F);
+            AutoScaleDimensions = new SizeF(14F, 30F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightSeaGreen;
             ClientSize = new Size(1258, 712);
@@ -1110,6 +1110,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(4);
             Name = "AdminDashboard";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "AdminDashboard";
             Load += AdminDashboard_Load;
             tabControl1.ResumeLayout(false);
