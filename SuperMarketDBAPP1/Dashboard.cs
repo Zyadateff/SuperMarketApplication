@@ -137,6 +137,44 @@ namespace SuperMarketDBAPP1
 
         }
 
+
+
+        private int GetOrCreateCurrentOrderId(int customerId)
+        {
+            int orderId = -1;
+
+            using (SqlConnection con = new SqlConnection(sql))
+            {
+                con.Open();
+
+                // Check if there's already a pending order
+                string checkQuery = "SELECT Order_id FROM [Order] WHERE Customer_id = @CustomerId AND Status = 'Pending'";
+                using (SqlCommand cmd = new SqlCommand(checkQuery, con))
+                {
+                    cmd.Parameters.AddWithValue("@CustomerId", customerId);
+                    var result = cmd.ExecuteScalar();
+                    if (result != null)
+                    {
+                        orderId = Convert.ToInt32(result);
+                    }
+                }
+
+                // If no pending order, create one
+                if (orderId == -1)
+                {
+                    string insertQuery = "INSERT INTO [Order](Customer_id, Admin_id) OUTPUT INSERTED.Order_id VALUES (@CustomerId, NULL)";
+                    using (SqlCommand cmd = new SqlCommand(insertQuery, con))
+                    {
+                        cmd.Parameters.AddWithValue("@CustomerId", customerId);
+                        orderId = (int)cmd.ExecuteScalar();
+                    }
+                }
+            }
+
+            return orderId;
+        }
+
+
         // LoadProducts with optional search term
         private void LoadProducts(string searchTerm = "")
         {
@@ -222,6 +260,74 @@ namespace SuperMarketDBAPP1
                             addToCartBtn.Click += (s, ev) =>
                             {
                                 string productName = (string)((Button)s).Tag;
+
+                                using (SqlConnection con = new SqlConnection(sql))
+                                {
+                                    con.Open();
+
+                                    // Get Product ID and Price
+                                    string prodQuery = "SELECT Product_id, Price FROM Product WHERE P_Name = @PName";
+                                    int productId = -1;
+                                    decimal price = 0;
+                                    using (SqlCommand cmd = new SqlCommand(prodQuery, con))
+                                    {
+                                        cmd.Parameters.AddWithValue("@PName", productName);
+                                        using (SqlDataReader rdr = cmd.ExecuteReader())
+                                        {
+                                            if (rdr.Read())
+                                            {
+                                                productId = Convert.ToInt32(rdr["Product_id"]);
+                                                price = Convert.ToDecimal(rdr["Price"]);
+                                            }
+                                        }
+                                    }
+
+                                    if (productId == -1)
+                                    {
+                                        MessageBox.Show("Product not found!");
+                                        return;
+                                    }
+
+                                    int orderId = GetOrCreateCurrentOrderId(_customerId); 
+
+                                    // Check if item already in cart
+                                    string checkItemQuery = "SELECT Quantity FROM OrderItem WHERE Order_id = @OrderId AND Product_id = @ProductId";
+                                    using (SqlCommand cmd = new SqlCommand(checkItemQuery, con))
+                                    {
+                                        cmd.Parameters.AddWithValue("@OrderId", orderId);
+                                        cmd.Parameters.AddWithValue("@ProductId", productId);
+
+                                        object result = cmd.ExecuteScalar();
+
+                                        if (result != null)
+                                        {
+                                            // Update quantity
+                                            int currentQty = Convert.ToInt32(result);
+                                            string updateQuery = "UPDATE OrderItem SET Quantity = @Qty WHERE Order_id = @OrderId AND Product_id = @ProductId";
+                                            using (SqlCommand updateCmd = new SqlCommand(updateQuery, con))
+                                            {
+                                                updateCmd.Parameters.AddWithValue("@Qty", currentQty + 1);
+                                                updateCmd.Parameters.AddWithValue("@OrderId", orderId);
+                                                updateCmd.Parameters.AddWithValue("@ProductId", productId);
+                                                updateCmd.ExecuteNonQuery();
+                                            }
+                                        }
+                                        else
+                                        {
+                                            // Insert new item
+                                            string insertQuery = "INSERT INTO OrderItem(Order_id, Product_id, U_Price, Quantity) VALUES (@OrderId, @ProductId, @UPrice, @Qty)";
+                                            using (SqlCommand insertCmd = new SqlCommand(insertQuery, con))
+                                            {
+                                                insertCmd.Parameters.AddWithValue("@OrderId", orderId);
+                                                insertCmd.Parameters.AddWithValue("@ProductId", productId);
+                                                insertCmd.Parameters.AddWithValue("@UPrice", price);
+                                                insertCmd.Parameters.AddWithValue("@Qty", 1);
+                                                insertCmd.ExecuteNonQuery();
+                                            }
+                                        }
+                                    }
+                                }
+
                                 MessageBox.Show($"{productName} added to cart!");
                             };
                         }
@@ -309,6 +415,10 @@ namespace SuperMarketDBAPP1
             {
                 LoadProducts(); // Load all products initially
             }
+            if (tabControl1.SelectedTab == tabPage3) // Assuming you have a tab for orders
+            {
+                LoadOrder();
+            }
         }
 
 
@@ -316,7 +426,7 @@ namespace SuperMarketDBAPP1
         // search text box
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            
+
         }
 
 
@@ -327,8 +437,137 @@ namespace SuperMarketDBAPP1
             string searchTerm = txtSearch.Text.Trim();
             LoadProducts(searchTerm);
         }
+        void LoadOrder()
+        {
+            flowLayoutPanelCartProducts.Controls.Clear();
 
+            string query = @"
+        SELECT 
+            O.Order_id,
+            P.P_Name,
+            OI.Quantity,
+            OI.U_Price,
+            (OI.Quantity * OI.U_Price) AS TotalPrice
+        FROM [Order] O
+        JOIN OrderItem OI ON O.Order_id = OI.Order_id
+        JOIN Product P ON P.Product_id = OI.Product_id
+        WHERE O.Customer_id = @customerId";
 
+            using (SqlConnection con = new SqlConnection(sql))
+            using (SqlCommand cmd = new SqlCommand(query, con))
+            {
+                cmd.Parameters.AddWithValue("@customerId", _customerId);
+                con.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
 
+                while (reader.Read())
+                {
+                    Panel card = new Panel();
+                    card.Size = new Size(250, 150);
+                    card.BorderStyle = BorderStyle.FixedSingle;
+                    card.Margin = new Padding(10);
+
+                    Label nameLabel = new Label();
+                    nameLabel.Text = "Product: " + reader["P_Name"].ToString();
+                    nameLabel.Font = new Font("Century Gothic", 9, FontStyle.Bold);
+                    nameLabel.Location = new Point(10, 10);
+                    nameLabel.AutoSize = true;
+
+                    Label quantityLabel = new Label();
+                    quantityLabel.Text = "Quantity: " + reader["Quantity"].ToString();
+                    quantityLabel.Location = new Point(10, 40);
+                    quantityLabel.AutoSize = true;
+
+                    Label priceLabel = new Label();
+                    priceLabel.Text = "Unit Price: $" + Convert.ToDecimal(reader["U_Price"]).ToString("F2");
+                    priceLabel.Location = new Point(10, 60);
+                    priceLabel.AutoSize = true;
+
+                    Label totalLabel = new Label();
+                    totalLabel.Text = "Total: $" + Convert.ToDecimal(reader["TotalPrice"]).ToString("F2");
+                    totalLabel.Location = new Point(10, 80);
+                    totalLabel.AutoSize = true;
+
+                    Button removeBtn = new Button();
+                    removeBtn.Text = "Remove";
+                    removeBtn.BackColor = Color.IndianRed;
+                    removeBtn.ForeColor = Color.White;
+                    removeBtn.FlatStyle = FlatStyle.Flat;
+                    removeBtn.Location = new Point(10, 110);
+                    removeBtn.Size = new Size(100, 30);
+                    int orderId = Convert.ToInt32(reader["Order_id"]);
+                    string productName = reader["P_Name"].ToString();
+
+                    // Store orderId and productName in the Tag
+                    removeBtn.Tag = new Tuple<int, string>(orderId, productName);
+                    removeBtn.Click += RemoveOrderItem_Click;
+
+                    card.Controls.Add(nameLabel);
+                    card.Controls.Add(quantityLabel);
+                    card.Controls.Add(priceLabel);
+                    card.Controls.Add(totalLabel);
+                    card.Controls.Add(removeBtn);
+
+                    flowLayoutPanelCartProducts.Controls.Add(card);
+                }
+
+                reader.Close();
+            }
+        }
+        private void RemoveOrderItem_Click(object sender, EventArgs e)
+        {
+            var btn = (Button)sender;
+            var tag = (Tuple<int, string>)btn.Tag;
+            int orderId = tag.Item1;
+            string productName = tag.Item2;
+
+            // Get product id from name (you can optimize this)
+            int productId = -1;
+            using (SqlConnection con = new SqlConnection(sql))
+            {
+                string getProductIdQuery = "SELECT Product_id FROM Product WHERE P_Name = @name";
+                using (SqlCommand cmd = new SqlCommand(getProductIdQuery, con))
+                {
+                    cmd.Parameters.AddWithValue("@name", productName);
+                    con.Open();
+                    object result = cmd.ExecuteScalar();
+                    if (result != null)
+                        productId = Convert.ToInt32(result);
+                }
+            }
+
+            if (productId == -1)
+            {
+                MessageBox.Show("Product not found.");
+                return;
+            }
+
+            using (SqlConnection con = new SqlConnection(sql))
+            {
+                string deleteQuery = "DELETE FROM OrderItem WHERE Order_id = @orderId AND Product_id = @productId";
+                using (SqlCommand cmd = new SqlCommand(deleteQuery, con))
+                {
+                    cmd.Parameters.AddWithValue("@orderId", orderId);
+                    cmd.Parameters.AddWithValue("@productId", productId);
+                    con.Open();
+                    int rows = cmd.ExecuteNonQuery();
+
+                    if (rows > 0)
+                    {
+                        MessageBox.Show("Item removed from order.");
+                        LoadOrder(); // Refresh the panel
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed to remove item.");
+                    }
+                }
+            }
+        }
+
+        private void flowLayoutPanelCartProducts_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
