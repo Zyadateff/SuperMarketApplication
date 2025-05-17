@@ -7,10 +7,13 @@ namespace SuperMarketDBAPP1
 {
     public partial class Dashboard : Form
     {
-        //static String sql = "Data Source=DESKTOP-V936GVE;Initial Catalog=SupermarketDatabase;Integrated Security=True;Encrypt=False;Trust Server Certificate=True";
-        static String sql = "Data Source=MARO25;Initial Catalog=SupermarketDatabase;Integrated Security=True;Encrypt=False;Trust Server Certificate=True";
+        static String sql = "Data Source=DESKTOP-V936GVE;Initial Catalog=SupermarketDatabase;Integrated Security=True;Encrypt=False;Trust Server Certificate=True";
+        //static String sql = "Data Source=MARO25;Initial Catalog=SupermarketDatabase;Integrated Security=True;Encrypt=False;Trust Server Certificate=True";
 
         private int _customerId;
+        private decimal _currentTotalPrice = 0;
+        private int? _selectedVoucherId = null;
+        private decimal _selectedVoucherAmount = 0;
 
         public Dashboard(int customerId)
 
@@ -141,42 +144,45 @@ namespace SuperMarketDBAPP1
 
         private int GetOrCreateCurrentOrderId(int customerId)
         {
-            int orderId = -1;
-
             using (SqlConnection con = new SqlConnection(sql))
             {
                 con.Open();
 
-                // Check if there's already a pending order
-                string checkQuery = "SELECT Order_id FROM [Order] WHERE Customer_id = @CustomerId AND Status = 'Pending'";
-                using (SqlCommand cmd = new SqlCommand(checkQuery, con))
+                // Check for existing pending order
+                string selectQuery = @"
+            SELECT Order_id FROM [Order]
+            WHERE Customer_id = @CustomerId AND Status = 'Pending'";
+
+                using (SqlCommand selectCmd = new SqlCommand(selectQuery, con))
                 {
-                    cmd.Parameters.AddWithValue("@CustomerId", customerId);
-                    var result = cmd.ExecuteScalar();
+                    selectCmd.Parameters.AddWithValue("@CustomerId", customerId);
+                    object result = selectCmd.ExecuteScalar();
+
                     if (result != null)
-                    {
-                        orderId = Convert.ToInt32(result);
-                    }
+                        return Convert.ToInt32(result);
                 }
 
-                // If no pending order, create one
-                if (orderId == -1)
+                // If no pending order, create a new one
+                string insertQuery = @"
+            INSERT INTO [Order] (Customer_id)
+            VALUES (@CustomerId);
+            SELECT SCOPE_IDENTITY();";
+
+                using (SqlCommand insertCmd = new SqlCommand(insertQuery, con))
                 {
-                    string insertQuery = "INSERT INTO [Order](Customer_id, Admin_id) OUTPUT INSERTED.Order_id VALUES (@CustomerId, NULL)";
-                    using (SqlCommand cmd = new SqlCommand(insertQuery, con))
-                    {
-                        cmd.Parameters.AddWithValue("@CustomerId", customerId);
-                        orderId = (int)cmd.ExecuteScalar();
-                    }
+                    insertCmd.Parameters.AddWithValue("@CustomerId", customerId);
+                    return Convert.ToInt32(insertCmd.ExecuteScalar());
                 }
             }
-
-            return orderId;
         }
 
         private void UpdateTotalPrice()
         {
             decimal total = 0;
+
+
+
+
 
             using (SqlConnection con = new SqlConnection(sql))
             {
@@ -198,7 +204,7 @@ namespace SuperMarketDBAPP1
                         total = Convert.ToDecimal(result);
                 }
             }
-
+            _currentTotalPrice = total;
             lblTotalPrice.Text = $"Total: ${total:F2}";
         }
 
@@ -317,7 +323,7 @@ namespace SuperMarketDBAPP1
                                         return;
                                     }
 
-                                    int orderId = GetOrCreateCurrentOrderId(_customerId); 
+                                    int orderId = GetOrCreateCurrentOrderId(_customerId);
 
                                     // Check if item already in cart
                                     string checkItemQuery = "SELECT Quantity FROM OrderItem WHERE Order_id = @OrderId AND Product_id = @ProductId";
@@ -448,6 +454,9 @@ namespace SuperMarketDBAPP1
             if (tabControl1.SelectedTab == tabPage3) // Assuming you have a tab for orders
             {
                 LoadOrder();
+                LoadCustomerVouchers();
+                UpdateTotalPrice(); // Update total price when switching to the order tab
+
             }
         }
 
@@ -481,7 +490,7 @@ namespace SuperMarketDBAPP1
         FROM [Order] O
         JOIN OrderItem OI ON O.Order_id = OI.Order_id
         JOIN Product P ON P.Product_id = OI.Product_id
-        WHERE O.Customer_id = @customerId";
+        WHERE O.Customer_id = @customerId AND  O.Status = 'Pending'";
 
             using (SqlConnection con = new SqlConnection(sql))
             using (SqlCommand cmd = new SqlCommand(query, con))
@@ -595,9 +604,162 @@ namespace SuperMarketDBAPP1
             }
         }
 
+
+        private void LoadCustomerVouchers()
+        {
+            flowLayoutPanelVouchers.Controls.Clear();
+
+            using (SqlConnection con = new SqlConnection(sql))
+            {
+                string query = @"SELECT VoucherId, VoucherCode, Amount, ExpiryDate 
+                         FROM Voucher 
+                         WHERE CustomerId = @CustomerId AND Status = 'Active'";
+
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@CustomerId", _customerId);
+                    con.Open();
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            int voucherId = Convert.ToInt32(reader["VoucherId"]);
+                            string voucherCode = reader["VoucherCode"].ToString();
+                            decimal amount = Convert.ToDecimal(reader["Amount"]);
+
+                            Panel voucherCard = new Panel
+                            {
+                                Size = new Size(200, 120),
+                                BorderStyle = BorderStyle.FixedSingle,
+                                Margin = new Padding(10)
+                            };
+
+                            Label codeLabel = new Label
+                            {
+                                Text = $"Code: {voucherCode}",
+                                Location = new Point(10, 10),
+                                AutoSize = true
+                            };
+
+                            Label amountLabel = new Label
+                            {
+                                Text = $"Amount: ${amount:F2}",
+                                Location = new Point(10, 35),
+                                AutoSize = true
+                            };
+
+                            Button applyBtn = new Button
+                            {
+                                Text = "Apply",
+                                Location = new Point(10, 70),
+                                Size = new Size(180, 30),
+                                BackColor = Color.SeaGreen,
+                                ForeColor = Color.White
+                            };
+
+                            applyBtn.Click += (s, ev) =>
+                            {
+                                _selectedVoucherId = voucherId;
+                                _selectedVoucherAmount = amount;
+                                decimal newTotal = Math.Max(0, _currentTotalPrice - amount);
+                                lblTotalPrice.Text = $"Total: ${newTotal:F2}";
+                                MessageBox.Show($"Voucher applied: -${amount:F2}");
+                            };
+
+                            voucherCard.Controls.Add(codeLabel);
+                            voucherCard.Controls.Add(amountLabel);
+                            voucherCard.Controls.Add(applyBtn);
+
+                            flowLayoutPanelVouchers.Controls.Add(voucherCard);
+                        }
+                    }
+                }
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
         private void flowLayoutPanelCartProducts_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void flowLayoutPanelVouchers_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        // buy button
+        private void button1_Click(object sender, EventArgs e)
+        {
+            int orderId = GetOrCreateCurrentOrderId(_customerId);
+
+            using (SqlConnection con = new SqlConnection(sql))
+            {
+                con.Open();
+
+                if (_selectedVoucherId != null)
+                {
+                    // Optional: Update order with voucher info (only if you added Voucher_id column)
+                    string applyVoucherQuery = @"
+                UPDATE [Order]
+                SET Voucher_id = @VoucherId
+                WHERE Order_id = @OrderId";
+
+                    using (SqlCommand cmd = new SqlCommand(applyVoucherQuery, con))
+                    {
+                        cmd.Parameters.AddWithValue("@VoucherId", _selectedVoucherId);
+                        cmd.Parameters.AddWithValue("@OrderId", orderId);
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    // Mark voucher as used
+                    string markVoucherUsedQuery = @"
+                UPDATE Voucher
+                SET Status = 'Used'
+                WHERE VoucherId = @VoucherId";
+
+                    using (SqlCommand cmd = new SqlCommand(markVoucherUsedQuery, con))
+                    {
+                        cmd.Parameters.AddWithValue("@VoucherId", _selectedVoucherId);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+
+                // Finalize the order
+                string finalizeQuery = @"
+            UPDATE [Order]
+            SET Status = 'Completed', Order_Date = @Now
+            WHERE Order_id = @OrderId";
+
+                using (SqlCommand cmd = new SqlCommand(finalizeQuery, con))
+                {
+                    cmd.Parameters.AddWithValue("@OrderId", orderId);
+                    cmd.Parameters.AddWithValue("@Now", DateTime.Now);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+
+            MessageBox.Show("Order completed!");
+
+            // Refresh UI
+            LoadCustomerVouchers();
+            LoadOrder();
+            _selectedVoucherId = null;
+            _selectedVoucherAmount = 0;
+
+            // Clear order display and reset total
+            flowLayoutPanelCartProducts.Controls.Clear();
+            lblTotalPrice.Text = "Total: $0.00";
         }
     }
 }

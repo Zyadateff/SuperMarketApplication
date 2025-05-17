@@ -29,20 +29,49 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminDashboard));
-            tabControl1 = new TabControl();
-            tabPage1 = new TabPage();
-            btnSave = new Button();
-            textBox5Address = new TextBox();
-            textBox4Phone = new TextBox();
-            textBox3Pass = new TextBox();
-            textBox2Email = new TextBox();
-            textBoxName = new TextBox();
-            label6 = new Label();
-            label5 = new Label();
-            label4 = new Label();
-            label3 = new Label();
-            label2 = new Label();
-            label1 = new Label();
+            tabPageOrders = new TabControl();
+            tabPageCustomers = new TabPage();
+            button1 = new Button();
+            btnResetCutomers = new Button();
+            btnInactive = new Button();
+            txtCIDDel = new TextBox();
+            label21 = new Label();
+            txtCName = new TextBox();
+            label20 = new Label();
+            dateTimePicker2 = new DateTimePicker();
+            label16 = new Label();
+            label18 = new Label();
+            txtVAmount = new TextBox();
+            label19 = new Label();
+            txtVCode = new TextBox();
+            btnAddV = new Button();
+            btnViewFreqCustomers = new Button();
+            btnAdd = new Button();
+            dgvCustomers = new DataGridView();
+            txtCAddress = new TextBox();
+            label17 = new Label();
+            txtCPhone = new TextBox();
+            label15 = new Label();
+            txtCPass = new TextBox();
+            label14 = new Label();
+            txtCEmail = new TextBox();
+            label13 = new Label();
+            btnDelete = new Button();
+            btnEdit = new Button();
+            txtCustomerID = new TextBox();
+            label12 = new Label();
+            tabPageCategories = new TabPage();
+            label35 = new Label();
+            txtCategoryID = new TextBox();
+            TxtCategoryDescription = new TextBox();
+            lblDesc = new Label();
+            txtCategoryName = new TextBox();
+            lblName = new Label();
+            btnDeleteC = new Button();
+            btnUpdateC = new Button();
+            btnAddC = new Button();
+            label31 = new Label();
+            dgvCategory = new DataGridView();
             tabPageProducts = new TabPage();
             btnProductPerCustomer = new Button();
             btnNotBought = new Button();
@@ -73,6 +102,20 @@
             txtPdesc = new TextBox();
             txtPname = new TextBox();
             dgvProducts = new DataGridView();
+            tabPageSuppliers = new TabPage();
+            txtSupplierAddress = new TextBox();
+            label37 = new Label();
+            label36 = new Label();
+            txtSupplierID = new TextBox();
+            txtSupplierPhone = new TextBox();
+            label32 = new Label();
+            txtSupplierName = new TextBox();
+            label33 = new Label();
+            btnDeleteS = new Button();
+            btnUpdateS = new Button();
+            btnAddS = new Button();
+            label34 = new Label();
+            dvgSuppliers = new DataGridView();
             tabPage3 = new TabPage();
             label30 = new Label();
             dataGridViewOrders = new DataGridView();
@@ -88,194 +131,529 @@
             txtCID = new TextBox();
             btnAddVoucher = new Button();
             dgvFreqCustomers = new DataGridView();
-            tabPage4 = new TabPage();
-            button1 = new Button();
-            btnResetCutomers = new Button();
-            btnInactive = new Button();
-            txtCIDDel = new TextBox();
-            label21 = new Label();
-            txtCName = new TextBox();
-            label20 = new Label();
-            dateTimePicker2 = new DateTimePicker();
-            label16 = new Label();
-            label18 = new Label();
-            txtVAmount = new TextBox();
-            label19 = new Label();
-            txtVCode = new TextBox();
-            btnAddV = new Button();
-            btnViewFreqCustomers = new Button();
-            btnAdd = new Button();
-            dgvCustomers = new DataGridView();
-            txtCAddress = new TextBox();
-            label17 = new Label();
-            txtCPhone = new TextBox();
-            label15 = new Label();
-            txtCPass = new TextBox();
-            label14 = new Label();
-            txtCEmail = new TextBox();
-            label13 = new Label();
-            btnDelete = new Button();
-            btnEdit = new Button();
-            txtCustomerID = new TextBox();
-            label12 = new Label();
-            tabControl1.SuspendLayout();
-            tabPage1.SuspendLayout();
+            tabPageaddcustomer = new TabPage();
+            btnSave = new Button();
+            textBox5Address = new TextBox();
+            textBox4Phone = new TextBox();
+            textBox3Pass = new TextBox();
+            textBox2Email = new TextBox();
+            textBoxName = new TextBox();
+            label6 = new Label();
+            label5 = new Label();
+            label4 = new Label();
+            label3 = new Label();
+            label2 = new Label();
+            label1 = new Label();
+            tabPageOrders.SuspendLayout();
+            tabPageCustomers.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvCustomers).BeginInit();
+            tabPageCategories.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvCategory).BeginInit();
             tabPageProducts.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvProducts).BeginInit();
+            tabPageSuppliers.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dvgSuppliers).BeginInit();
             tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewOrders).BeginInit();
             tabPagefreqCustomers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvFreqCustomers).BeginInit();
-            tabPage4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvCustomers).BeginInit();
+            tabPageaddcustomer.SuspendLayout();
             SuspendLayout();
             // 
-            // tabControl1
+            // tabPageOrders
             // 
-            tabControl1.Controls.Add(tabPage1);
-            tabControl1.Controls.Add(tabPageProducts);
-            tabControl1.Controls.Add(tabPage3);
-            tabControl1.Controls.Add(tabPagefreqCustomers);
-            tabControl1.Controls.Add(tabPage4);
-            tabControl1.Location = new Point(0, -3);
-            tabControl1.Name = "tabControl1";
-            tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(1258, 714);
-            tabControl1.TabIndex = 0;
-            tabControl1.SelectedIndexChanged += tabControl1_SelectedIndexChanged;
+            tabPageOrders.Controls.Add(tabPageCustomers);
+            tabPageOrders.Controls.Add(tabPageCategories);
+            tabPageOrders.Controls.Add(tabPageProducts);
+            tabPageOrders.Controls.Add(tabPageSuppliers);
+            tabPageOrders.Controls.Add(tabPage3);
+            tabPageOrders.Controls.Add(tabPagefreqCustomers);
+            tabPageOrders.Controls.Add(tabPageaddcustomer);
+            tabPageOrders.Location = new Point(0, -3);
+            tabPageOrders.Name = "tabPageOrders";
+            tabPageOrders.SelectedIndex = 0;
+            tabPageOrders.Size = new Size(1258, 714);
+            tabPageOrders.TabIndex = 0;
+            tabPageOrders.SelectedIndexChanged += tabControl1_SelectedIndexChanged;
             // 
-            // tabPage1
+            // tabPageCustomers
             // 
-            tabPage1.BackColor = Color.LightSeaGreen;
-            tabPage1.Controls.Add(btnSave);
-            tabPage1.Controls.Add(textBox5Address);
-            tabPage1.Controls.Add(textBox4Phone);
-            tabPage1.Controls.Add(textBox3Pass);
-            tabPage1.Controls.Add(textBox2Email);
-            tabPage1.Controls.Add(textBoxName);
-            tabPage1.Controls.Add(label6);
-            tabPage1.Controls.Add(label5);
-            tabPage1.Controls.Add(label4);
-            tabPage1.Controls.Add(label3);
-            tabPage1.Controls.Add(label2);
-            tabPage1.Controls.Add(label1);
-            tabPage1.ForeColor = Color.LightSlateGray;
-            tabPage1.Location = new Point(4, 39);
-            tabPage1.Name = "tabPage1";
-            tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(1250, 671);
-            tabPage1.TabIndex = 0;
-            tabPage1.Text = "Add Customer";
+            tabPageCustomers.BackColor = Color.LightSeaGreen;
+            tabPageCustomers.Controls.Add(button1);
+            tabPageCustomers.Controls.Add(btnResetCutomers);
+            tabPageCustomers.Controls.Add(btnInactive);
+            tabPageCustomers.Controls.Add(txtCIDDel);
+            tabPageCustomers.Controls.Add(label21);
+            tabPageCustomers.Controls.Add(txtCName);
+            tabPageCustomers.Controls.Add(label20);
+            tabPageCustomers.Controls.Add(dateTimePicker2);
+            tabPageCustomers.Controls.Add(label16);
+            tabPageCustomers.Controls.Add(label18);
+            tabPageCustomers.Controls.Add(txtVAmount);
+            tabPageCustomers.Controls.Add(label19);
+            tabPageCustomers.Controls.Add(txtVCode);
+            tabPageCustomers.Controls.Add(btnAddV);
+            tabPageCustomers.Controls.Add(btnViewFreqCustomers);
+            tabPageCustomers.Controls.Add(btnAdd);
+            tabPageCustomers.Controls.Add(dgvCustomers);
+            tabPageCustomers.Controls.Add(txtCAddress);
+            tabPageCustomers.Controls.Add(label17);
+            tabPageCustomers.Controls.Add(txtCPhone);
+            tabPageCustomers.Controls.Add(label15);
+            tabPageCustomers.Controls.Add(txtCPass);
+            tabPageCustomers.Controls.Add(label14);
+            tabPageCustomers.Controls.Add(txtCEmail);
+            tabPageCustomers.Controls.Add(label13);
+            tabPageCustomers.Controls.Add(btnDelete);
+            tabPageCustomers.Controls.Add(btnEdit);
+            tabPageCustomers.Controls.Add(txtCustomerID);
+            tabPageCustomers.Controls.Add(label12);
+            tabPageCustomers.Location = new Point(4, 39);
+            tabPageCustomers.Name = "tabPageCustomers";
+            tabPageCustomers.Padding = new Padding(3);
+            tabPageCustomers.Size = new Size(1250, 671);
+            tabPageCustomers.TabIndex = 4;
+            tabPageCustomers.Text = "Customers";
+            tabPageCustomers.Click += tabPage4_Click;
             // 
-            // btnSave
+            // button1
             // 
-            btnSave.BackColor = Color.LightSeaGreen;
-            btnSave.FlatStyle = FlatStyle.Flat;
-            btnSave.ForeColor = Color.White;
-            btnSave.Location = new Point(631, 425);
-            btnSave.Name = "btnSave";
-            btnSave.Size = new Size(117, 44);
-            btnSave.TabIndex = 12;
-            btnSave.Text = "Save";
-            btnSave.UseVisualStyleBackColor = false;
-            btnSave.Click += btnSave_Click;
+            button1.BackColor = Color.LightSeaGreen;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.ForeColor = Color.White;
+            button1.Location = new Point(481, 535);
+            button1.Name = "button1";
+            button1.Size = new Size(288, 43);
+            button1.TabIndex = 30;
+            button1.Text = "Top Selling Category";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
-            // textBox5Address
+            // btnResetCutomers
             // 
-            textBox5Address.Location = new Point(548, 357);
-            textBox5Address.Name = "textBox5Address";
-            textBox5Address.Size = new Size(302, 37);
-            textBox5Address.TabIndex = 11;
+            btnResetCutomers.BackColor = Color.LightSeaGreen;
+            btnResetCutomers.CausesValidation = false;
+            btnResetCutomers.ForeColor = Color.White;
+            btnResetCutomers.Location = new Point(431, 331);
+            btnResetCutomers.Name = "btnResetCutomers";
+            btnResetCutomers.Size = new Size(97, 43);
+            btnResetCutomers.TabIndex = 29;
+            btnResetCutomers.Text = "Reset";
+            btnResetCutomers.UseVisualStyleBackColor = false;
+            btnResetCutomers.Click += btnResetCutomers_Click;
             // 
-            // textBox4Phone
+            // btnInactive
             // 
-            textBox4Phone.Location = new Point(548, 310);
-            textBox4Phone.Name = "textBox4Phone";
-            textBox4Phone.Size = new Size(302, 37);
-            textBox4Phone.TabIndex = 10;
+            btnInactive.BackColor = Color.LightSeaGreen;
+            btnInactive.FlatStyle = FlatStyle.Flat;
+            btnInactive.ForeColor = Color.White;
+            btnInactive.Location = new Point(481, 596);
+            btnInactive.Name = "btnInactive";
+            btnInactive.Size = new Size(288, 43);
+            btnInactive.TabIndex = 28;
+            btnInactive.Text = "Inactive Over a Year";
+            btnInactive.UseVisualStyleBackColor = false;
+            btnInactive.Click += btnInactive_Click;
             // 
-            // textBox3Pass
+            // txtCIDDel
             // 
-            textBox3Pass.Location = new Point(548, 266);
-            textBox3Pass.Name = "textBox3Pass";
-            textBox3Pass.Size = new Size(302, 37);
-            textBox3Pass.TabIndex = 9;
+            txtCIDDel.Location = new Point(972, 330);
+            txtCIDDel.Name = "txtCIDDel";
+            txtCIDDel.Size = new Size(270, 37);
+            txtCIDDel.TabIndex = 27;
             // 
-            // textBox2Email
+            // label21
             // 
-            textBox2Email.Location = new Point(548, 218);
-            textBox2Email.Name = "textBox2Email";
-            textBox2Email.Size = new Size(302, 37);
-            textBox2Email.TabIndex = 8;
+            label21.AutoSize = true;
+            label21.ForeColor = Color.White;
+            label21.Location = new Point(781, 337);
+            label21.Name = "label21";
+            label21.Size = new Size(160, 30);
+            label21.TabIndex = 26;
+            label21.Text = "Customer ID";
             // 
-            // textBoxName
+            // txtCName
             // 
-            textBoxName.Location = new Point(548, 169);
-            textBoxName.Name = "textBoxName";
-            textBoxName.Size = new Size(302, 37);
-            textBoxName.TabIndex = 7;
+            txtCName.Location = new Point(972, 383);
+            txtCName.Name = "txtCName";
+            txtCName.Size = new Size(270, 37);
+            txtCName.TabIndex = 25;
             // 
-            // label6
+            // label20
             // 
-            label6.AutoSize = true;
-            label6.ForeColor = Color.White;
-            label6.Location = new Point(410, 357);
-            label6.Name = "label6";
-            label6.Size = new Size(105, 30);
-            label6.TabIndex = 5;
-            label6.Text = "Address";
+            label20.AutoSize = true;
+            label20.ForeColor = Color.White;
+            label20.Location = new Point(781, 383);
+            label20.Name = "label20";
+            label20.Size = new Size(87, 30);
+            label20.TabIndex = 24;
+            label20.Text = "Name";
             // 
-            // label5
+            // dateTimePicker2
             // 
-            label5.AutoSize = true;
-            label5.ForeColor = Color.White;
-            label5.Location = new Point(410, 310);
-            label5.Name = "label5";
-            label5.Size = new Size(89, 30);
-            label5.TabIndex = 4;
-            label5.Text = "Phone";
-            label5.Click += label5_Click;
+            dateTimePicker2.Location = new Point(199, 536);
+            dateTimePicker2.Name = "dateTimePicker2";
+            dateTimePicker2.Size = new Size(270, 37);
+            dateTimePicker2.TabIndex = 23;
             // 
-            // label4
+            // label16
             // 
-            label4.AutoSize = true;
-            label4.ForeColor = Color.White;
-            label4.Location = new Point(410, 266);
-            label4.Name = "label4";
-            label4.Size = new Size(122, 30);
-            label4.TabIndex = 3;
-            label4.Text = "Password";
+            label16.AutoSize = true;
+            label16.ForeColor = Color.White;
+            label16.Location = new Point(8, 551);
+            label16.Name = "label16";
+            label16.Size = new Size(145, 30);
+            label16.TabIndex = 22;
+            label16.Text = "Expiry Date";
             // 
-            // label3
+            // label18
             // 
-            label3.AutoSize = true;
-            label3.ForeColor = Color.White;
-            label3.Location = new Point(410, 218);
-            label3.Name = "label3";
-            label3.Size = new Size(78, 30);
-            label3.TabIndex = 2;
-            label3.Text = "Email";
+            label18.AutoSize = true;
+            label18.ForeColor = Color.White;
+            label18.Location = new Point(8, 504);
+            label18.Name = "label18";
+            label18.Size = new Size(108, 30);
+            label18.TabIndex = 21;
+            label18.Text = "Amount";
             // 
-            // label2
+            // txtVAmount
             // 
-            label2.AutoSize = true;
-            label2.ForeColor = Color.White;
-            label2.Location = new Point(410, 172);
-            label2.Name = "label2";
-            label2.Size = new Size(87, 30);
-            label2.TabIndex = 1;
-            label2.Text = "Name";
+            txtVAmount.Location = new Point(199, 493);
+            txtVAmount.Name = "txtVAmount";
+            txtVAmount.Size = new Size(270, 37);
+            txtVAmount.TabIndex = 20;
             // 
-            // label1
+            // label19
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Century Gothic", 16F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(448, 76);
-            label1.Name = "label1";
-            label1.Size = new Size(355, 39);
-            label1.TabIndex = 0;
-            label1.Text = "Add a New Customer";
+            label19.AutoSize = true;
+            label19.ForeColor = Color.White;
+            label19.Location = new Point(3, 461);
+            label19.Name = "label19";
+            label19.Size = new Size(190, 30);
+            label19.TabIndex = 19;
+            label19.Text = "Voucher Code";
+            // 
+            // txtVCode
+            // 
+            txtVCode.Location = new Point(199, 450);
+            txtVCode.Name = "txtVCode";
+            txtVCode.Size = new Size(270, 37);
+            txtVCode.TabIndex = 18;
+            // 
+            // btnAddV
+            // 
+            btnAddV.BackColor = Color.LightSeaGreen;
+            btnAddV.FlatStyle = FlatStyle.Flat;
+            btnAddV.ForeColor = Color.White;
+            btnAddV.Location = new Point(225, 596);
+            btnAddV.Name = "btnAddV";
+            btnAddV.Size = new Size(210, 43);
+            btnAddV.TabIndex = 17;
+            btnAddV.Text = "Add a Voucher";
+            btnAddV.UseVisualStyleBackColor = false;
+            btnAddV.Click += btnAddV_Click;
+            // 
+            // btnViewFreqCustomers
+            // 
+            btnViewFreqCustomers.BackColor = Color.LightSeaGreen;
+            btnViewFreqCustomers.FlatStyle = FlatStyle.Flat;
+            btnViewFreqCustomers.ForeColor = Color.White;
+            btnViewFreqCustomers.Location = new Point(8, 331);
+            btnViewFreqCustomers.Name = "btnViewFreqCustomers";
+            btnViewFreqCustomers.Size = new Size(405, 43);
+            btnViewFreqCustomers.TabIndex = 16;
+            btnViewFreqCustomers.Text = "Most Frequent Customers";
+            btnViewFreqCustomers.UseVisualStyleBackColor = false;
+            btnViewFreqCustomers.Click += btnViewFreqCustomers_Click;
+            // 
+            // btnAdd
+            // 
+            btnAdd.BackColor = Color.LightSeaGreen;
+            btnAdd.FlatAppearance.BorderSize = 0;
+            btnAdd.FlatStyle = FlatStyle.Flat;
+            btnAdd.ForeColor = Color.White;
+            btnAdd.Location = new Point(813, 605);
+            btnAdd.Name = "btnAdd";
+            btnAdd.Size = new Size(112, 34);
+            btnAdd.TabIndex = 15;
+            btnAdd.Text = "Add";
+            btnAdd.UseVisualStyleBackColor = false;
+            btnAdd.Click += btnAdd_Click;
+            // 
+            // dgvCustomers
+            // 
+            dgvCustomers.BackgroundColor = Color.White;
+            dgvCustomers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvCustomers.Location = new Point(-4, 0);
+            dgvCustomers.Name = "dgvCustomers";
+            dgvCustomers.RowHeadersWidth = 62;
+            dgvCustomers.Size = new Size(1254, 318);
+            dgvCustomers.TabIndex = 14;
+            dgvCustomers.CellContentClick += dgvCustomers_CellContentClick;
+            // 
+            // txtCAddress
+            // 
+            txtCAddress.Location = new Point(972, 556);
+            txtCAddress.Name = "txtCAddress";
+            txtCAddress.Size = new Size(270, 37);
+            txtCAddress.TabIndex = 13;
+            // 
+            // label17
+            // 
+            label17.AutoSize = true;
+            label17.ForeColor = Color.White;
+            label17.Location = new Point(781, 556);
+            label17.Name = "label17";
+            label17.Size = new Size(105, 30);
+            label17.TabIndex = 12;
+            label17.Text = "Address";
+            // 
+            // txtCPhone
+            // 
+            txtCPhone.Location = new Point(972, 513);
+            txtCPhone.Name = "txtCPhone";
+            txtCPhone.Size = new Size(270, 37);
+            txtCPhone.TabIndex = 9;
+            // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.ForeColor = Color.White;
+            label15.Location = new Point(781, 513);
+            label15.Name = "label15";
+            label15.Size = new Size(89, 30);
+            label15.TabIndex = 8;
+            label15.Text = "Phone";
+            // 
+            // txtCPass
+            // 
+            txtCPass.Location = new Point(972, 469);
+            txtCPass.Name = "txtCPass";
+            txtCPass.Size = new Size(270, 37);
+            txtCPass.TabIndex = 7;
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.ForeColor = Color.White;
+            label14.Location = new Point(781, 473);
+            label14.Name = "label14";
+            label14.Size = new Size(122, 30);
+            label14.TabIndex = 6;
+            label14.Text = "Password";
+            // 
+            // txtCEmail
+            // 
+            txtCEmail.Location = new Point(972, 426);
+            txtCEmail.Name = "txtCEmail";
+            txtCEmail.Size = new Size(270, 37);
+            txtCEmail.TabIndex = 5;
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.ForeColor = Color.White;
+            label13.Location = new Point(781, 430);
+            label13.Name = "label13";
+            label13.Size = new Size(78, 30);
+            label13.TabIndex = 4;
+            label13.Text = "Email";
+            // 
+            // btnDelete
+            // 
+            btnDelete.BackColor = Color.LightSeaGreen;
+            btnDelete.FlatAppearance.BorderSize = 0;
+            btnDelete.FlatStyle = FlatStyle.Flat;
+            btnDelete.ForeColor = Color.White;
+            btnDelete.Location = new Point(1125, 605);
+            btnDelete.Name = "btnDelete";
+            btnDelete.Size = new Size(112, 34);
+            btnDelete.TabIndex = 3;
+            btnDelete.Text = "Delete";
+            btnDelete.UseVisualStyleBackColor = false;
+            btnDelete.Click += btnDelete_Click;
+            // 
+            // btnEdit
+            // 
+            btnEdit.BackColor = Color.LightSeaGreen;
+            btnEdit.FlatAppearance.BorderSize = 0;
+            btnEdit.FlatStyle = FlatStyle.Flat;
+            btnEdit.ForeColor = Color.White;
+            btnEdit.Location = new Point(962, 605);
+            btnEdit.Name = "btnEdit";
+            btnEdit.Size = new Size(112, 34);
+            btnEdit.TabIndex = 2;
+            btnEdit.Text = "Edit";
+            btnEdit.UseVisualStyleBackColor = false;
+            btnEdit.Click += btnEdit_Click;
+            // 
+            // txtCustomerID
+            // 
+            txtCustomerID.Location = new Point(199, 407);
+            txtCustomerID.Name = "txtCustomerID";
+            txtCustomerID.Size = new Size(270, 37);
+            txtCustomerID.TabIndex = 1;
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.ForeColor = Color.White;
+            label12.Location = new Point(6, 414);
+            label12.Name = "label12";
+            label12.Size = new Size(160, 30);
+            label12.TabIndex = 0;
+            label12.Text = "Customer ID";
+            // 
+            // tabPageCategories
+            // 
+            tabPageCategories.BackColor = Color.LightSeaGreen;
+            tabPageCategories.Controls.Add(label35);
+            tabPageCategories.Controls.Add(txtCategoryID);
+            tabPageCategories.Controls.Add(TxtCategoryDescription);
+            tabPageCategories.Controls.Add(lblDesc);
+            tabPageCategories.Controls.Add(txtCategoryName);
+            tabPageCategories.Controls.Add(lblName);
+            tabPageCategories.Controls.Add(btnDeleteC);
+            tabPageCategories.Controls.Add(btnUpdateC);
+            tabPageCategories.Controls.Add(btnAddC);
+            tabPageCategories.Controls.Add(label31);
+            tabPageCategories.Controls.Add(dgvCategory);
+            tabPageCategories.Location = new Point(4, 39);
+            tabPageCategories.Name = "tabPageCategories";
+            tabPageCategories.Padding = new Padding(3);
+            tabPageCategories.Size = new Size(1250, 671);
+            tabPageCategories.TabIndex = 5;
+            tabPageCategories.Text = "Categories";
+            // 
+            // label35
+            // 
+            label35.AutoSize = true;
+            label35.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label35.ForeColor = Color.White;
+            label35.Location = new Point(80, 406);
+            label35.Margin = new Padding(2, 0, 2, 0);
+            label35.Name = "label35";
+            label35.Size = new Size(36, 28);
+            label35.TabIndex = 22;
+            label35.Text = "ID";
+            // 
+            // txtCategoryID
+            // 
+            txtCategoryID.Location = new Point(147, 406);
+            txtCategoryID.Margin = new Padding(2);
+            txtCategoryID.Name = "txtCategoryID";
+            txtCategoryID.Size = new Size(226, 37);
+            txtCategoryID.TabIndex = 21;
+            // 
+            // TxtCategoryDescription
+            // 
+            TxtCategoryDescription.Location = new Point(189, 152);
+            TxtCategoryDescription.Margin = new Padding(2);
+            TxtCategoryDescription.Name = "TxtCategoryDescription";
+            TxtCategoryDescription.Size = new Size(226, 37);
+            TxtCategoryDescription.TabIndex = 20;
+            // 
+            // lblDesc
+            // 
+            lblDesc.AutoSize = true;
+            lblDesc.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblDesc.ForeColor = Color.White;
+            lblDesc.Location = new Point(20, 161);
+            lblDesc.Margin = new Padding(2, 0, 2, 0);
+            lblDesc.Name = "lblDesc";
+            lblDesc.Size = new Size(142, 28);
+            lblDesc.TabIndex = 19;
+            lblDesc.Text = "Description";
+            // 
+            // txtCategoryName
+            // 
+            txtCategoryName.Location = new Point(189, 85);
+            txtCategoryName.Margin = new Padding(2);
+            txtCategoryName.Name = "txtCategoryName";
+            txtCategoryName.Size = new Size(226, 37);
+            txtCategoryName.TabIndex = 18;
+            // 
+            // lblName
+            // 
+            lblName.AutoSize = true;
+            lblName.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblName.ForeColor = Color.White;
+            lblName.Location = new Point(67, 90);
+            lblName.Margin = new Padding(2, 0, 2, 0);
+            lblName.Name = "lblName";
+            lblName.Size = new Size(84, 28);
+            lblName.TabIndex = 17;
+            lblName.Text = "Name";
+            // 
+            // btnDeleteC
+            // 
+            btnDeleteC.BackColor = Color.White;
+            btnDeleteC.FlatAppearance.BorderSize = 0;
+            btnDeleteC.FlatStyle = FlatStyle.Flat;
+            btnDeleteC.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnDeleteC.ForeColor = Color.LightSeaGreen;
+            btnDeleteC.Location = new Point(178, 486);
+            btnDeleteC.Margin = new Padding(2);
+            btnDeleteC.Name = "btnDeleteC";
+            btnDeleteC.Size = new Size(112, 40);
+            btnDeleteC.TabIndex = 16;
+            btnDeleteC.Text = "Delete";
+            btnDeleteC.UseVisualStyleBackColor = false;
+            btnDeleteC.Click += btnDeleteC_Click;
+            // 
+            // btnUpdateC
+            // 
+            btnUpdateC.BackColor = Color.White;
+            btnUpdateC.FlatAppearance.BorderSize = 0;
+            btnUpdateC.FlatStyle = FlatStyle.Flat;
+            btnUpdateC.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnUpdateC.ForeColor = Color.LightSeaGreen;
+            btnUpdateC.Location = new Point(261, 232);
+            btnUpdateC.Margin = new Padding(2);
+            btnUpdateC.Name = "btnUpdateC";
+            btnUpdateC.Size = new Size(112, 40);
+            btnUpdateC.TabIndex = 15;
+            btnUpdateC.Text = "Update";
+            btnUpdateC.UseVisualStyleBackColor = false;
+            btnUpdateC.Click += btnUpdateC_Click;
+            // 
+            // btnAddC
+            // 
+            btnAddC.BackColor = Color.White;
+            btnAddC.FlatAppearance.BorderSize = 0;
+            btnAddC.FlatStyle = FlatStyle.Flat;
+            btnAddC.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnAddC.ForeColor = Color.LightSeaGreen;
+            btnAddC.Location = new Point(115, 232);
+            btnAddC.Margin = new Padding(2);
+            btnAddC.Name = "btnAddC";
+            btnAddC.Size = new Size(112, 40);
+            btnAddC.TabIndex = 14;
+            btnAddC.Text = "Add";
+            btnAddC.UseVisualStyleBackColor = false;
+            btnAddC.Click += btnAddC_Click;
+            // 
+            // label31
+            // 
+            label31.AutoSize = true;
+            label31.Font = new Font("Century Gothic", 16F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label31.ForeColor = Color.White;
+            label31.Location = new Point(483, 3);
+            label31.Name = "label31";
+            label31.Size = new Size(326, 38);
+            label31.TabIndex = 1;
+            label31.Text = "Manage Categories";
+            // 
+            // dgvCategory
+            // 
+            dgvCategory.BackgroundColor = Color.White;
+            dgvCategory.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvCategory.Location = new Point(438, 61);
+            dgvCategory.Name = "dgvCategory";
+            dgvCategory.RowHeadersWidth = 62;
+            dgvCategory.Size = new Size(804, 554);
+            dgvCategory.TabIndex = 0;
+            dgvCategory.CellContentClick += dgvCategory_CellContentClick;
             // 
             // tabPageProducts
             // 
@@ -309,10 +687,10 @@
             tabPageProducts.Controls.Add(txtPdesc);
             tabPageProducts.Controls.Add(txtPname);
             tabPageProducts.Controls.Add(dgvProducts);
-            tabPageProducts.Location = new Point(4, 34);
+            tabPageProducts.Location = new Point(4, 39);
             tabPageProducts.Name = "tabPageProducts";
             tabPageProducts.Padding = new Padding(3);
-            tabPageProducts.Size = new Size(1250, 676);
+            tabPageProducts.Size = new Size(1250, 671);
             tabPageProducts.TabIndex = 1;
             tabPageProducts.Text = "Products";
             // 
@@ -613,6 +991,179 @@
             dgvProducts.TabIndex = 0;
             dgvProducts.CellContentClick += dgvProducts_CellContentClick;
             // 
+            // tabPageSuppliers
+            // 
+            tabPageSuppliers.BackColor = Color.LightSeaGreen;
+            tabPageSuppliers.Controls.Add(txtSupplierAddress);
+            tabPageSuppliers.Controls.Add(label37);
+            tabPageSuppliers.Controls.Add(label36);
+            tabPageSuppliers.Controls.Add(txtSupplierID);
+            tabPageSuppliers.Controls.Add(txtSupplierPhone);
+            tabPageSuppliers.Controls.Add(label32);
+            tabPageSuppliers.Controls.Add(txtSupplierName);
+            tabPageSuppliers.Controls.Add(label33);
+            tabPageSuppliers.Controls.Add(btnDeleteS);
+            tabPageSuppliers.Controls.Add(btnUpdateS);
+            tabPageSuppliers.Controls.Add(btnAddS);
+            tabPageSuppliers.Controls.Add(label34);
+            tabPageSuppliers.Controls.Add(dvgSuppliers);
+            tabPageSuppliers.Location = new Point(4, 34);
+            tabPageSuppliers.Name = "tabPageSuppliers";
+            tabPageSuppliers.Padding = new Padding(3);
+            tabPageSuppliers.Size = new Size(1250, 676);
+            tabPageSuppliers.TabIndex = 6;
+            tabPageSuppliers.Text = "Suppliers";
+            // 
+            // txtSupplierAddress
+            // 
+            txtSupplierAddress.Location = new Point(153, 140);
+            txtSupplierAddress.Margin = new Padding(2);
+            txtSupplierAddress.Name = "txtSupplierAddress";
+            txtSupplierAddress.Size = new Size(226, 37);
+            txtSupplierAddress.TabIndex = 33;
+            // 
+            // label37
+            // 
+            label37.AutoSize = true;
+            label37.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label37.ForeColor = Color.White;
+            label37.Location = new Point(31, 145);
+            label37.Margin = new Padding(2, 0, 2, 0);
+            label37.Name = "label37";
+            label37.Size = new Size(107, 28);
+            label37.TabIndex = 32;
+            label37.Text = "Address";
+            // 
+            // label36
+            // 
+            label36.AutoSize = true;
+            label36.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label36.ForeColor = Color.White;
+            label36.Location = new Point(27, 413);
+            label36.Margin = new Padding(2, 0, 2, 0);
+            label36.Name = "label36";
+            label36.Size = new Size(36, 28);
+            label36.TabIndex = 31;
+            label36.Text = "ID";
+            // 
+            // txtSupplierID
+            // 
+            txtSupplierID.Location = new Point(92, 408);
+            txtSupplierID.Margin = new Padding(2);
+            txtSupplierID.Name = "txtSupplierID";
+            txtSupplierID.Size = new Size(226, 37);
+            txtSupplierID.TabIndex = 30;
+            // 
+            // txtSupplierPhone
+            // 
+            txtSupplierPhone.Location = new Point(153, 201);
+            txtSupplierPhone.Margin = new Padding(2);
+            txtSupplierPhone.Name = "txtSupplierPhone";
+            txtSupplierPhone.Size = new Size(226, 37);
+            txtSupplierPhone.TabIndex = 29;
+            // 
+            // label32
+            // 
+            label32.AutoSize = true;
+            label32.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label32.ForeColor = Color.White;
+            label32.Location = new Point(46, 201);
+            label32.Margin = new Padding(2, 0, 2, 0);
+            label32.Name = "label32";
+            label32.Size = new Size(83, 28);
+            label32.TabIndex = 28;
+            label32.Text = "Phone";
+            // 
+            // txtSupplierName
+            // 
+            txtSupplierName.Location = new Point(153, 83);
+            txtSupplierName.Margin = new Padding(2);
+            txtSupplierName.Name = "txtSupplierName";
+            txtSupplierName.Size = new Size(226, 37);
+            txtSupplierName.TabIndex = 27;
+            // 
+            // label33
+            // 
+            label33.AutoSize = true;
+            label33.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label33.ForeColor = Color.White;
+            label33.Location = new Point(45, 83);
+            label33.Margin = new Padding(2, 0, 2, 0);
+            label33.Name = "label33";
+            label33.Size = new Size(84, 28);
+            label33.TabIndex = 26;
+            label33.Text = "Name";
+            label33.Click += label33_Click;
+            // 
+            // btnDeleteS
+            // 
+            btnDeleteS.BackColor = Color.White;
+            btnDeleteS.FlatAppearance.BorderSize = 0;
+            btnDeleteS.FlatStyle = FlatStyle.Flat;
+            btnDeleteS.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnDeleteS.ForeColor = Color.LightSeaGreen;
+            btnDeleteS.Location = new Point(131, 486);
+            btnDeleteS.Margin = new Padding(2);
+            btnDeleteS.Name = "btnDeleteS";
+            btnDeleteS.Size = new Size(112, 40);
+            btnDeleteS.TabIndex = 25;
+            btnDeleteS.Text = "Delete";
+            btnDeleteS.UseVisualStyleBackColor = false;
+            btnDeleteS.Click += btnDeleteS_Click;
+            // 
+            // btnUpdateS
+            // 
+            btnUpdateS.BackColor = Color.White;
+            btnUpdateS.FlatAppearance.BorderSize = 0;
+            btnUpdateS.FlatStyle = FlatStyle.Flat;
+            btnUpdateS.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnUpdateS.ForeColor = Color.LightSeaGreen;
+            btnUpdateS.Location = new Point(215, 292);
+            btnUpdateS.Margin = new Padding(2);
+            btnUpdateS.Name = "btnUpdateS";
+            btnUpdateS.Size = new Size(112, 40);
+            btnUpdateS.TabIndex = 24;
+            btnUpdateS.Text = "Update";
+            btnUpdateS.UseVisualStyleBackColor = false;
+            btnUpdateS.Click += btnUpdateS_Click;
+            // 
+            // btnAddS
+            // 
+            btnAddS.BackColor = Color.White;
+            btnAddS.FlatAppearance.BorderSize = 0;
+            btnAddS.FlatStyle = FlatStyle.Flat;
+            btnAddS.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnAddS.ForeColor = Color.LightSeaGreen;
+            btnAddS.Location = new Point(65, 292);
+            btnAddS.Margin = new Padding(2);
+            btnAddS.Name = "btnAddS";
+            btnAddS.Size = new Size(112, 40);
+            btnAddS.TabIndex = 23;
+            btnAddS.Text = "Add";
+            btnAddS.UseVisualStyleBackColor = false;
+            btnAddS.Click += btnAddS_Click;
+            // 
+            // label34
+            // 
+            label34.AutoSize = true;
+            label34.Font = new Font("Century Gothic", 16F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label34.ForeColor = Color.White;
+            label34.Location = new Point(482, 3);
+            label34.Name = "label34";
+            label34.Size = new Size(295, 38);
+            label34.TabIndex = 22;
+            label34.Text = "Manage Suppliers";
+            // 
+            // dvgSuppliers
+            // 
+            dvgSuppliers.BackgroundColor = Color.White;
+            dvgSuppliers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dvgSuppliers.Location = new Point(398, 66);
+            dvgSuppliers.Name = "dvgSuppliers";
+            dvgSuppliers.RowHeadersWidth = 62;
+            dvgSuppliers.Size = new Size(837, 560);
+            dvgSuppliers.TabIndex = 21;
+            // 
             // tabPage3
             // 
             tabPage3.BackColor = Color.LightSeaGreen;
@@ -771,333 +1322,139 @@
             dgvFreqCustomers.TabIndex = 0;
             dgvFreqCustomers.CellContentClick += dgvFreqCustomers_CellContentClick;
             // 
-            // tabPage4
+            // tabPageaddcustomer
             // 
-            tabPage4.BackColor = Color.LightSeaGreen;
-            tabPage4.Controls.Add(button1);
-            tabPage4.Controls.Add(btnResetCutomers);
-            tabPage4.Controls.Add(btnInactive);
-            tabPage4.Controls.Add(txtCIDDel);
-            tabPage4.Controls.Add(label21);
-            tabPage4.Controls.Add(txtCName);
-            tabPage4.Controls.Add(label20);
-            tabPage4.Controls.Add(dateTimePicker2);
-            tabPage4.Controls.Add(label16);
-            tabPage4.Controls.Add(label18);
-            tabPage4.Controls.Add(txtVAmount);
-            tabPage4.Controls.Add(label19);
-            tabPage4.Controls.Add(txtVCode);
-            tabPage4.Controls.Add(btnAddV);
-            tabPage4.Controls.Add(btnViewFreqCustomers);
-            tabPage4.Controls.Add(btnAdd);
-            tabPage4.Controls.Add(dgvCustomers);
-            tabPage4.Controls.Add(txtCAddress);
-            tabPage4.Controls.Add(label17);
-            tabPage4.Controls.Add(txtCPhone);
-            tabPage4.Controls.Add(label15);
-            tabPage4.Controls.Add(txtCPass);
-            tabPage4.Controls.Add(label14);
-            tabPage4.Controls.Add(txtCEmail);
-            tabPage4.Controls.Add(label13);
-            tabPage4.Controls.Add(btnDelete);
-            tabPage4.Controls.Add(btnEdit);
-            tabPage4.Controls.Add(txtCustomerID);
-            tabPage4.Controls.Add(label12);
-            tabPage4.Location = new Point(4, 34);
-            tabPage4.Name = "tabPage4";
-            tabPage4.Padding = new Padding(3);
-            tabPage4.Size = new Size(1250, 676);
-            tabPage4.TabIndex = 4;
-            tabPage4.Text = "Customers";
-            tabPage4.Click += tabPage4_Click;
+            tabPageaddcustomer.BackColor = Color.LightSeaGreen;
+            tabPageaddcustomer.Controls.Add(btnSave);
+            tabPageaddcustomer.Controls.Add(textBox5Address);
+            tabPageaddcustomer.Controls.Add(textBox4Phone);
+            tabPageaddcustomer.Controls.Add(textBox3Pass);
+            tabPageaddcustomer.Controls.Add(textBox2Email);
+            tabPageaddcustomer.Controls.Add(textBoxName);
+            tabPageaddcustomer.Controls.Add(label6);
+            tabPageaddcustomer.Controls.Add(label5);
+            tabPageaddcustomer.Controls.Add(label4);
+            tabPageaddcustomer.Controls.Add(label3);
+            tabPageaddcustomer.Controls.Add(label2);
+            tabPageaddcustomer.Controls.Add(label1);
+            tabPageaddcustomer.ForeColor = Color.LightSlateGray;
+            tabPageaddcustomer.Location = new Point(4, 39);
+            tabPageaddcustomer.Name = "tabPageaddcustomer";
+            tabPageaddcustomer.Padding = new Padding(3);
+            tabPageaddcustomer.Size = new Size(1250, 671);
+            tabPageaddcustomer.TabIndex = 0;
+            tabPageaddcustomer.Text = "Add Customer";
+            tabPageaddcustomer.Click += tabPage1_Click;
             // 
-            // button1
+            // btnSave
             // 
-            button1.BackColor = Color.LightSeaGreen;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.ForeColor = Color.White;
-            button1.Location = new Point(481, 535);
-            button1.Name = "button1";
-            button1.Size = new Size(288, 43);
-            button1.TabIndex = 30;
-            button1.Text = "Top Selling Category";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
+            btnSave.BackColor = Color.LightSeaGreen;
+            btnSave.FlatStyle = FlatStyle.Flat;
+            btnSave.ForeColor = Color.White;
+            btnSave.Location = new Point(631, 425);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(117, 44);
+            btnSave.TabIndex = 12;
+            btnSave.Text = "Save";
+            btnSave.UseVisualStyleBackColor = false;
+            btnSave.Click += btnSave_Click;
             // 
-            // btnResetCutomers
+            // textBox5Address
             // 
-            btnResetCutomers.BackColor = Color.LightSeaGreen;
-            btnResetCutomers.CausesValidation = false;
-            btnResetCutomers.ForeColor = Color.White;
-            btnResetCutomers.Location = new Point(431, 331);
-            btnResetCutomers.Name = "btnResetCutomers";
-            btnResetCutomers.Size = new Size(97, 43);
-            btnResetCutomers.TabIndex = 29;
-            btnResetCutomers.Text = "Reset";
-            btnResetCutomers.UseVisualStyleBackColor = false;
-            btnResetCutomers.Click += btnResetCutomers_Click;
+            textBox5Address.Location = new Point(548, 357);
+            textBox5Address.Name = "textBox5Address";
+            textBox5Address.Size = new Size(302, 37);
+            textBox5Address.TabIndex = 11;
             // 
-            // btnInactive
+            // textBox4Phone
             // 
-            btnInactive.BackColor = Color.LightSeaGreen;
-            btnInactive.FlatStyle = FlatStyle.Flat;
-            btnInactive.ForeColor = Color.White;
-            btnInactive.Location = new Point(481, 596);
-            btnInactive.Name = "btnInactive";
-            btnInactive.Size = new Size(288, 43);
-            btnInactive.TabIndex = 28;
-            btnInactive.Text = "Inactive Over a Year";
-            btnInactive.UseVisualStyleBackColor = false;
-            btnInactive.Click += btnInactive_Click;
+            textBox4Phone.Location = new Point(548, 310);
+            textBox4Phone.Name = "textBox4Phone";
+            textBox4Phone.Size = new Size(302, 37);
+            textBox4Phone.TabIndex = 10;
             // 
-            // txtCIDDel
+            // textBox3Pass
             // 
-            txtCIDDel.Location = new Point(972, 330);
-            txtCIDDel.Name = "txtCIDDel";
-            txtCIDDel.Size = new Size(270, 37);
-            txtCIDDel.TabIndex = 27;
+            textBox3Pass.Location = new Point(548, 266);
+            textBox3Pass.Name = "textBox3Pass";
+            textBox3Pass.Size = new Size(302, 37);
+            textBox3Pass.TabIndex = 9;
             // 
-            // label21
+            // textBox2Email
             // 
-            label21.AutoSize = true;
-            label21.ForeColor = Color.White;
-            label21.Location = new Point(781, 337);
-            label21.Name = "label21";
-            label21.Size = new Size(160, 30);
-            label21.TabIndex = 26;
-            label21.Text = "Customer ID";
+            textBox2Email.Location = new Point(548, 218);
+            textBox2Email.Name = "textBox2Email";
+            textBox2Email.Size = new Size(302, 37);
+            textBox2Email.TabIndex = 8;
             // 
-            // txtCName
+            // textBoxName
             // 
-            txtCName.Location = new Point(972, 383);
-            txtCName.Name = "txtCName";
-            txtCName.Size = new Size(270, 37);
-            txtCName.TabIndex = 25;
+            textBoxName.Location = new Point(548, 169);
+            textBoxName.Name = "textBoxName";
+            textBoxName.Size = new Size(302, 37);
+            textBoxName.TabIndex = 7;
             // 
-            // label20
+            // label6
             // 
-            label20.AutoSize = true;
-            label20.ForeColor = Color.White;
-            label20.Location = new Point(781, 383);
-            label20.Name = "label20";
-            label20.Size = new Size(87, 30);
-            label20.TabIndex = 24;
-            label20.Text = "Name";
+            label6.AutoSize = true;
+            label6.ForeColor = Color.White;
+            label6.Location = new Point(410, 357);
+            label6.Name = "label6";
+            label6.Size = new Size(105, 30);
+            label6.TabIndex = 5;
+            label6.Text = "Address";
             // 
-            // dateTimePicker2
+            // label5
             // 
-            dateTimePicker2.Location = new Point(199, 536);
-            dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new Size(270, 37);
-            dateTimePicker2.TabIndex = 23;
+            label5.AutoSize = true;
+            label5.ForeColor = Color.White;
+            label5.Location = new Point(410, 310);
+            label5.Name = "label5";
+            label5.Size = new Size(89, 30);
+            label5.TabIndex = 4;
+            label5.Text = "Phone";
+            label5.Click += label5_Click;
             // 
-            // label16
+            // label4
             // 
-            label16.AutoSize = true;
-            label16.ForeColor = Color.White;
-            label16.Location = new Point(8, 551);
-            label16.Name = "label16";
-            label16.Size = new Size(145, 30);
-            label16.TabIndex = 22;
-            label16.Text = "Expiry Date";
+            label4.AutoSize = true;
+            label4.ForeColor = Color.White;
+            label4.Location = new Point(410, 266);
+            label4.Name = "label4";
+            label4.Size = new Size(122, 30);
+            label4.TabIndex = 3;
+            label4.Text = "Password";
             // 
-            // label18
+            // label3
             // 
-            label18.AutoSize = true;
-            label18.ForeColor = Color.White;
-            label18.Location = new Point(8, 504);
-            label18.Name = "label18";
-            label18.Size = new Size(108, 30);
-            label18.TabIndex = 21;
-            label18.Text = "Amount";
+            label3.AutoSize = true;
+            label3.ForeColor = Color.White;
+            label3.Location = new Point(410, 218);
+            label3.Name = "label3";
+            label3.Size = new Size(78, 30);
+            label3.TabIndex = 2;
+            label3.Text = "Email";
             // 
-            // txtVAmount
+            // label2
             // 
-            txtVAmount.Location = new Point(199, 493);
-            txtVAmount.Name = "txtVAmount";
-            txtVAmount.Size = new Size(270, 37);
-            txtVAmount.TabIndex = 20;
+            label2.AutoSize = true;
+            label2.ForeColor = Color.White;
+            label2.Location = new Point(410, 172);
+            label2.Name = "label2";
+            label2.Size = new Size(87, 30);
+            label2.TabIndex = 1;
+            label2.Text = "Name";
             // 
-            // label19
+            // label1
             // 
-            label19.AutoSize = true;
-            label19.ForeColor = Color.White;
-            label19.Location = new Point(3, 461);
-            label19.Name = "label19";
-            label19.Size = new Size(190, 30);
-            label19.TabIndex = 19;
-            label19.Text = "Voucher Code";
-            // 
-            // txtVCode
-            // 
-            txtVCode.Location = new Point(199, 450);
-            txtVCode.Name = "txtVCode";
-            txtVCode.Size = new Size(270, 37);
-            txtVCode.TabIndex = 18;
-            // 
-            // btnAddV
-            // 
-            btnAddV.BackColor = Color.LightSeaGreen;
-            btnAddV.FlatStyle = FlatStyle.Flat;
-            btnAddV.ForeColor = Color.White;
-            btnAddV.Location = new Point(225, 596);
-            btnAddV.Name = "btnAddV";
-            btnAddV.Size = new Size(210, 43);
-            btnAddV.TabIndex = 17;
-            btnAddV.Text = "Add a Voucher";
-            btnAddV.UseVisualStyleBackColor = false;
-            btnAddV.Click += btnAddV_Click;
-            // 
-            // btnViewFreqCustomers
-            // 
-            btnViewFreqCustomers.BackColor = Color.LightSeaGreen;
-            btnViewFreqCustomers.FlatStyle = FlatStyle.Flat;
-            btnViewFreqCustomers.ForeColor = Color.White;
-            btnViewFreqCustomers.Location = new Point(8, 331);
-            btnViewFreqCustomers.Name = "btnViewFreqCustomers";
-            btnViewFreqCustomers.Size = new Size(405, 43);
-            btnViewFreqCustomers.TabIndex = 16;
-            btnViewFreqCustomers.Text = "Most Frequent Customers";
-            btnViewFreqCustomers.UseVisualStyleBackColor = false;
-            btnViewFreqCustomers.Click += btnViewFreqCustomers_Click;
-            // 
-            // btnAdd
-            // 
-            btnAdd.BackColor = Color.LightSeaGreen;
-            btnAdd.FlatAppearance.BorderSize = 0;
-            btnAdd.FlatStyle = FlatStyle.Flat;
-            btnAdd.ForeColor = Color.White;
-            btnAdd.Location = new Point(813, 605);
-            btnAdd.Name = "btnAdd";
-            btnAdd.Size = new Size(112, 34);
-            btnAdd.TabIndex = 15;
-            btnAdd.Text = "Add";
-            btnAdd.UseVisualStyleBackColor = false;
-            btnAdd.Click += btnAdd_Click;
-            // 
-            // dgvCustomers
-            // 
-            dgvCustomers.BackgroundColor = Color.White;
-            dgvCustomers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvCustomers.Location = new Point(-4, 0);
-            dgvCustomers.Name = "dgvCustomers";
-            dgvCustomers.RowHeadersWidth = 62;
-            dgvCustomers.Size = new Size(1254, 318);
-            dgvCustomers.TabIndex = 14;
-            dgvCustomers.CellContentClick += dgvCustomers_CellContentClick;
-            // 
-            // txtCAddress
-            // 
-            txtCAddress.Location = new Point(972, 556);
-            txtCAddress.Name = "txtCAddress";
-            txtCAddress.Size = new Size(270, 37);
-            txtCAddress.TabIndex = 13;
-            // 
-            // label17
-            // 
-            label17.AutoSize = true;
-            label17.ForeColor = Color.White;
-            label17.Location = new Point(781, 556);
-            label17.Name = "label17";
-            label17.Size = new Size(105, 30);
-            label17.TabIndex = 12;
-            label17.Text = "Address";
-            // 
-            // txtCPhone
-            // 
-            txtCPhone.Location = new Point(972, 513);
-            txtCPhone.Name = "txtCPhone";
-            txtCPhone.Size = new Size(270, 37);
-            txtCPhone.TabIndex = 9;
-            // 
-            // label15
-            // 
-            label15.AutoSize = true;
-            label15.ForeColor = Color.White;
-            label15.Location = new Point(781, 513);
-            label15.Name = "label15";
-            label15.Size = new Size(89, 30);
-            label15.TabIndex = 8;
-            label15.Text = "Phone";
-            // 
-            // txtCPass
-            // 
-            txtCPass.Location = new Point(972, 469);
-            txtCPass.Name = "txtCPass";
-            txtCPass.Size = new Size(270, 37);
-            txtCPass.TabIndex = 7;
-            // 
-            // label14
-            // 
-            label14.AutoSize = true;
-            label14.ForeColor = Color.White;
-            label14.Location = new Point(781, 473);
-            label14.Name = "label14";
-            label14.Size = new Size(122, 30);
-            label14.TabIndex = 6;
-            label14.Text = "Password";
-            // 
-            // txtCEmail
-            // 
-            txtCEmail.Location = new Point(972, 426);
-            txtCEmail.Name = "txtCEmail";
-            txtCEmail.Size = new Size(270, 37);
-            txtCEmail.TabIndex = 5;
-            // 
-            // label13
-            // 
-            label13.AutoSize = true;
-            label13.ForeColor = Color.White;
-            label13.Location = new Point(781, 430);
-            label13.Name = "label13";
-            label13.Size = new Size(78, 30);
-            label13.TabIndex = 4;
-            label13.Text = "Email";
-            // 
-            // btnDelete
-            // 
-            btnDelete.BackColor = Color.LightSeaGreen;
-            btnDelete.FlatAppearance.BorderSize = 0;
-            btnDelete.FlatStyle = FlatStyle.Flat;
-            btnDelete.ForeColor = Color.White;
-            btnDelete.Location = new Point(1125, 605);
-            btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(112, 34);
-            btnDelete.TabIndex = 3;
-            btnDelete.Text = "Delete";
-            btnDelete.UseVisualStyleBackColor = false;
-            btnDelete.Click += btnDelete_Click;
-            // 
-            // btnEdit
-            // 
-            btnEdit.BackColor = Color.LightSeaGreen;
-            btnEdit.FlatAppearance.BorderSize = 0;
-            btnEdit.FlatStyle = FlatStyle.Flat;
-            btnEdit.ForeColor = Color.White;
-            btnEdit.Location = new Point(962, 605);
-            btnEdit.Name = "btnEdit";
-            btnEdit.Size = new Size(112, 34);
-            btnEdit.TabIndex = 2;
-            btnEdit.Text = "Edit";
-            btnEdit.UseVisualStyleBackColor = false;
-            btnEdit.Click += btnEdit_Click;
-            // 
-            // txtCustomerID
-            // 
-            txtCustomerID.Location = new Point(199, 407);
-            txtCustomerID.Name = "txtCustomerID";
-            txtCustomerID.Size = new Size(270, 37);
-            txtCustomerID.TabIndex = 1;
-            // 
-            // label12
-            // 
-            label12.AutoSize = true;
-            label12.ForeColor = Color.White;
-            label12.Location = new Point(6, 414);
-            label12.Name = "label12";
-            label12.Size = new Size(160, 30);
-            label12.TabIndex = 0;
-            label12.Text = "Customer ID";
+            label1.AutoSize = true;
+            label1.Font = new Font("Century Gothic", 16F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(448, 76);
+            label1.Name = "label1";
+            label1.Size = new Size(355, 39);
+            label1.TabIndex = 0;
+            label1.Text = "Add a New Customer";
             // 
             // AdminDashboard
             // 
@@ -1105,7 +1462,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightSeaGreen;
             ClientSize = new Size(1258, 712);
-            Controls.Add(tabControl1);
+            Controls.Add(tabPageOrders);
             Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(4);
@@ -1113,28 +1470,34 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "AdminDashboard";
             Load += AdminDashboard_Load;
-            tabControl1.ResumeLayout(false);
-            tabPage1.ResumeLayout(false);
-            tabPage1.PerformLayout();
+            tabPageOrders.ResumeLayout(false);
+            tabPageCustomers.ResumeLayout(false);
+            tabPageCustomers.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvCustomers).EndInit();
+            tabPageCategories.ResumeLayout(false);
+            tabPageCategories.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvCategory).EndInit();
             tabPageProducts.ResumeLayout(false);
             tabPageProducts.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvProducts).EndInit();
+            tabPageSuppliers.ResumeLayout(false);
+            tabPageSuppliers.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dvgSuppliers).EndInit();
             tabPage3.ResumeLayout(false);
             tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewOrders).EndInit();
             tabPagefreqCustomers.ResumeLayout(false);
             tabPagefreqCustomers.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvFreqCustomers).EndInit();
-            tabPage4.ResumeLayout(false);
-            tabPage4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvCustomers).EndInit();
+            tabPageaddcustomer.ResumeLayout(false);
+            tabPageaddcustomer.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private TabControl tabControl1;
-        private TabPage tabPage1;
+        private TabControl tabPageOrders;
+        private TabPage tabPageaddcustomer;
         private TabPage tabPageProducts;
         private TabPage tabPage3;
         private TextBox textBox5Address;
@@ -1162,7 +1525,7 @@
         private Label label10;
         private Label label11;
         private DateTimePicker dateTimePicker1;
-        private TabPage tabPage4;
+        private TabPage tabPageCustomers;
         private Button btnDelete;
         private Button btnEdit;
         private TextBox txtCustomerID;
@@ -1222,5 +1585,31 @@
         private Button button1;
         private Button btnProductPerCustomer;
         private Label label30;
+        private TabPage tabPageCategories;
+        private TabPage tabPageSuppliers;
+        private Label label31;
+        private DataGridView dgvCategory;
+        private Button btnDeleteC;
+        private Button btnUpdateC;
+        private Button btnAddC;
+        private TextBox TxtCategoryDescription;
+        private Label lblDesc;
+        private TextBox txtCategoryName;
+        private Label lblName;
+        private TextBox txtSupplierPhone;
+        private Label label32;
+        private TextBox txtSupplierName;
+        private Label label33;
+        private Button btnDeleteS;
+        private Button btnUpdateS;
+        private Button btnAddS;
+        private Label label34;
+        private DataGridView dvgSuppliers;
+        private Label label35;
+        private TextBox txtCategoryID;
+        private Label label36;
+        private TextBox txtSupplierID;
+        private TextBox txtSupplierAddress;
+        private Label label37;
     }
 }

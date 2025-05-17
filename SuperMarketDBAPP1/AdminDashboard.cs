@@ -15,9 +15,9 @@ namespace SuperMarketDBAPP1
 {
     public partial class AdminDashboard : Form
     {
-        //static string sql = "Data Source=DESKTOP-V936GVE;Initial Catalog=SupermarketDatabase;Integrated Security=True;Encrypt=False;Trust Server Certificate=True";
+        static string sql = "Data Source=DESKTOP-V936GVE;Initial Catalog=SupermarketDatabase;Integrated Security=True;Encrypt=False;Trust Server Certificate=True";
 
-        static String sql = "Data Source=MARO25;Initial Catalog=SupermarketDatabase;Integrated Security=True;Encrypt=False;Trust Server Certificate=True";
+        //static String sql = "Data Source=MARO25;Initial Catalog=SupermarketDatabase;Integrated Security=True;Encrypt=False;Trust Server Certificate=True";
 
         public AdminDashboard()
         {
@@ -143,20 +143,28 @@ namespace SuperMarketDBAPP1
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (tabControl1.SelectedTab == tabPage3)
+            if (tabPageOrders.SelectedTab == tabPage3)
             {
                 LoadOrders();
             }
 
-            if (tabControl1.SelectedTab == tabPagefreqCustomers)
+            if (tabPageOrders.SelectedTab == tabPagefreqCustomers)
             {
                 LoadFrequentCustomers();
             }
 
-            // Check if the selected tab is the Products tab
-            if (tabControl1.SelectedTab == tabPageProducts)
+           
+            if (tabPageOrders.SelectedTab == tabPageProducts)
             {
                 LoadAllProducts();
+            }
+            if (tabPageOrders.SelectedTab == tabPageCategories)
+            {
+                LoadCategories();
+            }
+            if (tabPageOrders.SelectedTab == tabPageSuppliers)
+            {
+                LoadSuppliers();
             }
 
         }
@@ -879,6 +887,261 @@ namespace SuperMarketDBAPP1
         }
 
         private void AdminDashboard_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void populate()
+        {
+            using (SqlConnection con = new SqlConnection(sql))
+            {
+                con.Open();
+                string query = "select * from Category";
+                SqlDataAdapter sda = new SqlDataAdapter(query, con);
+                SqlCommandBuilder builder = new SqlCommandBuilder(sda);
+                var ds = new DataSet();
+                sda.Fill(ds);
+                dgvCategory.DataSource = ds.Tables[0];
+            }
+
+        }
+        private void btnAddC_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(txtCategoryName.Text))
+                {
+                    MessageBox.Show("Please enter a valid category name.");
+                    return;
+                }
+
+                using (SqlConnection con = new SqlConnection(sql))
+                {
+                    con.Open();
+                    string query = "INSERT INTO Category (Category_name, Description) VALUES (@Name, @Description)";
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    {
+                        cmd.Parameters.AddWithValue("@Name", txtCategoryName.Text);
+                        cmd.Parameters.AddWithValue("@Description", TxtCategoryDescription.Text);
+                        cmd.ExecuteNonQuery();
+                    }
+                    MessageBox.Show("Category Added Successfully");
+                    populate();
+                    txtCategoryName.Text = "";
+                    TxtCategoryDescription.Text = "";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+
+        void LoadCategories()
+        {
+            using (SqlConnection con = new SqlConnection(sql))
+            {
+                string query = "SELECT * FROM Category";
+                SqlDataAdapter da = new SqlDataAdapter(query, con);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                dgvCategory.DataSource = dt;
+            }
+        }
+        private void dgvCategory_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            LoadCategories();
+        }
+
+        private void btnUpdateC_Click(object sender, EventArgs e)
+        {
+            if (dgvCategory.CurrentRow != null)
+            {
+                int categoryId = Convert.ToInt32(dgvCategory.CurrentRow.Cells["Category_id"].Value);
+
+                using (SqlConnection con = new SqlConnection(sql))
+                {
+                    string query = @"UPDATE Category SET Category_name=@Name, Description=@Desc WHERE Category_id=@Id";
+
+                    SqlCommand cmd = new SqlCommand(query, con);
+                    cmd.Parameters.AddWithValue("@Name", txtCategoryName.Text);
+                    cmd.Parameters.AddWithValue("@Desc", TxtCategoryDescription.Text);
+                    cmd.Parameters.AddWithValue("@Id", categoryId);
+
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                }
+                LoadCategories();
+            }
+
+        }
+
+        private void btnDeleteC_Click(object sender, EventArgs e)
+        {
+            int categoryId = -1;
+            // Try getting ID from txtPID
+            if (!string.IsNullOrWhiteSpace(txtCategoryID.Text))
+            {
+                if (!int.TryParse(txtCategoryID.Text, out categoryId))
+                {
+                    MessageBox.Show("Invalid Category ID. Please enter a valid number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+            }
+            else if (dgvCategory.CurrentRow != null)
+            {
+                // Try getting ID from selected row if textbox is empty
+                categoryId = Convert.ToInt32(dgvCategory.CurrentRow.Cells["Category_id"].Value);
+            }
+            else
+            {
+                MessageBox.Show("Please select a category or enter a valid Category ID.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            // Confirm deletion
+            DialogResult result = MessageBox.Show("Are you sure you want to delete this category?", "Confirm Deletion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result != DialogResult.Yes)
+                return;
+
+            // Perform deletion
+            try
+            {
+                using (SqlConnection con = new SqlConnection(sql))
+                {
+                    con.Open();
+                    string query = "DELETE FROM Category WHERE Category_id = @Id";
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    {
+                        cmd.Parameters.AddWithValue("@Id", categoryId);
+                        int rowsAffected = cmd.ExecuteNonQuery();
+
+                        if (rowsAffected > 0)
+                        {
+                            MessageBox.Show("Category deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            populate(); // Refresh the DataGridView
+                            txtCategoryID.Text = "";
+                            txtCategoryName.Text = "";
+                            TxtCategoryDescription.Text = "";
+                        }
+                        else
+                        {
+                            MessageBox.Show("No category found with the given ID.", "Not Found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error deleting category: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        void LoadSuppliers()
+        {
+            using (SqlConnection con = new SqlConnection(sql))
+            {
+                string query = "SELECT * FROM Supplier";
+                SqlDataAdapter da = new SqlDataAdapter(query, con);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                dvgSuppliers.DataSource = dt;
+            }
+        }
+
+
+        private void btnAddS_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtSupplierName.Text))
+            {
+                MessageBox.Show("Please enter a supplier name.");
+                return;
+            }
+
+            using (SqlConnection con = new SqlConnection(sql))
+            {
+                con.Open();
+                string query = "INSERT INTO Supplier (S_Name, Address, Phone) VALUES (@Name, @Address, @Phone)";
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@Name", txtSupplierName.Text);
+                    cmd.Parameters.AddWithValue("@Address", txtSupplierAddress.Text);
+                    cmd.Parameters.AddWithValue("@Phone", txtSupplierPhone.Text);
+                    cmd.ExecuteNonQuery();
+                }
+                MessageBox.Show("Supplier added successfully.");
+                LoadSuppliers(); // Refresh your DataGridView or List
+                txtSupplierName.Text = "";
+                txtSupplierAddress.Text = "";
+                txtSupplierPhone.Text = "";
+            }
+        }
+
+        private void btnUpdateS_Click(object sender, EventArgs e)
+        {
+            if (!int.TryParse(txtSupplierID.Text, out int supplierId))
+            {
+                MessageBox.Show("Invalid Supplier ID.");
+                return;
+            }
+
+            using (SqlConnection con = new SqlConnection(sql))
+            {
+                con.Open();
+                string query = "UPDATE Supplier SET S_Name = @Name, Address = @Address, Phone = @Phone WHERE Supplier_id = @Id";
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@Id", supplierId);
+                    cmd.Parameters.AddWithValue("@Name", txtSupplierName.Text);
+                    cmd.Parameters.AddWithValue("@Address", txtSupplierAddress.Text);
+                    cmd.Parameters.AddWithValue("@Phone", txtSupplierPhone.Text);
+                    int rows = cmd.ExecuteNonQuery();
+                    if (rows > 0)
+                        MessageBox.Show("Supplier updated successfully.");
+                    else
+                        MessageBox.Show("Supplier not found.");
+                }
+                LoadSuppliers(); 
+            }
+        }
+
+        private void btnDeleteS_Click(object sender, EventArgs e)
+        {
+            if (!int.TryParse(txtSupplierID.Text, out int supplierId))
+            {
+                MessageBox.Show("Invalid Supplier ID.");
+                return;
+            }
+
+            DialogResult confirm = MessageBox.Show("Are you sure you want to delete this supplier?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (confirm != DialogResult.Yes)
+                return;
+
+            using (SqlConnection con = new SqlConnection(sql))
+            {
+                con.Open();
+                string query = "DELETE FROM Supplier WHERE Supplier_id = @Id";
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@Id", supplierId);
+                    int rows = cmd.ExecuteNonQuery();
+                    if (rows > 0)
+                        MessageBox.Show("Supplier deleted successfully.");
+                    else
+                        MessageBox.Show("Supplier not found.");
+                }
+                LoadSuppliers();
+                txtSupplierID.Text = "";
+                txtSupplierName.Text = "";
+                txtSupplierAddress.Text = "";
+                txtSupplierPhone.Text = "";
+            }
+        }
+
+        private void label33_Click(object sender, EventArgs e)
         {
 
         }
