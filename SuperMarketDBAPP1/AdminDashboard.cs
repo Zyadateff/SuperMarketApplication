@@ -434,16 +434,59 @@ namespace SuperMarketDBAPP1
         {
             try
             {
+                // Make sure we have a valid ID to edit
+                if (string.IsNullOrWhiteSpace(txtCIDDel.Text))
+                {
+                    MessageBox.Show("Please enter the Customer ID to edit.");
+                    return;
+                }
+
                 using (SqlConnection conn = new SqlConnection(sql))
                 {
-                    string query = "UPDATE Customer SET Name=@Name, Email=@Email, Phone=@Phone, Password=@Password, Address=@Address WHERE Customer_id=@Id";
-                    SqlCommand cmd = new SqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@Name", txtCName.Text);
-                    cmd.Parameters.AddWithValue("@Email", txtCEmail.Text);
-                    cmd.Parameters.AddWithValue("@Phone", txtCPhone.Text);
-                    cmd.Parameters.AddWithValue("@Password", txtCPass.Text);
-                    cmd.Parameters.AddWithValue("@Address", txtCAddress.Text);
-                    cmd.Parameters.AddWithValue("@Id", txtCustomerID.Text);
+                    List<string> setClauses = new List<string>();
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = conn;
+
+                    if (!string.IsNullOrWhiteSpace(txtCName.Text))
+                    {
+                        setClauses.Add("Name = @Name");
+                        cmd.Parameters.AddWithValue("@Name", txtCName.Text);
+                    }
+
+                    if (!string.IsNullOrWhiteSpace(txtCEmail.Text))
+                    {
+                        setClauses.Add("Email = @Email");
+                        cmd.Parameters.AddWithValue("@Email", txtCEmail.Text);
+                    }
+
+                    if (!string.IsNullOrWhiteSpace(txtCPhone.Text))
+                    {
+                        setClauses.Add("Phone = @Phone");
+                        cmd.Parameters.AddWithValue("@Phone", txtCPhone.Text);
+                    }
+
+                    if (!string.IsNullOrWhiteSpace(txtCPass.Text))
+                    {
+                        setClauses.Add("Password = @Password");
+                        cmd.Parameters.AddWithValue("@Password", txtCPass.Text);
+                    }
+
+                    if (!string.IsNullOrWhiteSpace(txtCAddress.Text))
+                    {
+                        setClauses.Add("Address = @Address");
+                        cmd.Parameters.AddWithValue("@Address", txtCAddress.Text);
+                    }
+
+                    if (setClauses.Count == 0)
+                    {
+                        MessageBox.Show("Please fill in at least one field to update.");
+                        return;
+                    }
+
+                    cmd.Parameters.AddWithValue("@Id", txtCIDDel.Text);
+
+                    string query = "UPDATE Customer SET " + string.Join(", ", setClauses) + " WHERE Customer_id = @Id";
+                    cmd.CommandText = query;
 
                     conn.Open();
                     int rowsAffected = cmd.ExecuteNonQuery();
