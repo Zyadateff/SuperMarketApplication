@@ -9,7 +9,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using System.Xml.Serialization;
+using static System.Net.Mime.MediaTypeNames;
 using static System.Runtime.CompilerServices.RuntimeHelpers;
+using System.IO;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
 
 namespace SuperMarketDBAPP1
 {
@@ -153,7 +158,7 @@ namespace SuperMarketDBAPP1
                 LoadFrequentCustomers();
             }
 
-           
+
             if (tabPageOrders.SelectedTab == tabPageProducts)
             {
                 LoadAllProducts();
@@ -558,28 +563,67 @@ namespace SuperMarketDBAPP1
             if (dgvProducts.CurrentRow != null)
             {
                 int productId = Convert.ToInt32(dgvProducts.CurrentRow.Cells["Product_id"].Value);
+                List<string> updates = new List<string>();
+                SqlCommand cmd = new SqlCommand();
+
+                if (!string.IsNullOrWhiteSpace(txtPname.Text))
+                {
+                    updates.Add("P_Name = @Name");
+                    cmd.Parameters.AddWithValue("@Name", txtPname.Text);
+                }
+                if (!string.IsNullOrWhiteSpace(txtPdesc.Text))
+                {
+                    updates.Add("Description = @Desc");
+                    cmd.Parameters.AddWithValue("@Desc", txtPdesc.Text);
+                }
+                if (!string.IsNullOrWhiteSpace(txtPprice.Text))
+                {
+                    updates.Add("Price = @Price");
+                    cmd.Parameters.AddWithValue("@Price", Convert.ToDecimal(txtPprice.Text));
+                }
+                if (!string.IsNullOrWhiteSpace(txtPquantity.Text))
+                {
+                    updates.Add("Quantity = @Qty");
+                    updates.Add("StockQuantity = @Stock");
+                    int qty = Convert.ToInt32(txtPquantity.Text);
+                    cmd.Parameters.AddWithValue("@Qty", qty);
+                    cmd.Parameters.AddWithValue("@Stock", qty); // same value
+                }
+                if (!string.IsNullOrWhiteSpace(txtPminThres.Text))
+                {
+                    updates.Add("MinStockThreshold = @Min");
+                    cmd.Parameters.AddWithValue("@Min", Convert.ToInt32(txtPminThres.Text));
+                }
+                if (!string.IsNullOrWhiteSpace(txtPcategory.Text))
+                {
+                    updates.Add("Category_id = @CatId");
+                    cmd.Parameters.AddWithValue("@CatId", Convert.ToInt32(txtPcategory.Text));
+                }
+                if (!string.IsNullOrWhiteSpace(txtPsupplier.Text))
+                {
+                    updates.Add("Supplier_id = @SupId");
+                    cmd.Parameters.AddWithValue("@SupId", Convert.ToInt32(txtPsupplier.Text));
+                }
+
+                if (updates.Count == 0)
+                {
+                    MessageBox.Show("Please fill at least one field to update.", "No Update", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                string query = $"UPDATE Product SET {string.Join(", ", updates)} WHERE Product_id = @Id";
+                cmd.CommandText = query;
+                cmd.Parameters.AddWithValue("@Id", productId);
 
                 using (SqlConnection conn = new SqlConnection(sql))
                 {
-                    string query = @"UPDATE Product SET P_Name=@Name, Description=@Desc, Price=@Price, Quantity=@Qty, 
-                             StockQuantity=@Stock, MinStockThreshold=@Min, Category_id=@CatId, Supplier_id=@SupId 
-                             WHERE Product_id=@Id";
-
-                    SqlCommand cmd = new SqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@Name", txtPname.Text);
-                    cmd.Parameters.AddWithValue("@Desc", txtPdesc.Text);
-                    cmd.Parameters.AddWithValue("@Price", Convert.ToDecimal(txtPprice.Text));
-                    cmd.Parameters.AddWithValue("@Qty", Convert.ToInt32(txtPquantity.Text));
-                    cmd.Parameters.AddWithValue("@Stock", Convert.ToInt32(txtPquantity.Text));
-                    cmd.Parameters.AddWithValue("@Min", Convert.ToInt32(txtPminThres.Text));
-                    cmd.Parameters.AddWithValue("@CatId", Convert.ToInt32(txtPcategory.Text));
-                    cmd.Parameters.AddWithValue("@SupId", Convert.ToInt32(txtPsupplier.Text));
-                    cmd.Parameters.AddWithValue("@Id", productId);
-
+                    cmd.Connection = conn;
                     conn.Open();
                     cmd.ExecuteNonQuery();
                 }
+
                 LoadAllProducts();
+                MessageBox.Show("Product updated successfully.", "Updated", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -1104,7 +1148,7 @@ namespace SuperMarketDBAPP1
                     else
                         MessageBox.Show("Supplier not found.");
                 }
-                LoadSuppliers(); 
+                LoadSuppliers();
             }
         }
 
@@ -1144,6 +1188,113 @@ namespace SuperMarketDBAPP1
         private void label33_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private PdfPTable CreateTableFromQuery(string query)
+        {
+
+            PdfPTable table; 
+            
+
+            using (SqlConnection con = new SqlConnection(sql))
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand(query, con);
+                SqlDataReader reader = cmd.ExecuteReader();
+                int columnCount = reader.FieldCount;
+                table = new PdfPTable(columnCount);
+                table.WidthPercentage = 100;
+                table.SpacingBefore = 10f;
+                table.SpacingAfter = 10f;
+
+                // Add header
+                for (int i = 0; i < reader.FieldCount; i++)
+                {
+                    table.AddCell(new Phrase(reader.GetName(i), FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12)));
+                }
+
+                // Add rows
+                while (reader.Read())
+                {
+                    for (int i = 0; i < reader.FieldCount; i++)
+                    {
+                        table.AddCell(reader[i].ToString());
+                    }
+                }
+
+                reader.Close();
+            }
+
+            return table;
+        }
+
+        private void GeneratePDFReport(string filePath)
+        {
+            Document doc = new Document(PageSize.A4, 25, 25, 30, 30);
+            PdfWriter.GetInstance(doc, new FileStream(filePath, FileMode.Create));
+            doc.Open();
+
+            // Fonts
+            iTextSharp.text.Font titleFont = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 18);
+            iTextSharp.text.Font headingFont = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 14);
+            iTextSharp.text.Font normalFont = FontFactory.GetFont(FontFactory.HELVETICA, 12);
+
+            // Title
+            Paragraph title = new Paragraph("Supermarket Insight Report", titleFont);
+            title.Alignment = Element.ALIGN_CENTER;
+            doc.Add(title);
+            doc.Add(new Paragraph("\n"));
+
+            // Section A - Most bought product
+            doc.Add(new Paragraph("a. Most Bought Product", headingFont));
+            doc.Add(new Paragraph("Displays the product that had the maximum number of customers.", normalFont));
+            doc.Add(CreateTableFromQuery("SELECT TOP 1 P.P_Name, COUNT(DISTINCT O.Customer_id) AS CustomerCount FROM [OrderItem] OI JOIN [Order] O ON OI.Order_id = O.Order_id JOIN Product P ON OI.Product_id = P.Product_id GROUP BY P.P_Name ORDER BY CustomerCount DESC"));
+            doc.Add(new Paragraph("\n"));
+
+            // Section B - Product with no customers for specific month
+            doc.Add(new Paragraph("b. Products Not Bought in the Current Month ", headingFont));
+            doc.Add(new Paragraph("Lists products that were not bought in this month.", normalFont));
+            doc.Add(CreateTableFromQuery("SELECT P.P_Name FROM Product P WHERE P.Product_id NOT IN (   SELECT OI.Product_id     FROM OrderItem OI    JOIN [Order] O ON O.Order_id = OI.Order_id   WHERE MONTH(O.Order_date) = MONTH(GETDATE())      AND YEAR(O.Order_date) = YEAR(GETDATE()))"));
+            doc.Add(new Paragraph("\n"));
+
+            // Section C - Customers with no purchase in one year
+            doc.Add(new Paragraph("c. Inactive Customers (1 year)", headingFont));
+            doc.Add(new Paragraph("Customers who haven’t bought anything in the past year.", normalFont));
+            doc.Add(CreateTableFromQuery("SELECT C.Name FROM Customer C WHERE C.Customer_id NOT IN (SELECT DISTINCT Customer_id FROM [Order] WHERE Order_date >= DATEADD(YEAR, -1, GETDATE()))"));
+            doc.Add(new Paragraph("\n"));
+
+            // Section D - Highest purchasing customer this month
+            doc.Add(new Paragraph("d. Top Customer This Month", headingFont));
+            doc.Add(new Paragraph("Customer who spent the most this month.", normalFont));
+            doc.Add(CreateTableFromQuery("SELECT TOP 1 C.Name, SUM(OI.Quantity * OI.U_Price) AS TotalSpent FROM Customer C JOIN [Order] O ON C.Customer_id = O.Customer_id JOIN OrderItem OI ON O.Order_id = OI.Order_id WHERE MONTH(O.Order_date) = MONTH(GETDATE()) GROUP BY C.Name ORDER BY TotalSpent DESC"));
+            doc.Add(new Paragraph("\n"));
+
+            // Section E - Sales comparison between food and electric
+            doc.Add(new Paragraph("e. Category Sales Comparison", headingFont));
+            doc.Add(new Paragraph("Compare total sales between food and electric appliances.", normalFont));
+            doc.Add(CreateTableFromQuery("SELECT CAT.Category_name, SUM(OI.Quantity * OI.U_Price) AS TotalSales FROM OrderItem OI JOIN Product P ON OI.Product_id = P.Product_id JOIN Category CAT ON P.Category_id = CAT.Category_id GROUP BY CAT.Category_name"));
+            doc.Add(new Paragraph("\n"));
+
+            // Section F - Product + number of customers who bought it
+            doc.Add(new Paragraph("f. Product + Customer Count", headingFont));
+            doc.Add(new Paragraph("List of each product and how many unique customers bought it.", normalFont));
+            doc.Add(CreateTableFromQuery("SELECT P.P_Name, COUNT(DISTINCT O.Customer_id) AS CustomerCount FROM OrderItem OI JOIN [Order] O ON O.Order_id = OI.Order_id JOIN Product P ON OI.Product_id = P.Product_id GROUP BY P.P_Name"));
+            doc.Add(new Paragraph("\n"));
+
+            doc.Close();
+
+            MessageBox.Show("PDF Report Generated Successfully!");
+        }
+
+        private void btnGenerateReport_Click(object sender, EventArgs e)
+        {
+            string downloadsPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads");
+            string fileName = "Supermarket_Report_" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".pdf";
+            string filePath = Path.Combine(downloadsPath, fileName);
+
+            GeneratePDFReport(filePath);
+
+            MessageBox.Show("Report saved to Downloads folder:\n" + filePath, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

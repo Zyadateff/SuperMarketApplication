@@ -144,6 +144,7 @@
             label3 = new Label();
             label2 = new Label();
             label1 = new Label();
+            btnGenerateReport = new Button();
             tabPageOrders.SuspendLayout();
             tabPageCustomers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvCustomers).BeginInit();
@@ -518,10 +519,10 @@
             tabPageCategories.Controls.Add(btnAddC);
             tabPageCategories.Controls.Add(label31);
             tabPageCategories.Controls.Add(dgvCategory);
-            tabPageCategories.Location = new Point(4, 39);
+            tabPageCategories.Location = new Point(4, 34);
             tabPageCategories.Name = "tabPageCategories";
             tabPageCategories.Padding = new Padding(3);
-            tabPageCategories.Size = new Size(1250, 671);
+            tabPageCategories.Size = new Size(1250, 676);
             tabPageCategories.TabIndex = 5;
             tabPageCategories.Text = "Categories";
             // 
@@ -658,6 +659,7 @@
             // tabPageProducts
             // 
             tabPageProducts.BackColor = Color.LightSeaGreen;
+            tabPageProducts.Controls.Add(btnGenerateReport);
             tabPageProducts.Controls.Add(btnProductPerCustomer);
             tabPageProducts.Controls.Add(btnNotBought);
             tabPageProducts.Controls.Add(btnMostBought);
@@ -725,9 +727,9 @@
             btnMostBought.BackColor = Color.LightSeaGreen;
             btnMostBought.CausesValidation = false;
             btnMostBought.ForeColor = Color.White;
-            btnMostBought.Location = new Point(811, 466);
+            btnMostBought.Location = new Point(929, 483);
             btnMostBought.Name = "btnMostBought";
-            btnMostBought.Size = new Size(201, 46);
+            btnMostBought.Size = new Size(290, 46);
             btnMostBought.TabIndex = 26;
             btnMostBought.Text = "Most Bought";
             btnMostBought.UseVisualStyleBackColor = false;
@@ -1338,10 +1340,10 @@
             tabPageaddcustomer.Controls.Add(label2);
             tabPageaddcustomer.Controls.Add(label1);
             tabPageaddcustomer.ForeColor = Color.LightSlateGray;
-            tabPageaddcustomer.Location = new Point(4, 39);
+            tabPageaddcustomer.Location = new Point(4, 34);
             tabPageaddcustomer.Name = "tabPageaddcustomer";
             tabPageaddcustomer.Padding = new Padding(3);
-            tabPageaddcustomer.Size = new Size(1250, 671);
+            tabPageaddcustomer.Size = new Size(1250, 676);
             tabPageaddcustomer.TabIndex = 0;
             tabPageaddcustomer.Text = "Add Customer";
             tabPageaddcustomer.Click += tabPage1_Click;
@@ -1455,6 +1457,19 @@
             label1.Size = new Size(355, 39);
             label1.TabIndex = 0;
             label1.Text = "Add a New Customer";
+            // 
+            // btnGenerateReport
+            // 
+            btnGenerateReport.BackColor = Color.LightSeaGreen;
+            btnGenerateReport.CausesValidation = false;
+            btnGenerateReport.ForeColor = Color.White;
+            btnGenerateReport.Location = new Point(633, 483);
+            btnGenerateReport.Name = "btnGenerateReport";
+            btnGenerateReport.Size = new Size(290, 46);
+            btnGenerateReport.TabIndex = 29;
+            btnGenerateReport.Text = "Generate Report";
+            btnGenerateReport.UseVisualStyleBackColor = false;
+            btnGenerateReport.Click += btnGenerateReport_Click;
             // 
             // AdminDashboard
             // 
@@ -1611,5 +1626,6 @@
         private TextBox txtSupplierID;
         private TextBox txtSupplierAddress;
         private Label label37;
+        private Button btnGenerateReport;
     }
 }
